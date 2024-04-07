@@ -23,7 +23,7 @@ public class Start extends JPanel{
 
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				SpaceshipWars.navigate(currentScreen, new LevelSelect(1));
+				SpaceshipWars.navigate(currentScreen, new WorldSelect());
 			}
 
 			@Override
