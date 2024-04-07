@@ -4,6 +4,7 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
+import java.lang.reflect.InvocationTargetException;
 import java.awt.geom.AffineTransform;
 
 public class Entity {
@@ -28,6 +29,9 @@ public class Entity {
     		  								Assets.newImage("MediumFighter.png"), Assets.newImage("Carrier.png"),
     		  								Assets.newImage("Spawn.png"), Assets.newImage("World1Boss.png")}};
       public static BufferedImage[] exp = {Assets.newImage("exp1.png"), Assets.newImage("exp2.png"), Assets.newImage("exp3.png")};
+      private static Class[][] refs = {
+    		  							{Fighter.class, Scout.class, MediumFighter.class, Carrier.class, Spawner.class, World1Boss.class}
+      									};
       public Entity (int x, int y) {
           this.x = x;
           this.y = y;
@@ -85,12 +89,26 @@ public class Entity {
     	  }
       }
       public static Entity createEntity(int world, int type, int x, int y) {
-    	  switch (world) {
-    	  		case 1:
-    	  			return (type == 0 ? new Fighter(x, y) : type == 1 ? new Scout(x, y) : type == 2 ? new MediumFighter(x, y) : type == 3 ? new Carrier(x, y) : type == 4 ? new Spawner(x, y) : new World1Boss(x, Screen.Y(0)));
-    	  }
-    		  
-    	  return null;
+				try {
+					return (Entity) refs[world - 1][type].getDeclaredConstructor(int.class, int.class).newInstance(x, y);
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+					return null;
+				} 			
+      }
+      @Override
+      public Object clone() {
+    	  Entity e = new Entity((int) x, (int) y);
+    	  e.hp = hp;
+    	  e.maxHp = hp;
+    	  e.dmg = dmg;
+    	  e.fireRate = fireRate;
+    	  e.speed = speed;
+    	  e.team = team;
+    	  e.s = s;
+    	  e.img = img;
+    	  return e;
       }
       public void drawAnim(Graphics g) {
     	  if (System.currentTimeMillis() <= lastDamaged)  {
