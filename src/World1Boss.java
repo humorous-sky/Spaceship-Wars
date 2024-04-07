@@ -7,11 +7,11 @@ public class World1Boss extends Entity {
 		img = imgs[0][5];
 		this.rect.width = Screen.X(230);
         this.rect.height = Screen.Y(180);
-        hp = 1500;
+        hp = 2300;
         maxHp = hp;
         dmg = 30;
         s = 10;
-        fireRate = 6500;
+        fireRate = 8500;
         dir = (float) ((Math.random() * speed * 1.6) - (speed * 0.8));
 	}
 	@Override
@@ -67,7 +67,7 @@ public class World1Boss extends Entity {
 		  Screen.entitiesToAdd.add(new Ammos((int) rect.getCenterX() - rect.width/2, (int) rect.getMaxY(), 0f, 5f, dmg * 2, team));
 		  Screen.entitiesToAdd.add(new Ammos((int) rect.getCenterX() + rect.width/2, (int) rect.getMaxY(), 0f, 5f, dmg * 2, team));
 		  Screen.entitiesToAdd.add(new Ammos((int) rect.getCenterX(), (int) rect.getMaxY(), 1f, 5f, dmg, team));
-		  Screen.entitiesToAdd.add(new Ammos((int) rect.getCenterX(), (int) rect.getMaxY(), 3f, 0.1f, dmg, team));
+		  Screen.entitiesToAdd.add(new Ammos((int) rect.getCenterX(), (int) rect.getMaxY(), 3f, 5f, dmg, team));
 		  Screen.entitiesToAdd.add(new Ammos((int) rect.getCenterX(), (int) rect.getMaxY(), -3f, 5f, dmg, team));
 		  Screen.entitiesToAdd.add(new Ammos((int) rect.getCenterX(), (int) rect.getMaxY(), -1f, 5f, dmg, team));
 		  lastFire = System.currentTimeMillis();
