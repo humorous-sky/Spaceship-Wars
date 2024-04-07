@@ -11,6 +11,7 @@ public class Player extends Entity {
 	public int xA = 0;
 	public int yA = 0;
 	public Ability a;
+	private static Class[] refs = {Basic.class, Speedy.class};
 	public Player(int x, int y, Ability a) {
 		super(x, y);
 		this.rect.width = Screen.X(50);
@@ -22,6 +23,15 @@ public class Player extends Entity {
         ammos = maxAmmos;
         fireRate = 100;
         this.a = a;
+	}
+	public static Player createPlayer(int type, int x, int y, Ability a) {
+		try {
+			return (Player) refs[type].getDeclaredConstructor(int.class, int.class, Ability.class).newInstance(x, y, a);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		} 		
 	}
 	@Override
 	public void paint(Graphics g) {

@@ -89,26 +89,13 @@ public class Entity {
     	  }
       }
       public static Entity createEntity(int world, int type, int x, int y) {
-				try {
-					return (Entity) refs[world - 1][type].getDeclaredConstructor(int.class, int.class).newInstance(x, y);
-				} catch (Exception e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-					return null;
-				} 			
-      }
-      @Override
-      public Object clone() {
-    	  Entity e = new Entity((int) x, (int) y);
-    	  e.hp = hp;
-    	  e.maxHp = hp;
-    	  e.dmg = dmg;
-    	  e.fireRate = fireRate;
-    	  e.speed = speed;
-    	  e.team = team;
-    	  e.s = s;
-    	  e.img = img;
-    	  return e;
+			try {
+				return (Entity) refs[world - 1][type].getDeclaredConstructor(int.class, int.class).newInstance(x, y);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				return null;
+			} 			
       }
       public void drawAnim(Graphics g) {
     	  if (System.currentTimeMillis() <= lastDamaged)  {

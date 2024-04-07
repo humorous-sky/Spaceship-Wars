@@ -4,6 +4,7 @@ public class Ability {
 	private int value;
 	private int current;
 	private long lastIncrement = System.currentTimeMillis();
+	private static Class[] refs = {BlackHole.class, Firework.class};
 	public Ability(int option, int value) {
 		this.option = option;
 		this.value = value;
@@ -34,5 +35,14 @@ public class Ability {
 	}
 	public void activate(Player p) {
 		
+	}
+	public static Ability createAbility(int type) {
+		try {
+			return (Ability) refs[type].getDeclaredConstructor().newInstance();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		} 		
 	}
 }
