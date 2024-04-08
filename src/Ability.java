@@ -4,7 +4,9 @@ public class Ability {
 	private int value;
 	private int current;
 	private long lastIncrement = System.currentTimeMillis();
-	private static Class[] refs = {BlackHole.class, Firework.class};
+	public static final Class[] refs = {BlackHole.class, Firework.class};
+	public static final String[] descriptions = {"Makes you instantly move a distance in your direction.",
+			"Shoots a circle of bullets around you."};
 	public Ability(int option, int value) {
 		this.option = option;
 		this.value = value;

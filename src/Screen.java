@@ -67,7 +67,7 @@ public class Screen extends JPanel{
         g.setFont(new Font("", Font.ROMAN_BASELINE, 26));
         g.drawString("Health: " + plr.hp, X(810), Y(827));
         g.drawString("Bullets: " + plr.ammos + "/" + plr.maxAmmos, X(810), Y(864));
-        g.drawString("Ability: " + (Math.round(plr.a.getProgress() * 1000)/10.0) + "%", X(15), Y(876));
+        g.drawString("Ability: " + (plr.a.getProgress() == 1 ? "Charged!" : (Math.round(plr.a.getProgress() * 1000)/10.0) + "%"), X(15), Y(876));
         g.drawString(plr.reloading ? "(Reloading " + Math.round((plr.reload - System.currentTimeMillis())/100.0)/10.0 + "s)" :"", X(810), Y(898));
         g.drawString(wave > 0 ? "Wave " + wave : level == 25 ? "Boss Fight" : "Warmup Wave", X(5), Y(55));
         g.drawString("Score: " + score, X(5), Y(88));

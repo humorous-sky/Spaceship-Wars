@@ -52,6 +52,40 @@ public class Start extends JPanel{
 	
 		});
 		binding.get("StartButton").setFont(new Font(Font.SANS_SERIF, Font.ROMAN_BASELINE, 38));
+		addButton("Inventory", "Inventory", X(380), Y(800), X(260), Y(50));
+		binding.get("Inventory").addMouseListener(new MouseListener() {
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				SpaceshipWars.navigate(currentScreen, new Inventory());
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				
+				
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				
+				
+			}
+	
+		});
+		binding.get("Inventory").setFont(new Font(Font.SANS_SERIF, Font.ROMAN_BASELINE, 38));
 	}
 	@Override
 	public void paint(Graphics g) {
@@ -70,6 +104,12 @@ public class Start extends JPanel{
         		this.getComponent(i).paint(g);
         	}
         }
+        /*try {
+			System.out.println(Player.refs[0].getField("SPEED").getFloat(null));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}*/
 	}
 	public static int X(double x) {
     	return (int) (SpaceshipWars.width / 1000.0 * x);

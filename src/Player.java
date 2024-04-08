@@ -11,7 +11,9 @@ public class Player extends Entity {
 	public int xA = 0;
 	public int yA = 0;
 	public Ability a;
-	private static Class[] refs = {Basic.class, Speedy.class};
+	public static final Class[] refs = {Basic.class, Speedy.class};
+	public static final String[] descriptions = {"All purpose ship for anything!", 
+			"Small, fast, and versatile."};
 	public Player(int x, int y, Ability a) {
 		super(x, y);
 		this.rect.width = Screen.X(50);
@@ -113,7 +115,7 @@ public class Player extends Entity {
 			reload = System.currentTimeMillis() + reloadTime;
 		}
 	}
-	public static Color getBarColor(int cur, double max) {
+	public static Color getBarColor(float cur, double max) {
 		return cur > max/2 ? new Color((int) ((-255.0/(max/2)) * cur + 510), 255, 0) : cur > 0 ? new Color(255, (int) ((255.0/(max/2)) * cur), 0) : new Color(255, 0, 0);
 	}	
 	/*(max/2, 255)
