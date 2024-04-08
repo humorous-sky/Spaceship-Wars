@@ -13,7 +13,7 @@ import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 
 public class Assets {
-	public static final BufferedImage[] ships = {newImage("Basic.png"), newImage("Speedy.png")};
+	public static final BufferedImage[] ships = {newImage("Basic.png"), newImage("Speedy.png"), newImage("Tank.png")};
 	public Assets() {
 
 	}

@@ -11,9 +11,9 @@ public class Player extends Entity {
 	public int xA = 0;
 	public int yA = 0;
 	public Ability a;
-	public static final Class[] refs = {Basic.class, Speedy.class};
+	public static final Class[] refs = {Basic.class, Speedy.class, Tank.class};
 	public static final String[] descriptions = {"All purpose ship for anything!", 
-			"Small, fast, and versatile."};
+			"Small, fast, and versatile.", "Big and powerful. Slow but has a gun in the back. "};
 	public Player(int x, int y, Ability a) {
 		super(x, y);
 		this.rect.width = Screen.X(50);

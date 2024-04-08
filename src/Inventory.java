@@ -279,7 +279,7 @@ public class Inventory extends JPanel{
         g.setFont(new Font("", Font.ROMAN_BASELINE, 10));
         g.drawString("fps: " + Math.round(SpaceshipWars.fps * 10) / 10.0,  X(5), Y(15));
         g.setFont(new Font("", Font.ROMAN_BASELINE, 66));
-        g.drawString("Select a Ship and Ability", X(230), Y(110));
+        g.drawString("Select a Ship and Ability", X(260), Y(110));
         g.setFont(new Font("", Font.ROMAN_BASELINE, 38));
         g.drawString(Player.refs[ship].getName(), (X(500) - g.getFontMetrics().stringWidth(Player.refs[ship].getName()))/2, Y(330));
         g.drawString(Ability.refs[ability].getName(), (X(500) - g.getFontMetrics().stringWidth(Ability.refs[ability].getName()))/2 + X(500), Y(330));
@@ -289,8 +289,8 @@ public class Inventory extends JPanel{
         g.drawImage(Assets.ships[ship], X(170), Y(380), X(150), Y(210), null);
         try {
         	float speed = Player.refs[ship].getField("SPEED").getFloat(null);
-			g.setColor(Player.getBarColor(speed - 5, 5.0));
-			g.fillRect(X(50), Y(380), X(100 * ((speed - 5)/5.0)), Y(38));
+			g.setColor(Player.getBarColor(speed - 4, 6.0));
+			g.fillRect(X(50), Y(380), X(100 * ((speed - 4)/6.0)), Y(38));
 			g.setFont(new Font("", Font.ROMAN_BASELINE, 15));
 			g.setColor(Color.WHITE);
 			g.drawString("Speed: " + speed, X(50), Y(405));
@@ -319,8 +319,8 @@ public class Inventory extends JPanel{
 			g.setColor(Color.WHITE);
 			g.drawString("Fire Rate: " + fire + "/sec", X(50), Y(605));
 			float reload = Math.round(100000f/Player.refs[ship].getField("RELOAD").getInt(null))/10f;
-			g.setColor(Player.getBarColor(reload - 2, 5f));
-			g.fillRect(X(50), Y(630), X(100 * ((reload - 2)/5f)), Y(38));
+			g.setColor(Player.getBarColor(reload - 1.7f, 5.3f));
+			g.fillRect(X(50), Y(630), X(100 * ((reload - 1.7f)/5.3f)), Y(38));
 			g.setFont(new Font("", Font.ROMAN_BASELINE, 15));
 			g.setColor(Color.WHITE);
 			g.drawString("Reload: " + (Player.refs[ship].getField("RELOAD").getInt(null)/1000.0) + "sec", X(50), Y(655));
