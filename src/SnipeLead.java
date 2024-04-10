@@ -22,7 +22,7 @@ public class SnipeLead extends Entity {
   	  	if (System.currentTimeMillis() >= lastFire + fireRate) {
   	  		Screen.entitiesToAdd.add(new Ammos((int) rect.getCenterX(), (int) rect.getMaxY(), 0f, 5f, dmg, team));
   	  		for (Entity e: Screen.entities) {
-  	  			if (!(e instanceof Player) && !(e instanceof Ammos)) {
+  	  			if (!(e instanceof Player) && !(e instanceof Ammos) && !(e instanceof SnipeLead)) {
   	  				e.lastFire = System.currentTimeMillis() - e.fireRate;
   	  			}
   	  		}
