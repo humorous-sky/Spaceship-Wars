@@ -20,6 +20,7 @@ public class Ammos extends Entity {
 	}
 	@Override
 	public void paint(Graphics g) {
+		super.rect.height = Screen.Y(super.hp / (team ? 0.38 : 2.3));
 		g.setColor(team ? Color.green : Color.red);
 		if (Math.abs(sY) > Math.abs(sX)) {
 			for (int i = 0; i < super.rect.height; i ++) {

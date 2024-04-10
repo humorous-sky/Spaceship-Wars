@@ -27,11 +27,14 @@ public class Entity {
       public BufferedImage img = null;
       public static BufferedImage[][] imgs = {{Assets.newImage("Fighter.png"), Assets.newImage("Scout.png"),
     		  								Assets.newImage("MediumFighter.png"), Assets.newImage("Carrier.png"),
-    		  								Assets.newImage("Spawn.png"), Assets.newImage("World1Boss.png")}};
+    		  								Assets.newImage("Spawn.png"), Assets.newImage("World1Boss.png")},
+      										{Assets.newImage("Sniper.png"), Assets.newImage("Accurate.png"),
+    		  								Assets.newImage("Moreaccurate.png"), Assets.newImage("MultiSniper.png"),
+    		  								Assets.newImage("SnipeLead.png")}};
       public static BufferedImage[] exp = {Assets.newImage("exp1.png"), Assets.newImage("exp2.png"), Assets.newImage("exp3.png")};
       private static Class[][] refs = {
-    		  							{Fighter.class, Scout.class, MediumFighter.class, Carrier.class, Spawner.class, World1Boss.class}
-      									};
+    		  							{Fighter.class, Scout.class, MediumFighter.class, Carrier.class, Spawner.class, World1Boss.class},
+      									{Sniper.class, Accurate.class, MoreAccurate.class, MultiSniper.class, SnipeLead.class}};
       public Entity (int x, int y) {
           this.x = x;
           this.y = y;
@@ -48,7 +51,7 @@ public class Entity {
       }
       public void move() {
     	  for (Entity e: Screen.entities) {
-    		  if (hp > 0 && e.hp > 0&& e instanceof Ammos && e.team != this.team && e.rect.intersects(this.rect)) {
+    		  if (hp > 0 && e.hp > 0 && e instanceof Ammos && e.team != this.team && e.rect.intersects(this.rect)) {
     			  Screen.score += hp > e.hp ? e.hp * s : hp * s;
     			  hp -= e.hp;
     			  e.hp = 0;

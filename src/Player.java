@@ -44,8 +44,9 @@ public class Player extends Entity {
 		for (Entity e: Screen.entities) {
   		  if (hp > 0 && e.hp > 0 && e.team != this.team && e.rect.intersects(this.rect)) {
   			  Screen.score += hp > e.hp ? e.hp * e.s : hp * e.s;
+  			  int php = hp;
   			  hp -= hp > e.hp ? e.hp : hp;
-			  e.hp = hp > e.hp ? 0 : e.hp - hp;
+			  e.hp = hp > e.hp ? 0 : e.hp - php;
 			  if (e instanceof Ammos && e.hp <= 0) {
   				  Screen.entitiesToRemove.add(e);
   			  }
@@ -67,9 +68,6 @@ public class Player extends Entity {
   		  if (Keys.right) {
 			 xA ++;
 		  }
-  		  if (Keys.activate) {
-  			  a.activateIfCharged(this);
-  		  }
   		  a.increment(0, 3);
   		  if (Math.abs(xA) + Math.abs(yA) == 2) {
   			  x += xA * speed * Screen.aX(0.3978);
@@ -100,7 +98,9 @@ public class Player extends Entity {
       		  System.exit(0);
       	  }
   	  }
-  	  
+  	  if (Keys.activate) {
+		  a.activateIfCharged(this);
+	  }
 	}
 	@Override
 	public void fire() {
