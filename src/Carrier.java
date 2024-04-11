@@ -33,6 +33,6 @@ public class Carrier extends Entity {
 		e = new Scout((int) rect.getCenterX(), (int) rect.getCenterY() + rect.height/6);
 		e.s = 0;
 		Screen.entitiesToAdd.add(e);
-		Screen.entitiesToRemove.add(this);
+		super.onOof();
 	}
 }

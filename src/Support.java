@@ -8,7 +8,7 @@ public class Support extends Entity {
 		img = image;
 		this.rect.width = Screen.X(38);
         this.rect.height = Screen.Y(50);
-        hp = 38;
+        hp = 15;
         maxHp = hp;
         dmg = 3;
         s = 3;

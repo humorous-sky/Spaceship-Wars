@@ -112,7 +112,7 @@ public class Entity {
     	  }
       }
       public void onOof() {
-    	  Screen.plr.a.increment(1, 1);
+    	  Screen.plr.a.increment(s == 0 ? 0 : 1, 1);
     	  Screen.entitiesToRemove.add(this);
       }
       public static void drawImage(double x, double y, double width, double height, float direction, BufferedImage image, Graphics g) {
