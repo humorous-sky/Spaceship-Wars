@@ -11,7 +11,7 @@ public class Accurate extends Entity {
         dmg = 64;
         s = 6;
         speed = 0.15f;
-        fireRate = 15000;
+        fireRate = 10000;
 	}
 	@Override
 	public void paint(Graphics g) {

@@ -11,7 +11,7 @@ public class MoreAccurate extends Entity {
         dmg = 32;
         s = 10;
         speed = 0.23f;
-        fireRate = 15000;
+        fireRate = 8000;
 	}
 	@Override
 	public void paint(Graphics g) {

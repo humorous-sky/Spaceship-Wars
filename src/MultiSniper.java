@@ -11,7 +11,7 @@ public class MultiSniper extends Entity {
         dmg = 80;
         s = 6;
         speed = 0.17f;
-        fireRate = 33000;
+        fireRate = 17000;
 	}
 	@Override
 	public void paint(Graphics g) {

@@ -4,19 +4,25 @@ public class Ability {
 	private int value;
 	private int current;
 	private long lastIncrement = System.currentTimeMillis();
-	public static final Class[] refs = {BlackHole.class, Firework.class};
+	public static final Class[] refs = {BlackHole.class, Firework.class, Army.class};
 	public static final String[] descriptions = {"Makes you instantly move a distance in your direction.",
-			"Shoots a circle of bullets around you."};
+			"Shoots a circle of bullets around you.", "Instantly spawns 5 robot ships that fight for you."};
 	public Ability(int option, int value) {
 		this.option = option;
 		this.value = value;
 	}
 	public void increment(int n, int k) {
-		if (option == k && option == 3) {
-			current += (int) (System.currentTimeMillis() - lastIncrement);
-		} else if (option == k){		
-			current += n;
+		if (option != k) {
+			return;
 		}
+		switch(option) {
+			case 3:
+				current += (int) (System.currentTimeMillis() - lastIncrement);
+				break;
+			default:
+				current += n;
+				break;
+		} 	
 		current = current > value ? value : current;
 		lastIncrement = System.currentTimeMillis();
 	}

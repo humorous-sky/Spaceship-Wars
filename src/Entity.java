@@ -53,6 +53,7 @@ public class Entity {
     	  for (Entity e: Screen.entities) {
     		  if (hp > 0 && e.hp > 0 && e instanceof Ammos && e.team != this.team && e.rect.intersects(this.rect)) {
     			  Screen.score += hp > e.hp ? e.hp * s : hp * s;
+    			  Screen.plr.a.increment(s == 0 ? 0 : (hp > e.hp ? e.hp : hp), 2);
     			  hp -= e.hp;
     			  e.hp = 0;
     			  Screen.entitiesToRemove.add(e);
@@ -64,7 +65,7 @@ public class Entity {
     		  lastTurn = System.currentTimeMillis();
     	  }
     	  if (System.currentTimeMillis() >= lastMove + 26) {
-    		  y += speed * Screen.aY(1);
+    		  y += speed * Screen.aY(1) * (team ? -1 : 1);
     		  x += dir * Screen.aX(1);
     		  if (x < Screen.min) {
     			  x  = Screen.min;

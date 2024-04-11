@@ -23,6 +23,7 @@ public class World1Boss extends Entity {
   	  for (Entity e: Screen.entities) {
   		  if (hp > 0 && e.hp > 0&& e instanceof Ammos && e.team != this.team && e.rect.intersects(this.rect)) {
   			  Screen.score += hp > e.hp ? e.hp * s : hp * s;
+  			  Screen.plr.a.increment(hp > e.hp ? e.hp : hp, 2);
   			  hp -= e.hp;
   			  e.hp = 0;
   			  Screen.entitiesToRemove.add(e);

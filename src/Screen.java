@@ -101,7 +101,7 @@ public class Screen extends JPanel{
         		e.fire();
         	}
         	e.drawAnim(g);
-        	if (!(e instanceof Ammos || e instanceof Player)) {
+        	if (!(e instanceof Ammos || e instanceof Player || e instanceof Support)) {
         		onField++;
         	}
         }
