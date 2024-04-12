@@ -11,6 +11,7 @@ public class Entity {
 	  public int hp = 10;
 	  public int s = 0;
 	  public int maxHp = 10;
+	  public final int bullets = 1;
 	  public float speed = 0.8f;
 	  public int dmg = 1;
 	  public float x;
@@ -35,7 +36,7 @@ public class Entity {
     		  								Assets.newImage("Moreaccurate.png"), Assets.newImage("MultiSniper.png"),
     		  								Assets.newImage("SnipeLead.png")}};
       public static BufferedImage[] exp = {Assets.newImage("exp1.png"), Assets.newImage("exp2.png"), Assets.newImage("exp3.png")};
-      private static Class[][] refs = {
+      public static Class[][] refs = {
     		  							{Fighter.class, Scout.class, MediumFighter.class, Carrier.class, Spawner.class, World1Boss.class},
       									{Sniper.class, Accurate.class, MoreAccurate.class, MultiSniper.class, SnipeLead.class}};
       public Entity (int x, int y) {

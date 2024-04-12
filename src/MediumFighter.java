@@ -1,17 +1,22 @@
 import java.awt.Graphics;
 
 public class MediumFighter extends Entity {
-
+	public static final float SPEED = 0.5f;
+	public static final int DMG = 15;
+	public static final int HP = 50;
+	public static final int AMMOS = 2;
+	public static final int FIRERATE = 1500;
+	public static final String DESC = "Shoots 2 bullets that converges."; 
 	public MediumFighter(int x, int y) {
 		super(x, y);
 		img = imgs[0][2];
 		this.rect.width = Screen.X(110);
         this.rect.height = Screen.Y(80);
-        hp = 50;
+        hp = HP;
         maxHp = hp;
-        dmg = 15;
-        fireRate = 1500;
-        speed = 0.5f;
+        dmg = DMG;
+        fireRate = FIRERATE;
+        speed = SPEED;
         s = 6;
 	}
 	@Override

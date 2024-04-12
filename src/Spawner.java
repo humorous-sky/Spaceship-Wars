@@ -1,17 +1,22 @@
 import java.awt.Graphics;
 
 public class Spawner extends Entity {
-
+	public static final float SPEED = 0.26f;
+	public static final int DMG = 0;
+	public static final int HP = 60;
+	public static final int AMMOS = 0;
+	public static final int FIRERATE = 6500;
+	public static final String DESC = "Slowly spawns an army of fighter ships."; 
 	public Spawner(int x, int y) {
 		super(x, y);
 		img = imgs[0][4];
 		this.rect.width = Screen.X(180);
         this.rect.height = Screen.Y(110);
-        hp = 60;
+        hp = HP;
         maxHp = hp;
-        dmg = 0;
-        fireRate = 6500;
-        speed = 0.26f;
+        dmg = DMG;
+        fireRate = FIRERATE;
+        speed = SPEED;
         s = 8;
 	}
 	@Override

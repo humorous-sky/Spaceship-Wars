@@ -1,17 +1,23 @@
 import java.awt.Graphics;
 
 public class MultiSniper extends Entity {
+	public static final float SPEED = 0.17f;
+	public static final int DMG = 80;
+	public static final int HP = 50;
+	public static final int AMMOS = 2;
+	public static final int FIRERATE = 17000;
+	public static final String DESC = "2 hits will surely take you this time. ";
 	public MultiSniper(int x, int y) {
 		super(x, y);
 		img = imgs[1][3];
 		this.rect.width = Screen.X(110);
         this.rect.height = Screen.Y(88);
-        hp = 50;
+        hp = HP;
         maxHp = hp;
-        dmg = 80;
+        dmg = DMG;
         s = 6;
-        speed = 0.17f;
-        fireRate = 17000;
+        speed = SPEED;
+        fireRate = FIRERATE;
 	}
 	@Override
 	public void paint(Graphics g) {

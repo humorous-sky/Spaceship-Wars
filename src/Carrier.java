@@ -1,16 +1,21 @@
 import java.awt.Graphics;
 
 public class Carrier extends Entity {
-
+	public static final float SPEED = 0.38f;
+	public static final int DMG = 0;
+	public static final int HP = 65;
+	public static final int AMMOS = 0;
+	public static final int FIRERATE = 3000;
+	public static final String DESC = "Spawns 2 fighters and 1 scout upon destruction."; 
 	public Carrier(int x, int y) {
 		super(x, y);
 		img = imgs[0][3];
 		this.rect.width = Screen.X(110);
         this.rect.height = Screen.Y(80);
-        hp = 65;
+        hp = HP;
         maxHp = hp;
-        dmg = 0;
-        speed = 0.38f;
+        dmg = DMG;
+        speed = SPEED;
         s = 4;
 	}
 	@Override

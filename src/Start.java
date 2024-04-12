@@ -104,12 +104,12 @@ public class Start extends JPanel{
         		this.getComponent(i).paint(g);
         	}
         }
-        /*try {
-			System.out.println(Player.refs[0].getField("SPEED").getFloat(null));
+        try {
+			System.out.println(Entity.refs[0][0].getField("speed").getFloat(null));
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}*/
+		}
 	}
 	public static int X(double x) {
     	return (int) (SpaceshipWars.width / 1000.0 * x);

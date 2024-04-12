@@ -17,9 +17,11 @@ public class End extends JPanel{
 	private static final long serialVersionUID = -215196891130568350L;
 	JPanel currentScreen;
 	int stars;
-	public End(int world, int stars) {
+	long score;
+	public End(int world, int stars, long score) {
 		currentScreen = this;
 		this.stars = stars;
+		this.score = score;
 		addButton("ReturnButton", "Return", X(380), Y(680), X(260), Y(110));
 		binding.get("ReturnButton").addMouseListener(new MouseListener() {
 
@@ -65,7 +67,9 @@ public class End extends JPanel{
         g.drawString("fps: " + Math.round(SpaceshipWars.fps * 10) / 10.0,  X(5), Y(15));
         g.setFont(new Font("", Font.ROMAN_BASELINE, 130));
         g.drawString(stars == 0 ? "Mission Failed" : "Mission Completed!", (getWidth() - g.getFontMetrics().stringWidth(stars == 0 ? "Mission Failed" : "Mission Completed!"))/2, Y(380));      
-        g.drawString(stars == 0 ? "" : "★".repeat(stars), (getWidth() - g.getFontMetrics().stringWidth(stars == 0 ? "" : "★".repeat(stars)))/2, Y(510));
+        g.setFont(new Font("", Font.ROMAN_BASELINE, 88));
+        g.drawString(stars == 0 ? "" : "★".repeat(stars), (getWidth() - g.getFontMetrics().stringWidth(stars == 0 ? "" : "★".repeat(stars)))/2, Y(500)); 
+        g.drawString(stars == 0 ? "" : "Score: " + score, (getWidth() - g.getFontMetrics().stringWidth(stars == 0 ? "" : "Score " + score))/2, Y(580));
         //g.drawImage(SpaceshipWars.img, X(400), Y(430), null);
         for (int i = 0; i < this.getComponentCount(); i ++) {
         	if (this.getComponent(i) instanceof CustomButton) {

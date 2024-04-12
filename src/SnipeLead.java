@@ -1,17 +1,23 @@
 import java.awt.Graphics;
 
 public class SnipeLead extends Entity {
+	public static final float SPEED = 0.17f;
+	public static final int DMG = 32;
+	public static final int HP = 60;
+	public static final int AMMOS = 1;
+	public static final int FIRERATE = 3300;
+	public static final String DESC = "All ships onboard fires under its command!";
 	public SnipeLead(int x, int y) {
 		super(x, y);
 		img = imgs[1][4];
 		this.rect.width = Screen.X(150);
         this.rect.height = Screen.Y(100);
-        hp = 60;
+        hp = HP;
         maxHp = hp;
-        dmg = 32;
+        dmg = DMG;
         s = 8;
-        speed = 0.17f;
-        fireRate = 3300;
+        speed = SPEED;
+        fireRate = FIRERATE;
 	}
 	@Override
 	public void paint(Graphics g) {
