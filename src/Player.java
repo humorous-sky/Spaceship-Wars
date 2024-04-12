@@ -1,11 +1,11 @@
 import java.awt.Color;
 import java.awt.Graphics;
+import java.util.ArrayList;
 
 public class Player extends Entity {
 	public int maxAmmos = 5;
 	public int ammos;
 	public boolean fire = false;
-	public long reload = System.currentTimeMillis();
 	public boolean reloading = false;
 	public int reloadTime = 3000; 
 	public int xA = 0;
@@ -41,6 +41,9 @@ public class Player extends Entity {
 	}
 	@Override
 	public void move() {
+		diffFire = System.currentTimeMillis() - lastFire;
+  	  	diffTurn = System.currentTimeMillis() - lastTurn;
+  	  	diffMove = System.currentTimeMillis() - lastMove;
 		for (Entity e: Screen.entities) {
   		  if (hp > 0 && e.hp > 0 && e.team != this.team && e.rect.intersects(this.rect)) {
   			  Screen.score += hp > e.hp ? e.hp * e.s : hp * e.s;
@@ -68,7 +71,7 @@ public class Player extends Entity {
   		  if (Keys.right) {
 			 xA ++;
 		  }
-  		  a.increment(0, 3);
+  		  a.increment((int) (System.currentTimeMillis() - lastMove), 3);
   		  if (Math.abs(xA) + Math.abs(yA) == 2) {
   			  x += xA * speed * Screen.aX(0.3978);
 			  y += yA * speed * Screen.aY(0.7071);
@@ -93,10 +96,10 @@ public class Player extends Entity {
   		  lastMove = System.currentTimeMillis();
   		  if (hp <= 0 && frame < 2.85) {
       		  frame += 0.15;
-      	  } else if (frame >= 2.85) {
-      		  onOof();
-      		  System.exit(0);
-      	  }
+      	  } 
+  		  if (hp < 0) {
+  			  hp = 0;
+  		  }
   	  }
   	  if (Keys.activate) {
 		  a.activateIfCharged(this);
@@ -112,7 +115,7 @@ public class Player extends Entity {
 	public void reload() {
 		if (!reloading) {
 			reloading = true;
-			reload = System.currentTimeMillis() + reloadTime;
+			lastTurn = System.currentTimeMillis() + reloadTime;
 		}
 	}
 	public static Color getBarColor(float cur, double max) {

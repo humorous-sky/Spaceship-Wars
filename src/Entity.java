@@ -24,6 +24,9 @@ public class Entity {
       public int fireRate = 3000;
       public long lastTurn = System.currentTimeMillis();
       public long lastDamaged = System.currentTimeMillis();
+      public long diffTurn = 0;
+      public long diffFire = 0;
+      public long diffMove = 0;
       public BufferedImage img = null;
       public static BufferedImage[][] imgs = {{Assets.newImage("Fighter.png"), Assets.newImage("Scout.png"),
     		  								Assets.newImage("MediumFighter.png"), Assets.newImage("Carrier.png"),
@@ -50,6 +53,9 @@ public class Entity {
             g.drawRect((int) x, (int) y, rect.width, rect.height);
       }
       public void move() {
+    	  diffFire = System.currentTimeMillis() - lastFire;
+    	  diffTurn = System.currentTimeMillis() - lastTurn;
+    	  diffMove = System.currentTimeMillis() - lastMove;
     	  for (Entity e: Screen.entities) {
     		  if (hp > 0 && e.hp > 0 && e instanceof Ammos && e.team != this.team && e.rect.intersects(this.rect)) {
     			  Screen.score += hp > e.hp ? e.hp * s : hp * s;

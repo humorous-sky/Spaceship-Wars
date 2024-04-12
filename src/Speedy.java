@@ -28,7 +28,7 @@ public class Speedy extends Player {
   		  ammos--;
   		  lastFire = System.currentTimeMillis();
   	  }
-  	  if (System.currentTimeMillis() > reload && reloading) {
+  	  if (System.currentTimeMillis() > lastTurn && reloading) {
   		  ammos = maxAmmos;
   		  reloading = false;
   	  }

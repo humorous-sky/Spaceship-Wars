@@ -128,6 +128,40 @@ public class LevelSelect extends JPanel{
 	
 			});
 		binding.get(26 + "").setFont(new Font(Font.SANS_SERIF, Font.ROMAN_BASELINE, 38));
+		addButton("ReturnButton", "Return", X(380), Y(800), X(240), Y(50));
+		binding.get("ReturnButton").addMouseListener(new MouseListener() {
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				SpaceshipWars.navigate(currentScreen, new WorldSelect());
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				
+				
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				
+				
+			}
+	
+			});
+		binding.get("ReturnButton").setFont(new Font(Font.SANS_SERIF, Font.ROMAN_BASELINE, 38));
 	}
 	@Override
 	public void paint(Graphics g) {

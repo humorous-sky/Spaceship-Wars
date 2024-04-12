@@ -29,7 +29,7 @@ public class Tank extends Player {
   		  ammos-=2;
   		  lastFire = System.currentTimeMillis();
   	  }
-  	  if (System.currentTimeMillis() > reload && reloading) {
+  	  if (System.currentTimeMillis() > lastTurn && reloading) {
   		  ammos = maxAmmos;
   		  reloading = false;
   	  }

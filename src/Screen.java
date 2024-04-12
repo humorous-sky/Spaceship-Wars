@@ -5,6 +5,8 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.awt.geom.AffineTransform;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -34,12 +36,88 @@ public class Screen extends JPanel{
     public static boolean status = false;
     private long lastSpawn = System.currentTimeMillis();
     private long lastStar = System.currentTimeMillis();
+    private HashMap<String, Component> binding = new HashMap<String, Component>();
+    private boolean paused = false;
     public static long score = 0;
+    public static Screen current;
     public Screen(int world, int level, Player p) {
+    	paused = false;
     	plr = p;
     	entities.add(plr);
     	this.world = world;
     	this.level = level;
+    	current = this;
+    	addButton("PauseButton", "Pause Game", X(810), Y(50), X(180), Y(50));
+    	binding.get("PauseButton").addMouseListener(new MouseListener() {
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				paused = !paused;
+				((CustomButton) binding.get("PauseButton")).setText(paused ? "Resume Game" : "Pause Game");
+				((CustomButton) binding.get("ExitButton")).setButtonLocation(X(810), paused ? Y(150) : Y(-150));
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+    		
+    	});
+    	binding.get("PauseButton").setFont(new Font(Font.SANS_SERIF, Font.ROMAN_BASELINE, 38));
+    	addButton("ExitButton", "Exit Game", X(810), Y(-150), X(180), Y(50));
+    	binding.get("ExitButton").addMouseListener(new MouseListener() {
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				plr.hp = 0;
+				paused = false;
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+    		
+    	});
+    	binding.get("ExitButton").setFont(new Font(Font.SANS_SERIF, Font.ROMAN_BASELINE, 38));
     }
     @Override
     public void paint(Graphics g) {
@@ -68,7 +146,7 @@ public class Screen extends JPanel{
         g.drawString("Health: " + plr.hp, X(810), Y(827));
         g.drawString("Bullets: " + plr.ammos + "/" + plr.maxAmmos, X(810), Y(864));
         g.drawString("Ability: " + (plr.a.getProgress() == 1 ? "Charged!" : (Math.round(plr.a.getProgress() * 1000)/10.0) + "%"), X(15), Y(876));
-        g.drawString(plr.reloading ? "(Reloading " + Math.round((plr.reload - System.currentTimeMillis())/100.0)/10.0 + "s)" :"", X(810), Y(898));
+        g.drawString(plr.reloading ? "(Reloading " + Math.round((plr.lastTurn - System.currentTimeMillis())/100.0)/10.0 + "s)" :"", X(810), Y(898));
         g.drawString(wave > 0 ? "Wave " + wave : level == 25 ? "Boss Fight" : "Warmup Wave", X(5), Y(55));
         g.drawString("Score: " + score, X(5), Y(88));
         g.drawString("Level " + world + "-" + level, X(5), Y(121));
@@ -93,16 +171,27 @@ public class Screen extends JPanel{
         }
         entitiesToAdd.clear();
         for (Entity e: entities) {
-        	e.move();
+        	if (!paused) {
+        		e.move();
+        	} else {
+        		e.lastFire = System.currentTimeMillis() - e.diffFire;
+        		e.lastTurn = System.currentTimeMillis() - e.diffTurn;
+        		e.lastMove = System.currentTimeMillis() - e.diffMove;
+        	}
         	if (e.frame < 1.6) {
         		e.paint(g);
         	}
-        	if (e.hp > 0) {
+        	if (e.hp > 0 && !paused) {
         		e.fire();
         	}
         	e.drawAnim(g);
         	if (!(e instanceof Ammos || e instanceof Player || e instanceof Support)) {
         		onField++;
+        	}
+        }
+        for (int i = 0; i < this.getComponentCount(); i ++) {
+        	if (this.getComponent(i) instanceof CustomButton) {
+        		this.getComponent(i).paint(g);
         	}
         }
         if (onField == 0 && status) {
@@ -111,9 +200,12 @@ public class Screen extends JPanel{
         	score += (wave + 1) * 600;
         	wave ++;
         	if (wave > 5 && level <= 24 || wave > 0 && level == 25) {
-        		System.exit(0);
+        		gameOver();
         	}
         	lastSpawn = System.currentTimeMillis();
+        }
+        if (plr.hp <= 0 && plr.frame >= 2.85) {
+        	gameOver();
         }
         for (int i = 0; i < this.getComponentCount(); i ++) {
         	if (this.getComponent(i) instanceof CustomButton) {
@@ -144,5 +236,26 @@ public class Screen extends JPanel{
   	  Graphics2D g2d = (Graphics2D) g;
   	  g2d.drawImage(image, at, null);
 	}
+    public void gameOver() {
+    	entities.clear();
+    	entitiesToRemove.clear();
+    	entitiesToAdd.clear();
+    	stars.clear();
+    	starsToRemove.clear();
+	    wave = 0;
+	    spawned = 0;
+	    onField = 0;
+	    score = 0;
+	    status = false;
+		SpaceshipWars.navigate(this, new End(world, (int) Math.ceil(3 * (double) plr.hp/plr.maxHp)));
+    }
+    private void addButton(String key, String text, int x, int y, int width, int height) {
+    	CustomButton b = new CustomButton(text);
+    	this.add(b, this.getComponentCount() - 1);
+    	binding.put(key, b);
+    	b.setButtonLocation(x, y);
+		b.setSize(width, height);
+		b.setPreferredSize(new Dimension(width, height));
+    }
 }
 
