@@ -18,9 +18,13 @@ public class End extends JPanel{
 	JPanel currentScreen;
 	int stars;
 	long score;
+	String str = "";
 	public End(int world, int stars, long score) {
 		currentScreen = this;
 		this.stars = stars;
+		for (int i = 0; i < stars; i ++) {
+			str += "★";
+		}
 		this.score = score;
 		addButton("ReturnButton", "Return", X(380), Y(680), X(260), Y(110));
 		binding.get("ReturnButton").addMouseListener(new MouseListener() {
@@ -68,7 +72,7 @@ public class End extends JPanel{
         g.setFont(new Font("", Font.ROMAN_BASELINE, 130));
         g.drawString(stars == 0 ? "Mission Failed" : "Mission Completed!", (getWidth() - g.getFontMetrics().stringWidth(stars == 0 ? "Mission Failed" : "Mission Completed!"))/2, Y(380));      
         g.setFont(new Font("", Font.ROMAN_BASELINE, 88));
-        g.drawString(stars == 0 ? "" : "★".repeat(stars), (getWidth() - g.getFontMetrics().stringWidth(stars == 0 ? "" : "★".repeat(stars)))/2, Y(500)); 
+        g.drawString(stars == 0 ? "" : str, (getWidth() - g.getFontMetrics().stringWidth(stars == 0 ? "" : str))/2, Y(500)); 
         g.drawString(stars == 0 ? "" : "Score: " + score, (getWidth() - g.getFontMetrics().stringWidth(stars == 0 ? "" : "Score " + score))/2, Y(580));
         //g.drawImage(SpaceshipWars.img, X(400), Y(430), null);
         for (int i = 0; i < this.getComponentCount(); i ++) {
