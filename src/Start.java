@@ -18,7 +18,7 @@ public class Start extends JPanel{
 	JPanel currentScreen;
 	public Start() {
 		currentScreen = this;
-		addButton("StartButton", "Start Game", X(380), Y(680), X(260), Y(110));
+		addButton("StartButton", "Start Game", X(380), Y(650), X(260), Y(80));
 		binding.get("StartButton").addMouseListener(new MouseListener() {
 
 			@Override
@@ -52,7 +52,7 @@ public class Start extends JPanel{
 	
 		});
 		binding.get("StartButton").setFont(new Font(Font.SANS_SERIF, Font.ROMAN_BASELINE, 38));
-		addButton("Inventory", "Inventory", X(380), Y(800), X(260), Y(50));
+		addButton("Inventory", "Inventory", X(380), Y(740), X(260), Y(50));
 		binding.get("Inventory").addMouseListener(new MouseListener() {
 
 			@Override
@@ -86,7 +86,7 @@ public class Start extends JPanel{
 	
 		});
 		binding.get("Inventory").setFont(new Font(Font.SANS_SERIF, Font.ROMAN_BASELINE, 38));
-		addButton("Info", "Info", X(380), Y(860), X(260), Y(50));
+		addButton("Info", "Info", X(380), Y(800), X(260), Y(50));
 		binding.get("Info").addMouseListener(new MouseListener() {
 
 			@Override
@@ -120,6 +120,40 @@ public class Start extends JPanel{
 	
 		});
 		binding.get("Info").setFont(new Font(Font.SANS_SERIF, Font.ROMAN_BASELINE, 38));
+		addButton("Settings", "Settings", X(380), Y(860), X(260), Y(50));
+		binding.get("Settings").addMouseListener(new MouseListener() {
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				SpaceshipWars.navigate(currentScreen, new Settings());
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				
+				
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				
+				
+			}
+	
+		});
+		binding.get("Settings").setFont(new Font(Font.SANS_SERIF, Font.ROMAN_BASELINE, 38));
 	}
 	@Override
 	public void paint(Graphics g) {

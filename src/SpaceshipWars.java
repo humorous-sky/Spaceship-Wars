@@ -14,6 +14,7 @@ public class SpaceshipWars {
     static Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
     static final double width = screenSize.getWidth();
     static final double height = screenSize.getHeight();
+    static int limit = 6; 
     //sets up fps calculation 
     static long lastFrame = System.currentTimeMillis();
     static long lastUpdate = System.currentTimeMillis();
@@ -63,7 +64,7 @@ public class SpaceshipWars {
             	  /*if (s instanceof Start) {
             		  Thread.sleep(100);
             	  } else {*/
-            		  Thread.sleep(6);
+            		  Thread.sleep(limit);
             	  //}
               } catch (InterruptedException e) {
                   // TODO Auto-generated catch block
