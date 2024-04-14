@@ -92,7 +92,7 @@ public class Settings extends JPanel{
 
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				SpaceshipWars.limit = SpaceshipWars.limit <= 1 ? 1 : SpaceshipWars.limit - 1;
+				SpaceshipWars.limit = SpaceshipWars.limit <= 0 ? 0 : SpaceshipWars.limit - 1;
 			}
 
 			@Override
@@ -137,7 +137,7 @@ public class Settings extends JPanel{
         g.drawString("Space - Toggle Fire ", X(260), Y(230));
         g.drawString("R/Slash - Reload Bullets ", X(260), Y(280));
         g.drawString("X/Enter - Activate Ability ", X(260), Y(330));
-        g.drawString("Fps Limit: " + (1000/SpaceshipWars.limit), (X(1000) - g.getFontMetrics().stringWidth("Fps Limit: " + (1000/SpaceshipWars.limit)))/2, Y(690));
+        g.drawString("Fps Limit: " + (SpaceshipWars.limit != 0 ? 1000/SpaceshipWars.limit : "No Limit"), (X(1000) - g.getFontMetrics().stringWidth("Fps Limit: " + (SpaceshipWars.limit != 0 ? 1000/SpaceshipWars.limit : "No Limit")))/2, Y(690));
         for (int i = 0; i < this.getComponentCount(); i ++) {
         	if (this.getComponent(i) instanceof CustomButton) {
         		this.getComponent(i).paint(g);

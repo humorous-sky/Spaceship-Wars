@@ -19,6 +19,7 @@ public class SpaceshipWars {
     static int frames = 0;
     static long lastUpdate = System.currentTimeMillis();
     static long startTime = System.currentTimeMillis();
+    private static long lastNavigate = System.currentTimeMillis() - 300;
     static double fps = 15.0;
     static BufferedImage img;
     static JPanel s;// = new Screen(1, 26, new Basic(Screen.X(500), Screen.Y(880)));
@@ -70,18 +71,22 @@ public class SpaceshipWars {
               } catch (InterruptedException e) {
                   // TODO Auto-generated catch block
               } 
-              if (queue != null) {
+              if (queue != null && System.currentTimeMillis() - 300 >= lastNavigate) {
             	  frame.add(queue);
             	  //updates screen
                   frame.setVisible(true);
             	  SpaceshipWars.s = queue;
             	  queue = null;
+            	  lastNavigate = System.currentTimeMillis();
+              } else if (queue != null && System.currentTimeMillis() - 300 < lastNavigate) {
+            	  queue = null;
               }
+              //System.out.println(frame.getComponentCount());
          }
     }
     public static void navigate(JPanel from, JPanel to) {
     	from.removeAll();
-		queue = to;
+		queue = queue == null ? to : queue;
     }
 }
 
