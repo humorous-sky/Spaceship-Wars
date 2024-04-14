@@ -54,7 +54,7 @@ public class Keys implements KeyListener{
     	  	  case 39: case 68:
     	  		  right = false;
     	  		  break;
-    	  	  case 10:
+    	  	  case 10: case 88:
     	  		  activate = false;
     	  		  break;
     	  } 
