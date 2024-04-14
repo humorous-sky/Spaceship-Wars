@@ -113,7 +113,7 @@ public class Player extends Entity {
   	  }
     }
 	public void reload() {
-		if (!reloading) {
+		if (!reloading && ammos != maxAmmos) {
 			reloading = true;
 			lastTurn = System.currentTimeMillis() + reloadTime;
 		}
