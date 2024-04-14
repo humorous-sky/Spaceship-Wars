@@ -16,7 +16,7 @@ public class SpaceshipWars {
     static final double height = screenSize.getHeight();
     static int limit = 6; 
     //sets up fps calculation 
-    static long lastFrame = System.currentTimeMillis();
+    static int frames = 0;
     static long lastUpdate = System.currentTimeMillis();
     static long startTime = System.currentTimeMillis();
     static double fps = 15.0;
@@ -32,6 +32,7 @@ public class SpaceshipWars {
         frame.setLocation(0, 0);
         frame.setName("Spaceship Wars");
         frame.setTitle("Spaceship Wars");
+        new Assets();
         URL resourceURL = SpaceshipWars.class.getResource("images/Fighter.png"); 
         System.out.println(resourceURL);
         try {
@@ -51,13 +52,13 @@ public class SpaceshipWars {
               //updates fps every 166 milliseconds
               if (System.currentTimeMillis() >= lastUpdate + 166) {
                       //calculates fps
-                      fps = 1000.0/(System.currentTimeMillis() - lastFrame);
-                        lastUpdate = System.currentTimeMillis(); 
+                      fps = frames/((System.currentTimeMillis() - lastUpdate)/1000.0);
+                      lastUpdate = System.currentTimeMillis(); 
+                      frames = 0;
               }
-              lastFrame = System.currentTimeMillis(); 
               //paints the screen
               s.repaint();
-                    
+              frames ++;
               
               //fps limit of 30 fps (waits 33 milliseconds before painting next screen)
               try {

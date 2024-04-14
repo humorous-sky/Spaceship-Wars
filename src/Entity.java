@@ -33,7 +33,7 @@ public class Entity {
     		  								Assets.newImage("MediumFighter.png"), Assets.newImage("Carrier.png"),
     		  								Assets.newImage("Spawn.png"), Assets.newImage("World1Boss.png")},
       										{Assets.newImage("Sniper.png"), Assets.newImage("Accurate.png"),
-    		  								Assets.newImage("Moreaccurate.png"), Assets.newImage("MultiSniper.png"),
+    		  								Assets.newImage("MoreAccurate.png"), Assets.newImage("MultiSniper.png"),
     		  								Assets.newImage("SnipeLead.png")}};
       public static BufferedImage[] exp = {Assets.newImage("exp1.png"), Assets.newImage("exp2.png"), Assets.newImage("exp3.png")};
       public static final Class[][] refs = {

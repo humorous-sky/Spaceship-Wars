@@ -3,6 +3,7 @@
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 
 import javax.imageio.ImageIO;
 import javax.sound.sampled.AudioInputStream;
@@ -15,12 +16,15 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 public class Assets {
 	public static final BufferedImage[] ships = {newImage("Basic.png"), newImage("Speedy.png"), newImage("Tank.png")};
 	public Assets() {
-
+		
 	}
 	public static BufferedImage newImage(String name) {
 		try {
-			return ImageIO.read(SpaceshipWars.class.getResource("images/" + name));
-		} catch (IOException e) {
+			URL url = SpaceshipWars.class.getResource("images/" + name);
+			BufferedImage img = ImageIO.read(url);
+			System.out.println(url + " successfully loaded.");
+			return img;
+		} catch (Exception e) {
 			System.out.println("Cannot find " + name);
 			System.exit(0);
 			return null;
