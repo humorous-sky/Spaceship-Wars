@@ -133,6 +133,10 @@ public class Settings extends JPanel{
         g.setFont(new Font("", Font.ROMAN_BASELINE, 66));
         g.drawString("Game Settings", X(380), Y(110));
         g.setFont(new Font("", Font.ROMAN_BASELINE, 38));
+        g.drawString("WASD/↑←↓→ - Move Around", X(260), Y(180));
+        g.drawString("Space - Toggle Fire", X(260), Y(230));
+        g.drawString("R/Slash - Reload Bullets", X(260), Y(280));
+        g.drawString("X/Enter - Activate Ability", X(260), Y(330));
         g.drawString("Fps Limit: " + (1000/SpaceshipWars.limit), (X(1000) - g.getFontMetrics().stringWidth("Fps Limit: " + (1000/SpaceshipWars.limit)))/2, Y(690));
         for (int i = 0; i < this.getComponentCount(); i ++) {
         	if (this.getComponent(i) instanceof CustomButton) {
