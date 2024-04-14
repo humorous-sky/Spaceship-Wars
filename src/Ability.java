@@ -4,7 +4,7 @@ public class Ability {
 	private int value;
 	private int current;
 	public static final Class[] refs = {BlackHole.class, Firework.class, Army.class};
-	public static final String[] descriptions = {"Makes you instantly move a distance in your direction (you must move while activating). Recharges every 15 seconds. ",
+	public static final String[] descriptions = {"Instantly moves you a distance in your direction. Recharges every 15 seconds. ",
 			"Shoots a circle of bullets around you. Recharges every 15 ships destroyed. ", "Instantly spawns 5 robot ships that fight for you. Recharges every 500 damage dealt. "};
 	public Ability(int option, int value) {
 		this.option = option;
