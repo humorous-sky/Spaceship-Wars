@@ -131,5 +131,8 @@ public class Entity {
     	  Graphics2D g2d = (Graphics2D) g;
     	  g2d.drawImage(image, at, null);
   	}
+      public static void run() {
+    	  System.out.println("Loading Entities...");
+      }
 }
 

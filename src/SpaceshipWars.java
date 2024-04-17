@@ -34,6 +34,7 @@ public class SpaceshipWars {
         frame.setName("Spaceship Wars");
         frame.setTitle("Spaceship Wars");
         new Assets();
+        Entity.run();
         URL resourceURL = SpaceshipWars.class.getResource("images/Fighter.png"); 
         System.out.println(resourceURL);
         try {
@@ -71,22 +72,22 @@ public class SpaceshipWars {
               } catch (InterruptedException e) {
                   // TODO Auto-generated catch block
               } 
-              if (queue != null && System.currentTimeMillis() - 300 >= lastNavigate) {
+              if (queue != null) {
             	  frame.add(queue);
             	  //updates screen
                   frame.setVisible(true);
             	  SpaceshipWars.s = queue;
-            	  queue = null;
-            	  lastNavigate = System.currentTimeMillis();
-              } else if (queue != null && System.currentTimeMillis() - 300 < lastNavigate) {
             	  queue = null;
               }
               //System.out.println(frame.getComponentCount());
          }
     }
     public static void navigate(JPanel from, JPanel to) {
-    	from.removeAll();
-		queue = queue == null ? to : queue;
+    	if (System.currentTimeMillis() - 300 >= lastNavigate) {
+    		lastNavigate = System.currentTimeMillis();
+    		from.removeAll();
+    		queue = queue == null ? to : queue;
+    	}
     }
 }
 
