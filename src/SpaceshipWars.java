@@ -12,8 +12,8 @@ import javax.swing.JPanel;
 public class SpaceshipWars {
     //detection of user screen resolution 
     static Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-    static final double width = screenSize.getWidth();
-    static final double height = screenSize.getHeight();
+    static double width = screenSize.getWidth();
+    static double height = screenSize.getHeight();
     static int limit = 6; 
     //sets up fps calculation 
     static int frames = 0;
@@ -51,6 +51,8 @@ public class SpaceshipWars {
         frame.add(s);
         //main game loop
         while (true) { 
+        	//width = frame.getWidth();
+        	//height = frame.getHeight();
               //updates fps every 166 milliseconds
               if (System.currentTimeMillis() >= lastUpdate + 166) {
                       //calculates fps
@@ -73,6 +75,7 @@ public class SpaceshipWars {
                   // TODO Auto-generated catch block
               } 
               if (queue != null) {
+            	  frame.getContentPane().removeAll();
             	  frame.add(queue);
             	  //updates screen
                   frame.setVisible(true);
@@ -83,7 +86,7 @@ public class SpaceshipWars {
          }
     }
     public static void navigate(JPanel from, JPanel to) {
-    	if (System.currentTimeMillis() - 300 >= lastNavigate) {
+    	if (System.currentTimeMillis() - 1000 >= lastNavigate) {
     		lastNavigate = System.currentTimeMillis();
     		from.removeAll();
     		queue = queue == null ? to : queue;
