@@ -14,12 +14,12 @@ public class SpaceshipWars {
     static Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
     static double width = screenSize.getWidth();
     static double height = screenSize.getHeight();
-    static int limit = 6; 
+    static int limit = 100; 
     //sets up fps calculation 
     static int frames = 0;
     static long lastUpdate = System.currentTimeMillis();
     static long startTime = System.currentTimeMillis();
-    private static long lastNavigate = System.currentTimeMillis() - 300;
+    private static long lastNavigate = System.currentTimeMillis() - 1000;
     static double fps = 15.0;
     static BufferedImage img;
     static JPanel s;// = new Screen(1, 26, new Basic(Screen.X(500), Screen.Y(880)));
@@ -27,14 +27,12 @@ public class SpaceshipWars {
     //initalizes the frame
     static JFrame frame = new JFrame();
     public static void main(String[] args) {
-    	s = new Start();
+    	s = new Loading();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize((int) width, (int) height);
         frame.setLocation(0, 0);
         frame.setName("Spaceship Wars");
         frame.setTitle("Spaceship Wars");
-        new Assets();
-        Entity.run();
         URL resourceURL = SpaceshipWars.class.getResource("images/Fighter.png"); 
         System.out.println(resourceURL);
         try {

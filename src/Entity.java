@@ -29,13 +29,8 @@ public class Entity {
       public long diffFire = 0;
       public long diffMove = 0;
       public BufferedImage img = null;
-      public static BufferedImage[][] imgs = {{Assets.newImage("Fighter.png"), Assets.newImage("Scout.png"),
-    		  								Assets.newImage("MediumFighter.png"), Assets.newImage("Carrier.png"),
-    		  								Assets.newImage("Spawn.png"), Assets.newImage("World1Boss.png")},
-      										{Assets.newImage("Sniper.png"), Assets.newImage("Accurate.png"),
-    		  								Assets.newImage("MoreAccurate.png"), Assets.newImage("MultiSniper.png"),
-    		  								Assets.newImage("SnipeLead.png")}};
-      public static BufferedImage[] exp = {Assets.newImage("exp1.png"), Assets.newImage("exp2.png"), Assets.newImage("exp3.png")};
+      public static BufferedImage[][] imgs;
+      public static BufferedImage[] exp;
       public static final Class[][] refs = {
     		  							{Fighter.class, Scout.class, MediumFighter.class, Carrier.class, Spawner.class, World1Boss.class},
       									{Sniper.class, Accurate.class, MoreAccurate.class, MultiSniper.class, SnipeLead.class, null}};
@@ -131,8 +126,15 @@ public class Entity {
     	  Graphics2D g2d = (Graphics2D) g;
     	  g2d.drawImage(image, at, null);
   	}
-      public static void run() {
+      public static void loadImages() {
     	  System.out.println("Loading Entities...");
+    	  imgs = new BufferedImage[][]{{Assets.newImage("Fighter.png"), Assets.newImage("Scout.png"),
+				Assets.newImage("MediumFighter.png"), Assets.newImage("Carrier.png"),
+				Assets.newImage("Spawn.png"), Assets.newImage("World1Boss.png")},
+				{Assets.newImage("Sniper.png"), Assets.newImage("Accurate.png"),
+				Assets.newImage("MoreAccurate.png"), Assets.newImage("MultiSniper.png"),
+				Assets.newImage("SnipeLead.png")}};
+    	  exp = new BufferedImage[]{Assets.newImage("exp1.png"), Assets.newImage("exp2.png"), Assets.newImage("exp3.png")};
       }
 }
 

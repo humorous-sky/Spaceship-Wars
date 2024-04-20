@@ -14,15 +14,22 @@ import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 
 public class Assets {
-	public static final BufferedImage[] ships = {newImage("Basic.png"), newImage("Speedy.png"), newImage("Tank.png")};
+	public static BufferedImage[] ships;
+	public static final int totalImages = Entity.refs.length * Entity.refs[0].length + 3 + Player.refs.length;
+	public static int loaded = 0;
 	public Assets() {
 		
 	}
 	public static BufferedImage newImage(String name) {
 		try {
+			try {
+				Thread.sleep(300);
+			} catch (InterruptedException e) {}
 			URL url = SpaceshipWars.class.getResource("images/" + name);
 			BufferedImage img = ImageIO.read(url);
 			System.out.println(url + " successfully loaded.");
+			loaded += loaded < totalImages ? 1 : 0;
+			System.out.println(loaded + " images loaded.");
 			return img;
 		} catch (Exception e) {
 			System.out.println("Cannot find " + name);
@@ -49,6 +56,10 @@ public class Assets {
 			System.exit(0);
 			return null;
 		}
+	}
+	public static void loadImages() {
+		System.out.println("Loading Players...");
+		ships = new BufferedImage[]{newImage("Basic.png"), newImage("Speedy.png"), newImage("Tank.png")};
 	}
 	public static void playSound(Clip clip, int volume) {
 		volume += 2;
