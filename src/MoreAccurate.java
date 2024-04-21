@@ -26,8 +26,8 @@ public class MoreAccurate extends Entity {
 	@Override
 	public void fire() {
 		if (System.currentTimeMillis() >= lastFire + fireRate && Screen.plr.rect.getCenterX() >= x && Screen.plr.rect.getCenterX() <= rect.getMaxX()) {
-  		  	Screen.entitiesToAdd.add(new Ammos((int) (rect.getCenterX() + rect.getWidth()/3), (int) rect.getMaxY(), 0f, 5f, dmg, team));
-  		  Screen.entitiesToAdd.add(new Ammos((int) (rect.getCenterX() - rect.getWidth()/3), (int) rect.getMaxY(), 0f, 5f, dmg, team));
+  		  	Screen.entitiesToAdd.add(new Ammos((int) (rect.getCenterX() + rect.getWidth()/5), (int) rect.getMaxY(), 0f, 5f, dmg, team));
+  		  Screen.entitiesToAdd.add(new Ammos((int) (rect.getCenterX() - rect.getWidth()/5), (int) rect.getMaxY(), 0f, 5f, dmg, team));
   		  	lastFire = System.currentTimeMillis();
   	  	}
     }

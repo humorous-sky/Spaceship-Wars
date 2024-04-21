@@ -14,9 +14,10 @@ public class WorldSelect extends JPanel{
 	 * 
 	 */
 	private static int world = 1;
-	private static final int maxWorlds = 2;
-	private static final String[] names = {"/", "World 1", "World 2 (Temporarily Unavailable)"};
-	private static final String[] descriptions = {"/", "What a basic world...get them before they swarm you!", "One wrong move and you're doomed..."};
+	private static final int maxWorlds = 3;
+	private static final String[] names = {"/", "World 1", "World 2", "World 3 (Temporarily Unavailable)"};
+	private static final String[] descriptions = {"/", "What a basic world...get them before they swarm you!", "One wrong move and you're doomed...",
+	"The best shipmakers in the universe...only if they had better weapons..."};
 	//private int level;
 	private HashMap<String, Component> binding = new HashMap<String, Component>();
 	private static final long serialVersionUID = -215196891130568350L;

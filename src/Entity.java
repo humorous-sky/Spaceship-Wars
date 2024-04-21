@@ -33,7 +33,7 @@ public class Entity {
       public static BufferedImage[] exp;
       public static final Class[][] refs = {
     		  							{Fighter.class, Scout.class, MediumFighter.class, Carrier.class, Spawner.class, World1Boss.class},
-      									{Sniper.class, Accurate.class, MoreAccurate.class, MultiSniper.class, SnipeLead.class, null}};
+      									{Sniper.class, Accurate.class, MoreAccurate.class, MultiSniper.class, SnipeLead.class, World2Boss.class}};
       public Entity (int x, int y) {
           this.x = x;
           this.y = y;
@@ -55,7 +55,7 @@ public class Entity {
     	  for (Entity e: Screen.entities) {
     		  if (hp > 0 && e.hp > 0 && e instanceof Ammos && e.team != this.team && e.rect.intersects(this.rect)) {
     			  Screen.score += hp > e.hp ? e.hp * s : hp * s;
-    			  Screen.plr.a.increment(s == 0 ? 0 : (hp > e.hp ? e.hp : hp), 2);
+    			  Screen.plr.a.increment(hp > e.hp ? e.hp : hp, 2);
     			  hp -= e.hp;
     			  e.hp = 0;
     			  Screen.entitiesToRemove.add(e);
@@ -114,7 +114,7 @@ public class Entity {
     	  }
       }
       public void onOof() {
-    	  Screen.plr.a.increment(s == 0 ? 0 : 1, 1);
+    	  Screen.plr.a.increment(1, 1);
     	  Screen.entitiesToRemove.add(this);
       }
       public static void drawImage(double x, double y, double width, double height, float direction, BufferedImage image, Graphics g) {
@@ -133,7 +133,7 @@ public class Entity {
 				Assets.newImage("Spawn.png"), Assets.newImage("World1Boss.png")},
 				{Assets.newImage("Sniper.png"), Assets.newImage("Accurate.png"),
 				Assets.newImage("MoreAccurate.png"), Assets.newImage("MultiSniper.png"),
-				Assets.newImage("SnipeLead.png")}};
+				Assets.newImage("SnipeLead.png"), Assets.newImage("World2Boss.png")}};
     	  exp = new BufferedImage[]{Assets.newImage("exp1.png"), Assets.newImage("exp2.png"), Assets.newImage("exp3.png")};
       }
 }

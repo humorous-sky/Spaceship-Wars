@@ -41,6 +41,16 @@ public class Screen extends JPanel{
     public static long score = 0;
     public static Screen current;
     public Screen(int world, int level, Player p) {
+    	entities.clear();
+    	entitiesToRemove.clear();
+    	entitiesToAdd.clear();
+    	stars.clear();
+    	starsToRemove.clear();
+	    wave = 0;
+	    spawned = 0;
+	    onField = 0;
+	    status = false;
+	    score = 0;
     	paused = false;
     	plr = p;
     	entities.add(plr);

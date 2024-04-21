@@ -23,7 +23,7 @@ public class Assets {
 	public static BufferedImage newImage(String name) {
 		try {
 			try {
-				Thread.sleep(300);
+				Thread.sleep(150);
 			} catch (InterruptedException e) {}
 			URL url = SpaceshipWars.class.getResource("images/" + name);
 			BufferedImage img = ImageIO.read(url);
