@@ -2,17 +2,10 @@ import java.awt.Graphics;
 
 public class World2Boss extends Entity {
 
+
 	public World2Boss(int x, int y) {
-		super(x, y);
-		img = imgs[1][5];
-		this.rect.width = Screen.X(230);
-        this.rect.height = Screen.Y(180);
-        hp = 1800;
-        maxHp = hp;
-        dmg = 128;
-        s = 15;
-        fireRate = 3800;
-        dir = (float) ((Math.random() * speed * 1.6) - (speed * 0.8));
+		super(x, y, 230, 180, 1800, 128, 0.8f, 3800, false, imgs[1][5], 15);
+		dir = (float) ((Math.random() * speed * 1.6) - (speed * 0.8));
 	}
 	@Override
 	public void paint(Graphics g) {

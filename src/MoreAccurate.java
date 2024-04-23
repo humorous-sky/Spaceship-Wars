@@ -7,17 +7,10 @@ public class MoreAccurate extends Entity {
 	public static final int AMMOS = 2;
 	public static final int FIRERATE = 8000;
 	public static final String DESC = "Another sniper that only shoots when it sees you. ";
+	public static final int WIDTH = 110;
+	public static final int HEIGHT = 80;
 	public MoreAccurate(int x, int y) {
-		super(x, y);
-		img = imgs[1][2];
-		this.rect.width = Screen.X(110);
-        this.rect.height = Screen.Y(80);
-        hp = HP;
-        maxHp = hp;
-        dmg = DMG;
-        s = 10;
-        speed = SPEED;
-        fireRate = FIRERATE;
+		super(x, y, WIDTH, HEIGHT, HP, DMG, SPEED, FIRERATE, false, imgs[1][2], 10);
 	}
 	@Override
 	public void paint(Graphics g) {

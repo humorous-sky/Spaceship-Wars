@@ -6,20 +6,10 @@ public class Tank extends Player {
 	public static final int AMMOS = 80;
 	public static final int FIRERATE = 160;
 	public static final int RELOAD = 5000;
+	public static final int WIDTH = 68;
+	public static final int HEIGHT = 88;
 	public Tank(int x, int y, Ability a) {
-		super(x, y, a);
-		this.rect.width = Screen.X(68);
-        this.rect.height = Screen.Y(88);
-        this.team = true;
-        img = Assets.ships[2];
-        speed = SPEED;
-        dmg = DMG;
-        hp = HP;
-        maxHp = hp;
-        maxAmmos = AMMOS;
-        ammos = maxAmmos;
-        fireRate = FIRERATE;
-        reloadTime = RELOAD;
+		super(x, y, WIDTH, HEIGHT, HP, DMG, SPEED, FIRERATE, AMMOS, RELOAD, a, Assets.ships[2]);
 	}
 	@Override
 	public void fire() {

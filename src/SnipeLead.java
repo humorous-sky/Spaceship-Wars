@@ -7,17 +7,10 @@ public class SnipeLead extends Entity {
 	public static final int AMMOS = 1;
 	public static final int FIRERATE = 3300;
 	public static final String DESC = "All ships onboard will fire under its command!";
+	public static final int WIDTH = 150;
+	public static final int HEIGHT = 100;
 	public SnipeLead(int x, int y) {
-		super(x, y);
-		img = imgs[1][4];
-		this.rect.width = Screen.X(150);
-        this.rect.height = Screen.Y(100);
-        hp = HP;
-        maxHp = hp;
-        dmg = DMG;
-        s = 8;
-        speed = SPEED;
-        fireRate = FIRERATE;
+		super(x, y, WIDTH, HEIGHT, HP, DMG, SPEED, FIRERATE, false, imgs[1][4], 8);
 	}
 	@Override
 	public void paint(Graphics g) {

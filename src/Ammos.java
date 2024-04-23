@@ -4,19 +4,10 @@ import java.awt.Graphics;
 public class Ammos extends Entity {
 	float sX;
 	float sY;
-	public Ammos(int x, int y) {
-		super(x, y);
-	}
-	
 	public Ammos(int x, int y, float sX, float sY, int dmg,  boolean team) {
-		super(x, y);
-		super.rect.width = Screen.X(1);
-		super.hp = dmg;
-        super.rect.height = Screen.Y(dmg / (team ? 0.38 : 2.3));
+		super(x, y, 1, (int) (dmg / (team ? 0.38 : 2.3)), dmg, 0, 0, 0, team, null, 1);
         this.sX = sX;
         this.sY = sY * (team ? -1 : 1);
-        super.team = team;
-        s = 1;
 	}
 	@Override
 	public void paint(Graphics g) {

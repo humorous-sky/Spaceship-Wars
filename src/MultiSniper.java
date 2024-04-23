@@ -7,17 +7,10 @@ public class MultiSniper extends Entity {
 	public static final int AMMOS = 2;
 	public static final int FIRERATE = 17000;
 	public static final String DESC = "2 hits will surely take you this time. ";
+	public static final int WIDTH = 110;
+	public static final int HEIGHT = 88;
 	public MultiSniper(int x, int y) {
-		super(x, y);
-		img = imgs[1][3];
-		this.rect.width = Screen.X(110);
-        this.rect.height = Screen.Y(88);
-        hp = HP;
-        maxHp = hp;
-        dmg = DMG;
-        s = 6;
-        speed = SPEED;
-        fireRate = FIRERATE;
+		super(x, y, WIDTH, HEIGHT, HP, DMG, SPEED, FIRERATE, false, imgs[1][3], 6);
 	}
 	@Override
 	public void paint(Graphics g) {

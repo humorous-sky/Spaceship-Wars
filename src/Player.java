@@ -1,5 +1,6 @@
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
 public class Player extends Entity {
@@ -14,16 +15,11 @@ public class Player extends Entity {
 	public static final Class[] refs = {Basic.class, Speedy.class, Tank.class};
 	public static final String[] descriptions = {"All purpose ship for anything!", 
 			"Small, fast, and versatile.", "Big and powerful. Slow but has a gun in the back. "};
-	public Player(int x, int y, Ability a) {
-		super(x, y);
-		this.rect.width = Screen.X(50);
-        this.rect.height = Screen.Y(68);
-        this.team = true;
-        img = Assets.ships[0];
-        speed = 6.8f;
-        dmg = 5;
-        ammos = maxAmmos;
-        fireRate = 100;
+	public Player(int x, int y, int width, int height, int hp, int dmg, float speed, int fireRate, int ammos, int reloadTime, Ability a, BufferedImage img) {
+		super(x, y, width, height, hp, dmg, speed, fireRate, true, img, 1);
+		this.ammos = ammos;
+		this.maxAmmos = ammos;
+		this.reloadTime = reloadTime;
         this.a = a;
 	}
 	public static Player createPlayer(int type, int x, int y, Ability a) {

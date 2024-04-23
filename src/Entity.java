@@ -25,22 +25,30 @@ public class Entity {
       public int fireRate = 3000;
       public long lastTurn = System.currentTimeMillis();
       public long lastDamaged = System.currentTimeMillis();
+      public long lastHealed = System.currentTimeMillis();
       public long diffTurn = 0;
       public long diffFire = 0;
       public long diffMove = 0;
+      private int thres;
       public BufferedImage img = null;
       public static BufferedImage[][] imgs;
       public static BufferedImage[] exp;
       public static final Class[][] refs = {
     		  							{Fighter.class, Scout.class, MediumFighter.class, Carrier.class, Spawner.class, World1Boss.class},
       									{Sniper.class, Accurate.class, MoreAccurate.class, MultiSniper.class, SnipeLead.class, World2Boss.class}};
-      public Entity (int x, int y) {
+      public Entity(int x, int y, int width, int height, int hp, int dmg, float speed, int fireRate, boolean team, BufferedImage img, int s) {
           this.x = x;
           this.y = y;
-          this.rect.width = Screen.X(10);
-          this.rect.height = Screen.Y(10);
-          maxHp = hp;
-          this.team = false;
+          this.rect.width = Screen.X(width);
+          this.rect.height = Screen.Y(height);
+          this.hp = hp;
+          this.maxHp = hp;
+          this.dmg = dmg;
+          this.speed = speed;
+          this.fireRate = fireRate;
+          this.team = team;
+          this.img = img;
+          this.s = s;
       }
    
       public void paint (Graphics g) {
@@ -104,6 +112,10 @@ public class Entity {
 			} 			
       }
       public void drawAnim(Graphics g) {
+    	  if (System.currentTimeMillis() <= lastHealed)  {
+    		  g.setColor(Color.green);
+    		  g.fillOval((int) x, (int) y, rect.width, rect.height);
+    	  }
     	  if (System.currentTimeMillis() <= lastDamaged)  {
     		  g.setColor(Color.red);
     		  g.fillOval((int) x, (int) y, rect.width, rect.height);
@@ -116,6 +128,13 @@ public class Entity {
       public void onOof() {
     	  Screen.plr.a.increment(1, 1);
     	  Screen.entitiesToRemove.add(this);
+      }
+      public void heal(int amount) {
+    	  if (amount <= 0) {
+    		  return;
+    	  }
+    	  hp = hp + amount > maxHp? maxHp : hp + amount;
+    	  lastHealed = System.currentTimeMillis() + 80;
       }
       public static void drawImage(double x, double y, double width, double height, float direction, BufferedImage image, Graphics g) {
     	  AffineTransform at = new AffineTransform();

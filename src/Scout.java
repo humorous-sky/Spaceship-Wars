@@ -7,17 +7,10 @@ public class Scout extends Entity {
 	public static final int AMMOS = 1;
 	public static final int FIRERATE = 1500;
 	public static final String DESC = "Fast and tiny, but only weak."; 
+	public static final int WIDTH = 30;
+	public static final int HEIGHT = 26;
 	public Scout(int x, int y) {
-		super(x, y);
-		img = imgs[0][1];
-		this.rect.width = Screen.X(30);
-        this.rect.height = Screen.Y(26);
-        hp = HP;
-        maxHp = hp;
-        dmg = DMG;
-        speed = SPEED;
-        fireRate = FIRERATE;
-        s = 6;
+		super(x, y, WIDTH, HEIGHT, HP, DMG, SPEED, FIRERATE, false, imgs[0][1], 6);
 	}
 	@Override
 	public void paint(Graphics g) {

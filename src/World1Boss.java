@@ -3,16 +3,8 @@ import java.awt.Graphics;
 public class World1Boss extends Entity {
 
 	public World1Boss(int x, int y) {
-		super(x, y);
-		img = imgs[0][5];
-		this.rect.width = Screen.X(230);
-        this.rect.height = Screen.Y(180);
-        hp = 2300;
-        maxHp = hp;
-        dmg = 30;
-        s = 10;
-        fireRate = 8500;
-        dir = (float) ((Math.random() * speed * 1.6) - (speed * 0.8));
+		super(x, y, 230, 180, 2300, 30, 0.8f, 8500, false, imgs[0][5], 10);
+		dir = (float) ((Math.random() * speed * 1.6) - (speed * 0.8));
 	}
 	@Override
 	public void paint(Graphics g) {

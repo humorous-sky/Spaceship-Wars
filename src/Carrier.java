@@ -7,16 +7,10 @@ public class Carrier extends Entity {
 	public static final int AMMOS = 0;
 	public static final int FIRERATE = 3000;
 	public static final String DESC = "Spawns 2 fighters and 1 scout upon destruction."; 
+	public static final int WIDTH = 110;
+	public static final int HEIGHT = 80;
 	public Carrier(int x, int y) {
-		super(x, y);
-		img = imgs[0][3];
-		this.rect.width = Screen.X(110);
-        this.rect.height = Screen.Y(80);
-        hp = HP;
-        maxHp = hp;
-        dmg = DMG;
-        speed = SPEED;
-        s = 4;
+		super(x, y, WIDTH, HEIGHT, HP, DMG, SPEED, FIRERATE, false, imgs[0][3], 4);
 	}
 	@Override
 	public void paint(Graphics g) {

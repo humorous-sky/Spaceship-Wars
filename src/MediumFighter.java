@@ -7,17 +7,10 @@ public class MediumFighter extends Entity {
 	public static final int AMMOS = 2;
 	public static final int FIRERATE = 1500;
 	public static final String DESC = "Shoots 2 bullets that converges."; 
+	public static final int WIDTH = 110;
+	public static final int HEIGHT = 80;
 	public MediumFighter(int x, int y) {
-		super(x, y);
-		img = imgs[0][2];
-		this.rect.width = Screen.X(110);
-        this.rect.height = Screen.Y(80);
-        hp = HP;
-        maxHp = hp;
-        dmg = DMG;
-        fireRate = FIRERATE;
-        speed = SPEED;
-        s = 6;
+		super(x, y, WIDTH, HEIGHT, HP, DMG, SPEED, FIRERATE, false, imgs[0][2], 6);
 	}
 	@Override
 	public void paint(Graphics g) {

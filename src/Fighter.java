@@ -7,15 +7,10 @@ public class Fighter extends Entity {
 	public static final int AMMOS = 1;
 	public static final int FIRERATE = 3000;
 	public static final String DESC = "A basic fighter ship. "; 
+	public static final int WIDTH = 60;
+	public static final int HEIGHT = 50;
 	public Fighter(int x, int y) {
-		super(x, y);
-		img = imgs[0][0];
-		this.rect.width = Screen.X(60);
-        this.rect.height = Screen.Y(50);
-        hp = HP;
-        maxHp = hp;
-        dmg = DMG;
-        s = 3;
+		super(x, y, WIDTH, HEIGHT, HP, DMG, SPEED, FIRERATE, false, imgs[0][0], 3);
 	}
 	@Override
 	public void paint(Graphics g) {

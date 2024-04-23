@@ -6,20 +6,10 @@ public class Speedy extends Player {
 	public static final int AMMOS = 32;
 	public static final int FIRERATE = 60;
 	public static final int RELOAD = 1800;
+	public static final int WIDTH = 38;
+	public static final int HEIGHT = 50;
 	public Speedy(int x, int y, Ability a) {
-		super(x, y, a);
-		this.rect.width = Screen.X(38);
-        this.rect.height = Screen.Y(55);
-        this.team = true;
-        img = Assets.ships[1];
-        speed = SPEED;
-        dmg = DMG;
-        hp = HP;
-        maxHp = hp;
-        maxAmmos = AMMOS;
-        ammos = maxAmmos;
-        fireRate = FIRERATE;
-        reloadTime = RELOAD;
+		super(x, y, WIDTH, HEIGHT, HP, DMG, SPEED, FIRERATE, AMMOS, RELOAD, a, Assets.ships[1]);
 	}
 	@Override
 	public void fire() {
