@@ -168,7 +168,7 @@ public class Screen extends JPanel{
         	stars.add(new Stars((int) (Math.random() * X(600)) + X(200), Y(-15), Color.white));
         	lastStar = System.currentTimeMillis();
         }
-        if (System.currentTimeMillis() >= lastSpawn + 1700 && spawned < (level <= 24 ? wave * 2 + (level - 1) % 6 + 1 : level == 25 ? 1  : wave + 3)) {
+        if (!paused && System.currentTimeMillis() >= lastSpawn + 1700 && spawned < (level <= 24 ? wave * 2 + (level - 1) % 6 + 1 : level == 25 ? 1  : wave + 3)) {
         	entitiesToAdd.add(Entity.createEntity(world, level <= 24 ? (int)(Math.random() * (wave > 0 ? 2 + (level - 1) / 6 : 2)) : level == 25 ? 5 : (int)(Math.random() * (wave > 0 ? 5 : 2)), X(Math.random() * 600 + 200), Y(-15)));
         	lastSpawn = System.currentTimeMillis();
         	spawned ++;
