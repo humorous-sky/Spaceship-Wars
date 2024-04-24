@@ -2,9 +2,8 @@ import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 
 public class Support extends Entity {
-	private static final BufferedImage image = Assets.newImage("Support.png");
 	public Support(int x, int y) {
-		super(x, y, 38, 50, 15, 3, 0.8f, 1500, true, image, 0);
+		super(x, y, 38, 50, 15, 3, 0.8f, 1500, true, Assets.misc[0], 0);
 	}
 	@Override
 	public void paint(Graphics g) {

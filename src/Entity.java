@@ -35,7 +35,8 @@ public class Entity {
       public static BufferedImage[] exp;
       public static final Class[][] refs = {
     		  							{Fighter.class, Scout.class, MediumFighter.class, Carrier.class, Spawner.class, World1Boss.class},
-      									{Sniper.class, Accurate.class, MoreAccurate.class, MultiSniper.class, SnipeLead.class, World2Boss.class}};
+      									{Sniper.class, Accurate.class, MoreAccurate.class, MultiSniper.class, SnipeLead.class, World2Boss.class},
+    		  							{Recycler.class, Armadillo.class, SelfRepair.class, null}};
       public Entity(int x, int y, int width, int height, int hp, int dmg, float speed, int fireRate, boolean team, BufferedImage img, int s) {
           this.x = x;
           this.y = y;
@@ -43,6 +44,7 @@ public class Entity {
           this.rect.height = Screen.Y(height);
           this.hp = hp;
           this.maxHp = hp;
+          this.thres = maxHp;
           this.dmg = dmg;
           this.speed = speed;
           this.fireRate = fireRate;
@@ -62,7 +64,7 @@ public class Entity {
     	  diffMove = System.currentTimeMillis() - lastMove;
     	  for (Entity e: Screen.entities) {
     		  if (hp > 0 && e.hp > 0 && e instanceof Ammos && e.team != this.team && e.rect.intersects(this.rect)) {
-    			  Screen.score += hp > e.hp ? e.hp * s : hp * s;
+    			  Screen.score += hp <= thres ? (hp > e.hp ? e.hp * s : hp * s) : 0;
     			  Screen.plr.a.increment(hp > e.hp ? e.hp : hp, 2);
     			  hp -= e.hp;
     			  e.hp = 0;
@@ -133,6 +135,7 @@ public class Entity {
     	  if (amount <= 0) {
     		  return;
     	  }
+    	  thres = hp;
     	  hp = hp + amount > maxHp? maxHp : hp + amount;
     	  lastHealed = System.currentTimeMillis() + 80;
       }
@@ -152,7 +155,9 @@ public class Entity {
 				Assets.newImage("Spawn.png"), Assets.newImage("World1Boss.png")},
 				{Assets.newImage("Sniper.png"), Assets.newImage("Accurate.png"),
 				Assets.newImage("MoreAccurate.png"), Assets.newImage("MultiSniper.png"),
-				Assets.newImage("SnipeLead.png"), Assets.newImage("World2Boss.png")}};
+				Assets.newImage("SnipeLead.png"), Assets.newImage("World2Boss.png")},
+				{Assets.newImage("Recycler.png"), Assets.newImage("Armadillo.png"),
+				Assets.newImage("SelfRepair.png")}};
     	  exp = new BufferedImage[]{Assets.newImage("exp1.png"), Assets.newImage("exp2.png"), Assets.newImage("exp3.png")};
       }
 }

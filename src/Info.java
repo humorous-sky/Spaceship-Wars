@@ -131,7 +131,8 @@ public class Info extends JPanel{
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				world--;
-				world = world < 0 ? Entity.refs.length - 1 : world;		
+				world = world < 0 ? Entity.refs.length - 1 : world;
+				ship = ship > Entity.refs[world].length - 2 ? Entity.refs[world].length - 2 : ship;
 			}
 
 			@Override
@@ -167,6 +168,7 @@ public class Info extends JPanel{
 			public void mouseClicked(MouseEvent e) {
 				world ++;
 				world %= Entity.refs.length;
+				ship = ship > Entity.refs[world].length - 2 ? Entity.refs[world].length - 2 : ship;
 			}
 
 			@Override

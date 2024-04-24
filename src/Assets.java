@@ -15,7 +15,8 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 
 public class Assets {
 	public static BufferedImage[] ships;
-	public static final int totalImages = Entity.refs.length * Entity.refs[0].length + 3 + Player.refs.length;
+	public static BufferedImage[] misc;
+	public static final int totalImages = Entity.refs.length * Entity.refs[0].length + 3 + Player.refs.length + 2;
 	public static int loaded = 0;
 	public Assets() {
 		
@@ -23,7 +24,7 @@ public class Assets {
 	public static BufferedImage newImage(String name) {
 		try {
 			try {
-				Thread.sleep(150);
+				Thread.sleep(100);
 			} catch (InterruptedException e) {}
 			URL url = SpaceshipWars.class.getResource("images/" + name);
 			BufferedImage img = ImageIO.read(url);
@@ -60,6 +61,8 @@ public class Assets {
 	public static void loadImages() {
 		System.out.println("Loading Players...");
 		ships = new BufferedImage[]{newImage("Basic.png"), newImage("Speedy.png"), newImage("Tank.png")};
+		System.out.println("Loading Miscellaneous...");
+		misc = new BufferedImage[]{newImage("Support.png"), newImage("Rage.png")};
 	}
 	public static void playSound(Clip clip, int volume) {
 		volume += 2;

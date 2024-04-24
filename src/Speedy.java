@@ -7,7 +7,7 @@ public class Speedy extends Player {
 	public static final int FIRERATE = 60;
 	public static final int RELOAD = 1800;
 	public static final int WIDTH = 38;
-	public static final int HEIGHT = 50;
+	public static final int HEIGHT = 55;
 	public Speedy(int x, int y, Ability a) {
 		super(x, y, WIDTH, HEIGHT, HP, DMG, SPEED, FIRERATE, AMMOS, RELOAD, a, Assets.ships[1]);
 	}
