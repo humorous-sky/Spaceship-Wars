@@ -36,7 +36,7 @@ public class Entity {
       public static final Class[][] refs = {
     		  							{Fighter.class, Scout.class, MediumFighter.class, Carrier.class, Spawner.class, World1Boss.class},
       									{Sniper.class, Accurate.class, MoreAccurate.class, MultiSniper.class, SnipeLead.class, World2Boss.class},
-    		  							{Recycler.class, Armadillo.class, SelfRepair.class, null}};
+    		  							{Recycler.class, Armadillo.class, SelfRepair.class, ShieldShip.class, Healer.class, null}};
       public Entity(int x, int y, int width, int height, int hp, int dmg, float speed, int fireRate, boolean team, BufferedImage img, int s) {
           this.x = x;
           this.y = y;
@@ -123,8 +123,9 @@ public class Entity {
     		  g.fillOval((int) x, (int) y, rect.width, rect.height);
     	  }
     	  if (hp <= 0) {
-    		  drawImage(x, y, rect.width, rect.height, 0f, exp[(int) frame], g);
-    		  
+    		  drawImage(x, y, rect.width, rect.height, 0f, exp[(int) frame], g);  
+    	  } else {
+    		  frame = 0.0f;
     	  }
       }
       public void onOof() {
@@ -132,7 +133,7 @@ public class Entity {
     	  Screen.entitiesToRemove.add(this);
       }
       public void heal(int amount) {
-    	  if (amount <= 0) {
+    	  if (amount <= 0 || hp <= 0) {
     		  return;
     	  }
     	  thres = hp;
@@ -157,7 +158,8 @@ public class Entity {
 				Assets.newImage("MoreAccurate.png"), Assets.newImage("MultiSniper.png"),
 				Assets.newImage("SnipeLead.png"), Assets.newImage("World2Boss.png")},
 				{Assets.newImage("Recycler.png"), Assets.newImage("Armadillo.png"),
-				Assets.newImage("SelfRepair.png")}};
+				Assets.newImage("SelfRepair.png"), Assets.newImage("ShieldShip.png"),
+				Assets.newImage("Healer.png")}};
     	  exp = new BufferedImage[]{Assets.newImage("exp1.png"), Assets.newImage("exp2.png"), Assets.newImage("exp3.png")};
       }
 }

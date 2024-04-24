@@ -16,7 +16,7 @@ public class Tank extends Player {
   	  if (System.currentTimeMillis() >= lastFire + fireRate && fire && ammos > 0 && !reloading) {
   		  Screen.entitiesToAdd.add(new Ammos((int) rect.getCenterX() + rect.width/4 * (Math.random() > 0.5? 1 : -1) * (Math.random() > 0.5? 1 : 2), (int) rect.y, 0f, 26f, dmg, team));
   		  Screen.entitiesToAdd.add(new Ammos((int) rect.getCenterX(), (int) rect.getMaxY(), (float) ((Math.random() > 0.5 ? 1 : -1) * (Math.random() * 5f)), -23f, dmg, team));
-  		  ammos-=2;
+  		  ammos--;
   		  lastFire = System.currentTimeMillis();
   	  }
   	  if (System.currentTimeMillis() > lastTurn && reloading) {

@@ -1,7 +1,7 @@
 
 public class Army extends Ability {
 	private final static int OPTION = 2;
-	private final static int VALUE = 500;
+	private final static int VALUE = 800;
 	public Army() {
 		super(OPTION, VALUE);
 	}

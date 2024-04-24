@@ -24,6 +24,11 @@ public class Ammos extends Entity {
 		}
 	}
 	@Override
+	public void heal(int amount) {
+		this.hp += amount;
+		this.maxHp = hp;
+	}
+	@Override
 	public void move() {
 		if (System.currentTimeMillis() >= super.lastMove + 26) {
    		  super.y += sY * Screen.aY(1);

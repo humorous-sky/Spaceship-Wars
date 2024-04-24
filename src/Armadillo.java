@@ -19,14 +19,15 @@ public class Armadillo extends Entity {
 	}
 	@Override
 	public void fire() {
-  	  if (System.currentTimeMillis() >= lastFire + fireRate && maxHp == 10) {
+  	  if (System.currentTimeMillis() >= lastFire + fireRate && maxHp == 15) {
   		  Screen.entitiesToAdd.add(new Ammos((int) rect.getCenterX(), (int) rect.getMaxY(), 0f, 5f, dmg, team));
   		  Screen.entitiesToAdd.add(new Ammos((int) rect.getCenterX() - rect.width/6, (int) rect.getMaxY(), 0f, 5f, dmg, team));
   		  Screen.entitiesToAdd.add(new Ammos((int) rect.getCenterX() + rect.width/6, (int) rect.getMaxY(), 0f, 5f, dmg, team));
   		  lastFire = System.currentTimeMillis();
   	  }
-  	  if (hp <= 10 && maxHp != 10) {
-		  maxHp = 10;
+  	  if (hp <= 15 && maxHp != 15) {
+		  maxHp = 15;
+		  hp = 15;
 		  img = Assets.misc[1];
 		  speed = 1f;
 	  }

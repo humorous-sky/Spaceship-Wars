@@ -35,6 +35,7 @@ public class Screen extends JPanel{
     public int level;
     public static boolean status = false;
     private long lastSpawn = System.currentTimeMillis();
+    private long diffSpawn = 0;
     private long lastStar = System.currentTimeMillis();
     private HashMap<String, Component> binding = new HashMap<String, Component>();
     private boolean paused = false;
@@ -131,6 +132,9 @@ public class Screen extends JPanel{
     }
     @Override
     public void paint(Graphics g) {
+    	if (!paused) {
+    		diffSpawn = System.currentTimeMillis() - lastSpawn;
+    	}
     	onField = 0;
     	g.setColor(Color.black);
     	g.fillRect(0, 0, getWidth(), getHeight());
@@ -187,6 +191,7 @@ public class Screen extends JPanel{
         		e.lastFire = System.currentTimeMillis() - e.diffFire;
         		e.lastTurn = System.currentTimeMillis() - e.diffTurn;
         		e.lastMove = System.currentTimeMillis() - e.diffMove;
+        		lastSpawn = System.currentTimeMillis() - diffSpawn;
         	}
         	if (e.frame < 1.6) {
         		e.paint(g);

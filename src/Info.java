@@ -229,8 +229,8 @@ public class Info extends JPanel{
 			g.setColor(Color.WHITE);
 			g.drawString("Dmg: " + dmg, X(50), Y(455));
 			int hp = Entity.refs[world][ship].getField("HP").getInt(null);
-			g.setColor(Player.getBarColor(hp - 10, 90));
-			g.fillRect(X(50), Y(480), X(100 * ((hp - 10)/90.0)), Y(38));
+			g.setColor(Player.getBarColor(hp - 10, 100));
+			g.fillRect(X(50), Y(480), X(100 * ((hp - 10)/100.0)), Y(38));
 			g.setFont(new Font("", Font.ROMAN_BASELINE, 15));
 			g.setColor(Color.WHITE);
 			g.drawString("Hp: " + hp, X(50), Y(505));
