@@ -13,10 +13,8 @@ public class Inventory extends JPanel{
 	/**
 	 * 
 	 */
-	public static int selectedShip = 0;
-	public static int selectedAbility = 0;
-	private static int ship = 0;
-	private static int ability = 0;
+	private static int ship = Assets.prefs[0];
+	private static int ability = Assets.prefs[1];
 	//private int level;
 	private HashMap<String, Component> binding = new HashMap<String, Component>();
 	private static final long serialVersionUID = -215196891130568350L;
@@ -28,7 +26,7 @@ public class Inventory extends JPanel{
 
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				selectedShip = ship;
+				Assets.prefs[0] = ship;
 			}
 
 			@Override
@@ -64,7 +62,7 @@ public class Inventory extends JPanel{
 
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				selectedAbility = ability;
+				Assets.prefs[1] = ability;
 			}
 
 			@Override
@@ -333,10 +331,10 @@ public class Inventory extends JPanel{
         		this.getComponent(i).paint(g);
         	}
         }
-        ((CustomButton) binding.get("ShipSelectButton")).setColor(ship == selectedShip ? Color.RED : Color.GREEN);
-        ((CustomButton) binding.get("ShipSelectButton")).setText(ship == selectedShip ? "Equipped" : "Equip");
-        ((CustomButton) binding.get("AbilitySelectButton")).setColor(ability == selectedAbility ? Color.RED : Color.GREEN);
-        ((CustomButton) binding.get("AbilitySelectButton")).setText(ability == selectedAbility ? "Equipped" : "Equip");
+        ((CustomButton) binding.get("ShipSelectButton")).setColor(ship == Assets.prefs[0] ? Color.RED : Color.GREEN);
+        ((CustomButton) binding.get("ShipSelectButton")).setText(ship == Assets.prefs[0] ? "Equipped" : "Equip");
+        ((CustomButton) binding.get("AbilitySelectButton")).setColor(ability == Assets.prefs[1] ? Color.RED : Color.GREEN);
+        ((CustomButton) binding.get("AbilitySelectButton")).setText(ability == Assets.prefs[1] ? "Equipped" : "Equip");
 	}
 	public static int X(double x) {
     	return (int) (SpaceshipWars.width / 1000.0 * x);

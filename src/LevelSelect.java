@@ -29,7 +29,7 @@ public class LevelSelect extends JPanel{
 		
 					@Override
 					public void mouseClicked(MouseEvent e) {
-						SpaceshipWars.navigate(currentScreen, new Screen(world, level, Player.createPlayer(Inventory.selectedShip, X(500), Y(880), Ability.createAbility(Inventory.selectedAbility))));
+						SpaceshipWars.navigate(currentScreen, new Screen(world, level, Player.createPlayer(Assets.prefs[0], X(500), Y(880), Ability.createAbility(Assets.prefs[1]))));
 					}
 		
 					@Override
@@ -65,7 +65,7 @@ public class LevelSelect extends JPanel{
 
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				SpaceshipWars.navigate(currentScreen, new Screen(world, 25, Player.createPlayer(Inventory.selectedShip, X(500), Y(880), Ability.createAbility(Inventory.selectedAbility))));
+				SpaceshipWars.navigate(currentScreen, new Screen(world, 25, Player.createPlayer(Assets.prefs[0], X(500), Y(880), Ability.createAbility(Assets.prefs[1]))));
 			}
 
 			@Override
@@ -99,7 +99,7 @@ public class LevelSelect extends JPanel{
 
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				SpaceshipWars.navigate(currentScreen, new Screen(world, 26, Player.createPlayer(Inventory.selectedShip, X(500), Y(880), Ability.createAbility(Inventory.selectedAbility))));
+				SpaceshipWars.navigate(currentScreen, new Screen(world, 26, Player.createPlayer(Assets.prefs[0], X(500), Y(880), Ability.createAbility(Assets.prefs[1]))));
 			}
 
 			@Override

@@ -7,6 +7,7 @@ import java.util.HashMap;
 import javax.swing.JPanel;
 import java.awt.Component;
 import java.awt.Dimension;
+import java.io.*; 
 
 public class Loading extends JPanel{
 	
@@ -45,7 +46,7 @@ public class Loading extends JPanel{
         g.setFont(new Font("", Font.ROMAN_BASELINE, 150));
         g.drawString("Loading Game...", X(150), Y(380));
         g.setFont(new Font("", Font.ROMAN_BASELINE, 50));
-        g.drawString(Math.round((double) Assets.loaded * 1000/Assets.totalImages)/10.0f + "%", X(470), Y(680));
+        g.drawString(Math.round((double) Assets.loaded * 1000/(Assets.totalImages + 1))/10.0f + "%", X(470), Y(680));
         
 	}
 	public static int X(double x) {

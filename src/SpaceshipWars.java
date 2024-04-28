@@ -47,6 +47,13 @@ public class SpaceshipWars {
         frame.setVisible(true);
         //initalizes the screen
         frame.add(s);
+        frame.addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosing(java.awt.event.WindowEvent windowEvent) {
+                System.out.println("Saving Data");
+                Assets.writeInts("prefs", Assets.prefs);
+            }
+        });
         //main game loop
         while (true) { 
         	//width = frame.getWidth();
