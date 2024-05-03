@@ -33,6 +33,7 @@ public class SpaceshipWars {
         frame.setLocation(0, 0);
         frame.setName("Spaceship Wars");
         frame.setTitle("Spaceship Wars");
+        System.out.println(System.getProperty("user.name"));
         URL resourceURL = SpaceshipWars.class.getResource("images/Fighter.png"); 
         System.out.println(resourceURL);
         try {
@@ -50,8 +51,10 @@ public class SpaceshipWars {
         frame.addWindowListener(new java.awt.event.WindowAdapter() {
             @Override
             public void windowClosing(java.awt.event.WindowEvent windowEvent) {
-                System.out.println("Saving Data");
+                System.out.println("Saving Data...");
                 Assets.writeInts("prefs", Assets.prefs);
+                System.out.println("Data Successfully Saved.");
+                System.exit(0);
             }
         });
         //main game loop

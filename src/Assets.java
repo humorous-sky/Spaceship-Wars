@@ -101,7 +101,7 @@ public class Assets {
 	public static long[] readLongs(String fileName, int length) {
 		DataInputStream in = null;
 		try {
-			in = new DataInputStream(new FileInputStream(fileName + ".bin"));
+			in = new DataInputStream(new FileInputStream("C:\\Users\\" + System.getProperty("user.name") + "\\SpaceshipWars Data\\" + fileName + ".bin"));
 		} catch (FileNotFoundException e) {
 			writeLongs(fileName, new long[length]);
 			return new long[length];
@@ -118,7 +118,7 @@ public class Assets {
 			System.out.println("[EOF]");
 			DataOutputStream out = null;
 			try {
-				out = new DataOutputStream(new FileOutputStream(fileName + ".bin"));
+				out = new DataOutputStream(new FileOutputStream("C:\\Users\\" + System.getProperty("user.name") + "\\SpaceshipWars Data\\" + fileName + ".bin"));
 			} catch (FileNotFoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -139,27 +139,38 @@ public class Assets {
 
 	}
 	public static void writeLongs(String fileName, long[] values) {
-		new File(fileName + ".bin").delete();
+		new File("C:\\Users\\" + System.getProperty("user.name") + "\\SpaceshipWars Data\\" + fileName + ".bin").delete();
 		DataOutputStream out = null;
 		try {
-			out = new DataOutputStream(new FileOutputStream(fileName + ".bin"));
+			out = new DataOutputStream(new FileOutputStream("C:\\Users\\" + System.getProperty("user.name") + "\\SpaceshipWars Data\\" + fileName + ".bin"));
+			for (int i = 0; i < values.length; i ++) {
+				try {
+					out.writeLong(values[i]);
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+					System.exit(0);
+				}
+			}
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
-		for (int i = values.length - 1; i >= 0; i --) {
-			try {
-				out.writeLong(values[i]);
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			File f1 = new File("C:\\Users\\" + System.getProperty("user.name") + "\\SpaceshipWars Data");  
+		      //Creating a folder using mkdir() method  
+		      boolean bool = f1.mkdir();  
+		      if(bool){  
+		         System.out.println("Folder is created successfully");  
+		         writeLongs(fileName, values);
+		      }else{  
+		         System.out.println("Error Found!");  
+		         System.exit(0);
+		      }  
 		}
 	}	
 	public static int[] readInts(String fileName, int length) {
 		DataInputStream in = null;
 		try {
-			in = new DataInputStream(new FileInputStream(fileName + ".bin"));
+			in = new DataInputStream(new FileInputStream("C:\\Users\\" + System.getProperty("user.name") + "\\SpaceshipWars Data\\" + fileName + ".bin"));
 		} catch (FileNotFoundException e) {
 			writeInts(fileName, new int[length]);
 			return new int[length];
@@ -176,7 +187,7 @@ public class Assets {
 			System.out.println("[EOF]");
 			DataOutputStream out = null;
 			try {
-				out = new DataOutputStream(new FileOutputStream(fileName + ".bin"));
+				out = new DataOutputStream(new FileOutputStream("C:\\Users\\" + System.getProperty("user.name") + "\\SpaceshipWars Data\\" + fileName + ".bin"));
 			} catch (FileNotFoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -196,21 +207,32 @@ public class Assets {
 		}
 	}
 	public static void writeInts(String fileName, int[] values) {
-		new File(fileName + ".bin").delete();
+		new File("C:\\Users\\" + System.getProperty("user.name") + "\\SpaceshipWars Data\\" + fileName + ".bin").delete();
 		DataOutputStream out = null;
 		try {
-			out = new DataOutputStream(new FileOutputStream(fileName + ".bin"));
+			out = new DataOutputStream(new FileOutputStream("C:\\Users\\" + System.getProperty("user.name") + "\\SpaceshipWars Data\\" + fileName + ".bin"));
+			for (int i = 0; i < values.length; i ++) {
+				try {
+					out.writeInt(values[i]);
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+					System.exit(0);
+				}
+			}
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
-		for (int i = 0; i < values.length; i ++) {
-			try {
-				out.writeInt(values[i]);
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			File f1 = new File("C:\\Users\\" + System.getProperty("user.name") + "\\SpaceshipWars Data");  
+		      //Creating a folder using mkdir() method  
+		      boolean bool = f1.mkdir();  
+		      if(bool){  
+		         System.out.println("Folder is created successfully");  
+		         writeInts(fileName, values);
+		      }else{  
+		         System.out.println("Error Found!");  
+		         System.exit(0);
+		      }  
 		}
 	}	
 	public static int[] flip(int[] values) {
