@@ -53,6 +53,14 @@ public class SpaceshipWars {
             public void windowClosing(java.awt.event.WindowEvent windowEvent) {
                 System.out.println("Saving Data...");
                 Assets.writeInts("prefs", Assets.prefs);
+                for (int i = 0; i < Assets.progress.length; i ++) {
+        			Assets.writeInts("World" + (i + 1), Assets.progress[i]);
+        			System.out.println("World " + (i + 1) + " Status:");
+        			for (int n : Assets.progress[i]) {
+        				System.out.print(n + " ");
+        			}
+        			System.out.println();
+        		}
                 System.out.println("Data Successfully Saved.");
                 System.exit(0);
             }

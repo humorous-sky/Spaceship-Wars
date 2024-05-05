@@ -261,7 +261,7 @@ public class Screen extends JPanel{
 	    spawned = 0;
 	    onField = 0;
 	    status = false;
-		SpaceshipWars.navigate(this, new End(world, (int) Math.ceil(3 * (double) plr.hp/plr.maxHp), score));
+		SpaceshipWars.navigate(this, new End(world, level, (int) Math.ceil(3 * (double) plr.hp/plr.maxHp), score));
 		score = 0;
     }
     private void addButton(String key, String text, int x, int y, int width, int height) {

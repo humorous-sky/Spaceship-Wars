@@ -19,13 +19,17 @@ public class End extends JPanel{
 	int stars;
 	long score;
 	String str = "";
-	public End(int world, int stars, long score) {
+	public End(int world, int level, int stars, long score) {
 		currentScreen = this;
 		this.stars = stars;
 		for (int i = 0; i < stars; i ++) {
 			str += "★";
 		}
 		this.score = score;
+		try {
+			Assets.progress[world - 1][level] = stars > 0 && Assets.progress[world - 1][level] == 0 ? 1 : Assets.progress[world - 1][level]; 
+		} catch (Exception e) {}
+		Assets.progress[world - 1][level - 1] = stars + 1 > Assets.progress[world - 1][level - 1] ? stars + 1 : Assets.progress[world - 1][level - 1];
 		addButton("ReturnButton", "Return", X(380), Y(680), X(260), Y(110));
 		binding.get("ReturnButton").addMouseListener(new MouseListener() {
 

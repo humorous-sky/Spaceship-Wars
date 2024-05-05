@@ -24,110 +24,135 @@ public class LevelSelect extends JPanel{
 		for (int row = 0; row < 4; row ++) {
 			for (int col = 1; col <= 6; col ++) {
 				int level = 6 * row + col;
-				addButton(level + "", level + "", X(150 * col - 50), Y(100 * row + 300), X(50), Y(50));
-				binding.get(level + "").addMouseListener(new MouseListener() {
-		
-					@Override
-					public void mouseClicked(MouseEvent e) {
-						SpaceshipWars.navigate(currentScreen, new Screen(world, level, Player.createPlayer(Assets.prefs[0], X(500), Y(880), Ability.createAbility(Assets.prefs[1]))));
-					}
-		
-					@Override
-					public void mousePressed(MouseEvent e) {
-						// TODO Auto-generated method stub
-						
-					}
-		
-					@Override
-					public void mouseReleased(MouseEvent e) {
-						// TODO Auto-generated method stub
-						
-					}
-		
-					@Override
-					public void mouseEntered(MouseEvent e) {
-						
-						
-					}
-		
-					@Override
-					public void mouseExited(MouseEvent e) {
-						
-						
-					}
+				if (Assets.progress[world - 1][level - 1] > 0) {
+					addButton(level + "", level + "", X(150 * col - 50), Y(100 * row + 300), X(50), Y(50));
+					binding.get(level + "").addMouseListener(new MouseListener() {
 			
-					});
-				binding.get(level + "").setFont(new Font(Font.SANS_SERIF, Font.ROMAN_BASELINE, 38));
+						@Override
+						public void mouseClicked(MouseEvent e) {
+							SpaceshipWars.navigate(currentScreen, new Screen(world, level, Player.createPlayer(Assets.prefs[0], X(500), Y(880), Ability.createAbility(Assets.prefs[1]))));
+						}
+			
+						@Override
+						public void mousePressed(MouseEvent e) {
+							// TODO Auto-generated method stub
+							
+						}
+			
+						@Override
+						public void mouseReleased(MouseEvent e) {
+							// TODO Auto-generated method stub
+							
+						}
+			
+						@Override
+						public void mouseEntered(MouseEvent e) {
+							
+							
+						}
+			
+						@Override
+						public void mouseExited(MouseEvent e) {
+							
+							
+						}
+				
+						});
+					binding.get(level + "").setFont(new Font(Font.SANS_SERIF, Font.ROMAN_BASELINE, 38));
+					String title = "";
+					for (int i = 0; i < Assets.progress[world - 1][level - 1] - 1; i ++) {
+						title += "★";
+					}
+					addButton(level + "stars", title, X(150 * col - 50), Y(100 * row + 360), X(50), Y(30));
+					((CustomButton) binding.get(level + "stars")).setColor(Color.black);
+					((CustomButton) binding.get(level + "stars")).setFocusColor(Color.black);
+					((CustomButton) binding.get(level + "stars")).setTextColor(Color.white);
+					binding.get(level + "stars").setFont(new Font(Font.SANS_SERIF, Font.ROMAN_BASELINE, 26));
+					
+				}
 			}
 		}
-		addButton(25 + "", 25 + "", X(150 * 3 - 50), Y(100 * 4 + 300), X(50), Y(50));
-		binding.get(25 + "").addMouseListener(new MouseListener() {
-
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				SpaceshipWars.navigate(currentScreen, new Screen(world, 25, Player.createPlayer(Assets.prefs[0], X(500), Y(880), Ability.createAbility(Assets.prefs[1]))));
-			}
-
-			@Override
-			public void mousePressed(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-
-			@Override
-			public void mouseReleased(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				
-				
-			}
-
-			@Override
-			public void mouseExited(MouseEvent e) {
-				
-				
-			}
+		if (Assets.progress[world - 1][24] > 0) {
+			addButton(25 + "", 25 + "", X(150 * 3 - 50), Y(100 * 4 + 300), X(50), Y(50));
+			binding.get(25 + "").addMouseListener(new MouseListener() {
 	
-			});
-		binding.get(25 + "").setFont(new Font(Font.SANS_SERIF, Font.ROMAN_BASELINE, 38));
-		addButton(26 + "", 26 + "", X(150 * 4 - 50), Y(100 * 4 + 300), X(50), Y(50));
-		binding.get(26 + "").addMouseListener(new MouseListener() {
-
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				SpaceshipWars.navigate(currentScreen, new Screen(world, 26, Player.createPlayer(Assets.prefs[0], X(500), Y(880), Ability.createAbility(Assets.prefs[1]))));
-			}
-
-			@Override
-			public void mousePressed(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-
-			@Override
-			public void mouseReleased(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				
-				
-			}
-
-			@Override
-			public void mouseExited(MouseEvent e) {
-				
-				
-			}
+				@Override
+				public void mouseClicked(MouseEvent e) {
+					SpaceshipWars.navigate(currentScreen, new Screen(world, 25, Player.createPlayer(Assets.prefs[0], X(500), Y(880), Ability.createAbility(Assets.prefs[1]))));
+				}
 	
-			});
-		binding.get(26 + "").setFont(new Font(Font.SANS_SERIF, Font.ROMAN_BASELINE, 38));
+				@Override
+				public void mousePressed(MouseEvent e) {
+					// TODO Auto-generated method stub
+					
+				}
+	
+				@Override
+				public void mouseReleased(MouseEvent e) {
+					// TODO Auto-generated method stub
+					
+				}
+	
+				@Override
+				public void mouseEntered(MouseEvent e) {
+					
+					
+				}
+	
+				@Override
+				public void mouseExited(MouseEvent e) {
+					
+					
+				}
+		
+				});
+			binding.get(25 + "").setFont(new Font(Font.SANS_SERIF, Font.ROMAN_BASELINE, 38));
+			String title = "";
+			for (int i = 0; i < Assets.progress[world - 1][24] - 1; i ++) {
+				title += "★";
+			}
+			addButton(25 + "stars", title, X(150 * 3 - 50), Y(100 * 4 + 360), X(50), Y(30));
+			((CustomButton) binding.get(25 + "stars")).setColor(Color.black);
+			((CustomButton) binding.get(25 + "stars")).setFocusColor(Color.black);
+			((CustomButton) binding.get(25 + "stars")).setTextColor(Color.white);
+			binding.get(25 + "stars").setFont(new Font(Font.SANS_SERIF, Font.ROMAN_BASELINE, 26));
+		}
+		if (Assets.progress[world - 1][24] > 1) {
+			addButton(26 + "", 26 + "", X(150 * 4 - 50), Y(100 * 4 + 300), X(50), Y(50));
+			binding.get(26 + "").addMouseListener(new MouseListener() {
+	
+				@Override
+				public void mouseClicked(MouseEvent e) {
+					SpaceshipWars.navigate(currentScreen, new Screen(world, 26, Player.createPlayer(Assets.prefs[0], X(500), Y(880), Ability.createAbility(Assets.prefs[1]))));
+				}
+	
+				@Override
+				public void mousePressed(MouseEvent e) {
+					// TODO Auto-generated method stub
+					
+				}
+	
+				@Override
+				public void mouseReleased(MouseEvent e) {
+					// TODO Auto-generated method stub
+					
+				}
+	
+				@Override
+				public void mouseEntered(MouseEvent e) {
+					
+					
+				}
+	
+				@Override
+				public void mouseExited(MouseEvent e) {
+					
+					
+				}
+		
+				});
+			binding.get(26 + "").setFont(new Font(Font.SANS_SERIF, Font.ROMAN_BASELINE, 38));
+		}
 		addButton("ReturnButton", "Return", X(380), Y(800), X(240), Y(50));
 		binding.get("ReturnButton").addMouseListener(new MouseListener() {
 
