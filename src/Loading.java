@@ -27,7 +27,6 @@ public class Loading extends JPanel{
 				try {
 					Thread.sleep(500);
 				} catch (InterruptedException e) {}
-				SpaceshipWars.limit = 6;
 				SpaceshipWars.navigate(currentScreen, new Start());
 			}
 		});

@@ -14,7 +14,6 @@ public class SpaceshipWars {
     static Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
     static double width = screenSize.getWidth();
     static double height = screenSize.getHeight();
-    static int limit = 100; 
     //sets up fps calculation 
     static int frames = 0;
     static long lastUpdate = System.currentTimeMillis();
@@ -52,6 +51,7 @@ public class SpaceshipWars {
             @Override
             public void windowClosing(java.awt.event.WindowEvent windowEvent) {
                 System.out.println("Saving Data...");
+                Assets.writeInts("Key Binds", Assets.keyBinds);
                 Assets.writeInts("prefs", Assets.prefs);
                 for (int i = 0; i < Assets.progress.length; i ++) {
         			Assets.writeInts("World" + (i + 1), Assets.progress[i]);
@@ -85,7 +85,7 @@ public class SpaceshipWars {
             	  /*if (s instanceof Start) {
             		  Thread.sleep(100);
             	  } else {*/
-            		  Thread.sleep(limit);
+            		  Thread.sleep(s instanceof Loading ? 100 : Assets.prefs[2] + 6);
             	  //}
               } catch (InterruptedException e) {
                   // TODO Auto-generated catch block

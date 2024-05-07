@@ -30,8 +30,9 @@ public class Assets {
 	public static BufferedImage[] misc;
 	public static final int totalImages = Entity.refs.length * Entity.refs[0].length + 3 + Player.refs.length + 3;
 	public static int loaded = 0;
-	public static int[] prefs = readInts("prefs", 2);
+	public static int[] prefs;
 	public static int[][] progress;
+	public static int[] keyBinds;
 	public Assets() {
 		
 	}
@@ -77,6 +78,7 @@ public class Assets {
 		ships = new BufferedImage[]{newImage("Basic.png"), newImage("Speedy.png"), newImage("Tank.png")};
 		System.out.println("Loading Miscellaneous...");
 		misc = new BufferedImage[]{newImage("Support.png"), newImage("Rage.png"), newImage("ShieldOrb.png")};
+		System.out.println("Loading Data..."); 
 		progress = new int[Entity.refs.length][25];
 		for (int i = 0; i < progress.length; i ++) {
 			progress[i] = readInts("World" + (i + 1), 25);
@@ -87,6 +89,8 @@ public class Assets {
 			}
 			System.out.println();
 		}
+		prefs = readInts("prefs", 3);
+		keyBinds = readInts("Key Binds", 7);
 	}
 	public static void loadSounds() {
 		System.out.println("Loading Sound FX...");

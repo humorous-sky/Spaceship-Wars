@@ -1,6 +1,7 @@
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.HashMap;
@@ -24,6 +25,7 @@ public class Settings extends JPanel{
 
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				Keys.query = -1;
 				SpaceshipWars.navigate(currentScreen, new Start());
 			}
 
@@ -58,7 +60,7 @@ public class Settings extends JPanel{
 
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				SpaceshipWars.limit = SpaceshipWars.limit >= 33 ? 33 : SpaceshipWars.limit + 1;
+				Assets.prefs[2] = Assets.prefs[2] >= 44 ? 44 : Assets.prefs[2] + 1;
 			}
 
 			@Override
@@ -92,7 +94,7 @@ public class Settings extends JPanel{
 
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				SpaceshipWars.limit = SpaceshipWars.limit <= 0 ? 0 : SpaceshipWars.limit - 1;
+				Assets.prefs[2] = Assets.prefs[2] < -5 ? -6 : Assets.prefs[2] - 1;
 			}
 
 			@Override
@@ -121,6 +123,43 @@ public class Settings extends JPanel{
 	
 			});
 		binding.get("NextFps").setFont(new Font(Font.SANS_SERIF, Font.ROMAN_BASELINE, 38));
+		for (int i = 0; i <= 6; i ++) {
+			int number = i;
+			addButton("Key" + i, "Change", X(800), Y(145 + 50 * i), X(100), Y(38));
+			binding.get("Key" + i).addMouseListener(new MouseListener() {
+
+				@Override
+				public void mouseClicked(MouseEvent e) {
+					Keys.query = number;
+				}
+
+				@Override
+				public void mousePressed(MouseEvent e) {
+					// TODO Auto-generated method stub
+					
+				}
+
+				@Override
+				public void mouseReleased(MouseEvent e) {
+					// TODO Auto-generated method stub
+					
+				}
+
+				@Override
+				public void mouseEntered(MouseEvent e) {
+					
+					
+				}
+
+				@Override
+				public void mouseExited(MouseEvent e) {
+					
+					
+				}
+		
+				});
+			binding.get("Key" + i).setFont(new Font(Font.SANS_SERIF, Font.ROMAN_BASELINE, 26));
+		}
 	}
 	@Override
 	public void paint(Graphics g) {
@@ -133,14 +172,22 @@ public class Settings extends JPanel{
         g.setFont(new Font("", Font.ROMAN_BASELINE, 66));
         g.drawString("Game Settings", X(380), Y(110));
         g.setFont(new Font("", Font.ROMAN_BASELINE, 38));
-        g.drawString("WASD/↑←↓→ - Move Around ", X(260), Y(180));
-        g.drawString("Space - Toggle Fire ", X(260), Y(230));
-        g.drawString("R/Slash - Reload Bullets ", X(260), Y(280));
-        g.drawString("X/Enter - Activate Ability ", X(260), Y(330));
-        g.drawString("Fps Limit: " + (SpaceshipWars.limit != 0 ? 1000/SpaceshipWars.limit : "No Limit"), (X(1000) - g.getFontMetrics().stringWidth("Fps Limit: " + (SpaceshipWars.limit != 0 ? 1000/SpaceshipWars.limit : "No Limit")))/2, Y(690));
+        g.drawString(KeyEvent.getKeyText(Assets.keyBinds[0]) + " - Up ", X(260), Y(180));
+        g.drawString(KeyEvent.getKeyText(Assets.keyBinds[1]) + " - Left ", X(260), Y(230));
+        g.drawString(KeyEvent.getKeyText(Assets.keyBinds[2]) + " - Down ", X(260), Y(280));
+        g.drawString(KeyEvent.getKeyText(Assets.keyBinds[3]) + " - Right ", X(260), Y(330));
+        g.drawString(KeyEvent.getKeyText(Assets.keyBinds[4]) + " - Toggle Fire ", X(260), Y(380));
+        g.drawString(KeyEvent.getKeyText(Assets.keyBinds[5]) + " - Reload Bullets ", X(260), Y(430));
+        g.drawString(KeyEvent.getKeyText(Assets.keyBinds[6]) + " - Activate Ability ", X(260), Y(480));
+        g.drawString("Fps Limit: " + (Assets.prefs[2] != -6 ? Math.round(10000.0/(Assets.prefs[2] + 6))/10.0 : "No Limit"), (X(1000) - g.getFontMetrics().stringWidth("Fps Limit: " + (Assets.prefs[2] != -6 ? Math.round(10000.0/(Assets.prefs[2] + 6))/10.0 : "No Limit")))/2, Y(690));
         for (int i = 0; i < this.getComponentCount(); i ++) {
         	if (this.getComponent(i) instanceof CustomButton) {
         		this.getComponent(i).paint(g);
+        		if (i - 2 == Keys.query && ((CustomButton) this.getComponent(i)).getText().equals("Change")) {
+        			((CustomButton) this.getComponent(i)).setText("Type...");
+        		} else if (i - 2 != Keys.query &&((CustomButton) this.getComponent(i)).getText().equals("Type...")) {
+        			((CustomButton) this.getComponent(i)).setText("Change");
+        		}
         	}
         }
 	}
