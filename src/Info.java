@@ -209,7 +209,7 @@ public class Info extends JPanel{
         g.setFont(new Font("", Font.ROMAN_BASELINE, 66));
         g.drawString("Enemy Profiles", X(330), Y(110));
         g.setFont(new Font("", Font.ROMAN_BASELINE, 38));
-        g.drawString(Entity.refs[world][ship].getName(), (X(1000) - g.getFontMetrics().stringWidth(Entity.refs[world][ship].getName()))/2, Y(330));
+        g.drawString(Inventory.putSpaces(Entity.refs[world][ship].getName()).substring(1), (X(1000) - g.getFontMetrics().stringWidth(Inventory.putSpaces(Entity.refs[world][ship].getName()).substring(1)))/2, Y(330));
         g.drawString("Enemy #" + (ship + 1), X(180), Y(715));
         g.drawString("World #" + (world + 1), X(700), Y(715));
         g.setFont(new Font("", Font.ROMAN_BASELINE, 15));

@@ -279,8 +279,8 @@ public class Inventory extends JPanel{
         g.setFont(new Font("", Font.ROMAN_BASELINE, 66));
         g.drawString("Select a Ship and Ability", X(260), Y(110));
         g.setFont(new Font("", Font.ROMAN_BASELINE, 38));
-        g.drawString(Player.refs[ship].getName(), (X(500) - g.getFontMetrics().stringWidth(Player.refs[ship].getName()))/2, Y(330));
-        g.drawString(Ability.refs[ability].getName(), (X(500) - g.getFontMetrics().stringWidth(Ability.refs[ability].getName()))/2 + X(500), Y(330));
+        g.drawString(putSpaces(Player.refs[ship].getName()).substring(1), (X(500) - g.getFontMetrics().stringWidth(putSpaces(Player.refs[ship].getName()).substring(1)))/2, Y(330));
+        g.drawString(putSpaces(Ability.refs[ability].getName()).substring(1), (X(500) - g.getFontMetrics().stringWidth(putSpaces(Ability.refs[ability].getName()).substring(1)))/2 + X(500), Y(330));
         g.setFont(new Font("", Font.ROMAN_BASELINE, 15));
         g.drawString(Player.descriptions[ship], (X(500) - g.getFontMetrics().stringWidth(Player.descriptions[ship]))/2, Y(650));
         g.drawString(Ability.descriptions[ability], (X(500) - g.getFontMetrics().stringWidth(Ability.descriptions[ability]))/2 + X(500), Y(650));
@@ -355,5 +355,16 @@ public class Inventory extends JPanel{
     	b.setButtonLocation(x, y);
 		b.setSize(width, height);
 		b.setPreferredSize(new Dimension(width, height));
+    }
+    public static String putSpaces(String s) {
+    	try {
+    		if (Character.toUpperCase(s.charAt(0)) == s.charAt(0)) {
+    			return " " + s.charAt(0) + putSpaces(s.substring(1));
+    		} else {
+    			return s.charAt(0) + putSpaces(s.substring(1));
+    		}
+    	} catch (Exception e) {
+    		return s;
+    	}
     }
 }
