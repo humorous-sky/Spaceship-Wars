@@ -5,7 +5,7 @@ public class Basic extends Player {
 	public static final int HP = 128;
 	public static final int AMMOS = 64;
 	public static final int FIRERATE = 100;
-	public static final int RELOAD = 3000;
+	public static final int RELOAD = 4700;
 	public static final int WIDTH = 50;
 	public static final int HEIGHT = 68;
 	public Basic(int x, int y, Ability a) {

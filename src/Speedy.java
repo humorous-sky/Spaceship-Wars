@@ -5,7 +5,7 @@ public class Speedy extends Player {
 	public static final int HP = 64;
 	public static final int AMMOS = 32;
 	public static final int FIRERATE = 60;
-	public static final int RELOAD = 1800;
+	public static final int RELOAD = 1730;
 	public static final int WIDTH = 38;
 	public static final int HEIGHT = 55;
 	public Speedy(int x, int y, Ability a) {
