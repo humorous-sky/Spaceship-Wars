@@ -5,7 +5,7 @@ public class Scout extends Entity {
 	public static final int DMG = 10;
 	public static final int HP = 15;
 	public static final int AMMOS = 1;
-	public static final int FIRERATE = 1500;
+	public static final int FIRERATE = 1625;
 	public static final String DESC = "Fast and tiny, but only weak."; 
 	public static final int WIDTH = 30;
 	public static final int HEIGHT = 26;

@@ -2,7 +2,7 @@ import java.awt.Graphics;
 
 public class Armadillo extends Entity {
 	public static final float SPEED = 0.3f;
-	public static final int DMG = 8;
+	public static final int DMG = 6;
 	public static final int HP = 50;
 	public static final int AMMOS = 3;
 	public static final int FIRERATE = 800;
