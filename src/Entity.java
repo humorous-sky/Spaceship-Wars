@@ -36,7 +36,8 @@ public class Entity {
       public static final Class[][] refs = {
     		  							{Fighter.class, Scout.class, MediumFighter.class, Carrier.class, Spawner.class, World1Boss.class},
       									{Sniper.class, Accurate.class, MoreAccurate.class, MultiSniper.class, SnipeLead.class, World2Boss.class},
-    		  							{Recycler.class, Armadillo.class, SelfRepair.class, ShieldShip.class, Healer.class, null}};
+    		  							{Recycler.class, Armadillo.class, SelfRepair.class, ShieldShip.class, Healer.class, null},
+      									{null, Rage.class, null}};
       public Entity(int x, int y, int width, int height, int hp, int dmg, float speed, int fireRate, boolean team, BufferedImage img, int s) {
           this.x = x;
           this.y = y;
@@ -159,7 +160,8 @@ public class Entity {
 				Assets.newImage("SnipeLead.png"), Assets.newImage("World2Boss.png")},
 				{Assets.newImage("Recycler.png"), Assets.newImage("Armadillo.png"),
 				Assets.newImage("SelfRepair.png"), Assets.newImage("ShieldShip.png"),
-				Assets.newImage("Healer.png")}};
+				Assets.newImage("Healer.png"), null},
+				{null, Assets.newImage("Rage.png")}};
     	  exp = new BufferedImage[]{Assets.newImage("exp1.png"), Assets.newImage("exp2.png"), Assets.newImage("exp3.png")};
       }
 }
