@@ -23,6 +23,7 @@ public class SpaceshipWars {
     static BufferedImage img;
     static JPanel s;// = new Screen(1, 26, new Basic(Screen.X(500), Screen.Y(880)));
     static JPanel queue;
+    static boolean devMode = false;
     //initalizes the frame
     static JFrame frame = new JFrame();
     public static void main(String[] args) {
