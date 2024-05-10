@@ -166,7 +166,7 @@ public class Start extends JPanel{
         g.setFont(new Font("", Font.ROMAN_BASELINE, 150));
         g.drawString("Spaceship Wars", X(150), Y(380));
         g.setFont(new Font("", Font.ROMAN_BASELINE, 38));
-        g.drawString("Welcome, " + System.getProperty("user.name") + "!", (getWidth() - g.getFontMetrics().stringWidth("Welcome, " + System.getProperty("user.name") + "!"))/2, Y(150));
+        g.drawString("Welcome, " + (SpaceshipWars.devMode ? "developer " : "player ") + System.getProperty("user.name") + "!", (getWidth() - g.getFontMetrics().stringWidth("Welcome, " + (SpaceshipWars.devMode ? "developer " : "player ") + System.getProperty("user.name") + "!"))/2, Y(150));
         g.drawImage(SpaceshipWars.img, X(400), Y(430), null);
         for (int i = 0; i < this.getComponentCount(); i ++) {
         	if (this.getComponent(i) instanceof CustomButton) {
