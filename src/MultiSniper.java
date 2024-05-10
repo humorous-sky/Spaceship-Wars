@@ -1,11 +1,11 @@
 import java.awt.Graphics;
 
 public class MultiSniper extends Entity {
-	public static final float SPEED = 0.17f;
-	public static final int DMG = 80;
-	public static final int HP = 50;
+	public static final float SPEED = 0.3f;
+	public static final int DMG = 100;
+	public static final int HP = 65;
 	public static final int AMMOS = 2;
-	public static final int FIRERATE = 17000;
+	public static final int FIRERATE = 6000;
 	public static final String DESC = "2 hits will surely take you this time. ";
 	public static final int WIDTH = 110;
 	public static final int HEIGHT = 88;

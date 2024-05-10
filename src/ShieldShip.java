@@ -1,9 +1,9 @@
 import java.awt.Graphics;
 
 public class ShieldShip extends Entity {
-	public static final float SPEED = 0.23f;
+	public static final float SPEED = 0.28f;
 	public static final int DMG = 0;
-	public static final int HP = 80;
+	public static final int HP = 85;
 	public static final int AMMOS = 0;
 	public static final int FIRERATE = 10000;
 	public static final String DESC = "Generates a 100 Hp shield every 10 seconds"; 

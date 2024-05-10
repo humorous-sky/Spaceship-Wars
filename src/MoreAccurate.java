@@ -1,11 +1,11 @@
 import java.awt.Graphics;
 
 public class MoreAccurate extends Entity {
-	public static final float SPEED = 0.23f;
-	public static final int DMG = 32;
-	public static final int HP = 30;
+	public static final float SPEED = 0.3f;
+	public static final int DMG = 80;
+	public static final int HP = 50;
 	public static final int AMMOS = 2;
-	public static final int FIRERATE = 8000;
+	public static final int FIRERATE = 5000;
 	public static final String DESC = "Another sniper that only shoots when it sees you. ";
 	public static final int WIDTH = 110;
 	public static final int HEIGHT = 80;

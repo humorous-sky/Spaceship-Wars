@@ -2,10 +2,10 @@ import java.awt.Graphics;
 
 public class SnipeLead extends Entity {
 	public static final float SPEED = 0.17f;
-	public static final int DMG = 32;
+	public static final int DMG = 80;
 	public static final int HP = 60;
 	public static final int AMMOS = 1;
-	public static final int FIRERATE = 3300;
+	public static final int FIRERATE = 3800;
 	public static final String DESC = "All ships onboard will fire under its command!";
 	public static final int WIDTH = 150;
 	public static final int HEIGHT = 100;
