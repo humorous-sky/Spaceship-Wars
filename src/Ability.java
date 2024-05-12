@@ -1,3 +1,4 @@
+import java.awt.Color;
 
 public class Ability {
 	private int option;
@@ -33,6 +34,9 @@ public class Ability {
 		}
 	}
 	public void activate(Player p) {
+		
+	}
+	public void aim(Player p) {
 		
 	}
 	public static Ability createAbility(int type) {

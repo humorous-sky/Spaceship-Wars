@@ -75,7 +75,7 @@ public class Assets {
 	}
 	public static void loadImages() {
 		System.out.println("Loading Players...");
-		ships = new BufferedImage[]{newImage("Basic.png"), newImage("Speedy.png"), newImage("Tank.png")};
+		ships = new BufferedImage[]{newImage("Basic.png"), newImage("Speedy.png"), newImage("Tank.png"), newImage("Melee.png")};
 		System.out.println("Loading Miscellaneous...");
 		misc = new BufferedImage[]{newImage("Support.png"), newImage("Rage.png"), newImage("ShieldOrb.png")};
 		System.out.println("Loading Data..."); 

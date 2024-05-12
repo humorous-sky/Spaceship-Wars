@@ -28,6 +28,8 @@ public class Screen extends JPanel{
     public static Player plr;
     public static final int min = X(200);
     public static final int max = X(800);
+    public static Integer x = null;
+    public static Integer y = null;
     public static int wave = 0;
     public static int spawned = 0;
     public static int onField = 0;
@@ -227,6 +229,11 @@ public class Screen extends JPanel{
         		this.getComponent(i).paint(g);
         	}
         }
+        g.setColor(Color.green);
+        if (x != null && y != null ) {
+        	g.fillRect(x - Screen.X(5), y - Screen.Y(2), Screen.X(11), Screen.Y(5));
+        	g.fillRect(x - Screen.X(2), y - Screen.Y(5), Screen.X(5), Screen.Y(11));
+        }
         //disposes the paintComponent
         g.dispose();
     }
@@ -272,5 +279,6 @@ public class Screen extends JPanel{
 		b.setSize(width, height);
 		b.setPreferredSize(new Dimension(width, height));
     }
+ 
 }
 

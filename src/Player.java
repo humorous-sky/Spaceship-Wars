@@ -8,13 +8,14 @@ public class Player extends Entity {
 	public int ammos;
 	public boolean fire = false;
 	public boolean reloading = false;
+	private boolean last = false;
 	public int reloadTime = 3000; 
 	public int xA = 0;
 	public int yA = 0;
 	public Ability a;
-	public static final Class[] refs = {Basic.class, Speedy.class, Tank.class};
+	public static final Class[] refs = {Basic.class, Speedy.class, Tank.class, Melee.class};
 	public static final String[] descriptions = {"All purpose ship for anything!", 
-			"Small, fast, and versatile.", "Big and powerful. Slow but has a gun in the back. "};
+			"Small, fast, and versatile.", "Big and powerful. Slow but has a gun in the back. ", "Has a limited bullet range. Better fight up close!"};
 	public Player(int x, int y, int width, int height, int hp, int dmg, float speed, int fireRate, int ammos, int reloadTime, Ability a, BufferedImage img) {
 		super(x, y, width, height, hp, dmg, speed, fireRate, true, img, 1);
 		this.ammos = ammos;
@@ -67,6 +68,9 @@ public class Player extends Entity {
   		  if (Keys.right) {
 			 xA ++;
 		  }
+  		  if (Keys.activate) {
+  			  a.activateIfCharged(this);
+  		  } 
   		  a.increment((int) (System.currentTimeMillis() - lastMove), 3);
   		  if (Math.abs(xA) + Math.abs(yA) == 2) {
   			  x += xA * speed * Screen.aX(0.3978);
@@ -97,9 +101,6 @@ public class Player extends Entity {
   			  hp = 0;
   		  }
   	  }
-  	  if (Keys.activate) {
-		  a.activateIfCharged(this);
-	  }
 	}
 	@Override
 	public void fire() {

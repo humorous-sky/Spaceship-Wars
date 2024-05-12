@@ -52,7 +52,7 @@ public class Keys implements KeyListener{
 			} else if (e.getKeyCode() == Assets.keyBinds[3]) {
 	  			right = false;
 			} else if (e.getKeyCode() == Assets.keyBinds[4]) {
-	  			activate = false;
+				activate = false;
 			} 
       }
 
