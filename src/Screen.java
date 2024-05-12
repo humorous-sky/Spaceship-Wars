@@ -5,6 +5,7 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Point;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.geom.AffineTransform;
@@ -28,8 +29,6 @@ public class Screen extends JPanel{
     public static Player plr;
     public static final int min = X(200);
     public static final int max = X(800);
-    public static Integer x = null;
-    public static Integer y = null;
     public static int wave = 0;
     public static int spawned = 0;
     public static int onField = 0;
@@ -230,9 +229,12 @@ public class Screen extends JPanel{
         	}
         }
         g.setColor(Color.green);
-        if (x != null && y != null ) {
-        	g.fillRect(x - Screen.X(5), y - Screen.Y(2), Screen.X(11), Screen.Y(5));
-        	g.fillRect(x - Screen.X(2), y - Screen.Y(5), Screen.X(5), Screen.Y(11));
+        if (Keys.aim) {
+        	Point p = plr.a.aim(plr);
+        	try {
+        		g.fillRect(p.x - X(8), p.y - Y(1), X(17), Y(3));
+        		g.fillRect(p.x - X(1), p.y - Y(8), X(3), Y(17));
+        	}catch (Exception e) {}
         }
         //disposes the paintComponent
         g.dispose();

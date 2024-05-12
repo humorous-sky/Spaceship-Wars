@@ -12,6 +12,8 @@ public class Player extends Entity {
 	public int reloadTime = 3000; 
 	public int xA = 0;
 	public int yA = 0;
+	public int lastX = 0;
+	public int lastY = 0;
 	public Ability a;
 	public static final Class[] refs = {Basic.class, Speedy.class, Tank.class, Melee.class};
 	public static final String[] descriptions = {"All purpose ship for anything!", 
@@ -70,6 +72,7 @@ public class Player extends Entity {
 		  }
   		  if (Keys.activate) {
   			  a.activateIfCharged(this);
+  			  Keys.activate = false;
   		  } 
   		  a.increment((int) (System.currentTimeMillis() - lastMove), 3);
   		  if (Math.abs(xA) + Math.abs(yA) == 2) {
@@ -99,6 +102,10 @@ public class Player extends Entity {
       	  } 
   		  if (hp < 0) {
   			  hp = 0;
+  		  }
+  		  if (Math.abs(xA) + Math.abs(yA) != 0) {
+  			  lastX = xA;
+  			  lastY = yA;
   		  }
   	  }
 	}
