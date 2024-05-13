@@ -2,13 +2,14 @@ import java.awt.Point;
 
 public class BlackHole extends Ability {
 	private final static int OPTION = 3;
-	private final static int VALUE = 15000;
+	private final static int VALUE = 30000;
 	private boolean confirm = false;
 	public BlackHole() {
 		super(OPTION, VALUE);
 	}
 	@Override
 	public void activate(Player p) {
+		p.gainShields(15);
 		//if (confirm) {
 			if (Math.abs(p.xA) + Math.abs(p.yA) == 0) {
 				if (Math.abs(p.lastX) + Math.abs(p.lastY) == 2) {
@@ -33,7 +34,6 @@ public class BlackHole extends Ability {
 	@Override
 	public Point aim(Player p) {
 		//return new Point(100, 100);
-		p.gainShields(20);
 		if (Math.abs(p.xA) + Math.abs(p.yA) == 0) {
 			if (Math.abs(p.lastX) + Math.abs(p.lastY) == 2) {
 				return new Point((int) (p.rect.getCenterX() + p.lastX * 260f * Screen.aX(0.3978)), (int) (p.rect.getCenterY() + p.lastY * 380f * Screen.aY(0.7071)));

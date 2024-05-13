@@ -150,7 +150,7 @@ public class Screen extends JPanel{
         }
         starsToRemove.clear();
         g.setColor(Color.cyan);
-    	g.fillRect(X(805), Y(762), X(170.0 * (plr.shields/50.0)), Y(33));
+    	g.fillRect(X(805), Y(762), X(170.0 * (plr.shields/30.0)), Y(33));
     	g.setColor(Player.getBarColor(plr.hp, plr.maxHp));
     	g.fillRect(X(805), Y(800), X(170.0 * (plr.hp/(double) plr.maxHp)), Y(33));
     	g.setColor(Player.getBarColor(plr.ammos, plr.maxAmmos));
@@ -163,6 +163,7 @@ public class Screen extends JPanel{
     	g.setFont(new Font("", Font.ROMAN_BASELINE, 10));
         g.drawString("fps: " + Math.round(SpaceshipWars.fps * 10) / 10.0,  X(5), Y(15));
         g.setFont(new Font("", Font.ROMAN_BASELINE, 26));
+        g.drawString("Shields: " + plr.shields, X(810), Y(789));
         g.drawString("Health: " + plr.hp, X(810), Y(827));
         g.drawString("Bullets: " + plr.ammos + "/" + plr.maxAmmos, X(810), Y(864));
         g.drawString("Ability: " + (plr.a.getProgress() == 1 ? "Charged!" : (Math.round(plr.a.getProgress() * 1000)/10.0) + "%"), X(15), Y(876));

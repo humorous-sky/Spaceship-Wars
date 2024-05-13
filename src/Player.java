@@ -123,14 +123,14 @@ public class Player extends Entity {
 	@Override 
 	public void takeDamage(int amount) {
 		shields -= amount;
-		hp -= hp > -shields ? -shields : hp;
 		if (shields < 0) {
+			hp -= hp > -shields ? -shields : hp;
 			shields = 0;
 		}
 	}
 	public void gainShields(int amount) {
 		shields += amount;
-		shields = shields > 50 ? 50 : shields;
+		shields = shields > 30 ? 30 : shields;
 		shields = shields < 0 ? 0 : shields;
 	}
 	public void reload() {
