@@ -48,9 +48,11 @@ public class Assets {
 			System.out.println(loaded + " images loaded.");
 			return img;
 		} catch (Exception e) {
-			System.out.println("Cannot find " + name);
-			System.exit(0);
-			return null;
+			if (name.equals("MissingTexture.png")) {
+				System.out.println("Cannot find " + name);
+				System.exit(0);
+			}
+			return newImage("MissingTexture.png");
 		}
 	}
 	public static Clip newSound(String name) {
