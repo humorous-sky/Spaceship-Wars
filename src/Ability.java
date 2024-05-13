@@ -1,3 +1,5 @@
+import java.awt.Color;
+import java.awt.Point;
 
 public class Ability {
 	private int option;
@@ -34,6 +36,9 @@ public class Ability {
 	}
 	public void activate(Player p) {
 		
+	}
+	public Point aim(Player p) {
+		return null;	
 	}
 	public static Ability createAbility(int type) {
 		try {

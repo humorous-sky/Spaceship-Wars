@@ -5,6 +5,7 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Point;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.geom.AffineTransform;
@@ -227,6 +228,14 @@ public class Screen extends JPanel{
         		this.getComponent(i).paint(g);
         	}
         }
+        g.setColor(Color.green);
+        if (Keys.aim) {
+        	Point p = plr.a.aim(plr);
+        	try {
+        		g.fillRect(p.x - X(8), p.y - Y(1), X(17), Y(3));
+        		g.fillRect(p.x - X(1), p.y - Y(8), X(3), Y(17));
+        	}catch (Exception e) {}
+        }
         //disposes the paintComponent
         g.dispose();
     }
@@ -272,5 +281,6 @@ public class Screen extends JPanel{
 		b.setSize(width, height);
 		b.setPreferredSize(new Dimension(width, height));
     }
+ 
 }
 

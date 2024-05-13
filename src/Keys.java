@@ -8,7 +8,8 @@ public class Keys implements KeyListener{
       public static boolean left;
       public static boolean down;
       public static boolean right;
-      public static boolean activate;
+      public static boolean activate = false;
+      public static boolean aim = false;
       public static int query = -1;
     @Override
       public void keyPressed(KeyEvent e) {
@@ -32,7 +33,7 @@ public class Keys implements KeyListener{
   	  				Screen.plr.reload();
   	  			}
 			} else if (e.getKeyCode() == Assets.keyBinds[6]) {
-  	  			activate = true;
+  	  			aim = true;
 			}
     		if (query >= 0) {
     			Assets.keyBinds[query] = e.getKeyCode();
@@ -51,8 +52,9 @@ public class Keys implements KeyListener{
 	  			down = false;
 			} else if (e.getKeyCode() == Assets.keyBinds[3]) {
 	  			right = false;
-			} else if (e.getKeyCode() == Assets.keyBinds[4]) {
-	  			activate = false;
+			} else if (e.getKeyCode() == Assets.keyBinds[6]) {
+				aim = false;
+				activate = true;
 			} 
       }
 
