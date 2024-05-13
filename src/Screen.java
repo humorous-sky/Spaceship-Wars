@@ -37,6 +37,8 @@ public class Screen extends JPanel{
     public static boolean status = false;
     private long lastSpawn = System.currentTimeMillis();
     private long diffSpawn = 0;
+    private long lastShield = System.currentTimeMillis();
+    private long diffShield = 0;
     private long lastStar = System.currentTimeMillis();
     private HashMap<String, Component> binding = new HashMap<String, Component>();
     private boolean paused = false;
@@ -135,6 +137,7 @@ public class Screen extends JPanel{
     public void paint(Graphics g) {
     	if (!paused) {
     		diffSpawn = System.currentTimeMillis() - lastSpawn;
+    		diffShield = System.currentTimeMillis() - lastShield;
     	}
     	onField = 0;
     	g.setColor(Color.black);
@@ -146,6 +149,8 @@ public class Screen extends JPanel{
         	stars.remove(s);
         }
         starsToRemove.clear();
+        g.setColor(Color.cyan);
+    	g.fillRect(X(805), Y(762), X(170.0 * (plr.shields/50.0)), Y(33));
     	g.setColor(Player.getBarColor(plr.hp, plr.maxHp));
     	g.fillRect(X(805), Y(800), X(170.0 * (plr.hp/(double) plr.maxHp)), Y(33));
     	g.setColor(Player.getBarColor(plr.ammos, plr.maxAmmos));
@@ -168,6 +173,10 @@ public class Screen extends JPanel{
         if (System.currentTimeMillis() >= lastStar + 150) {
         	stars.add(new Stars((int) (Math.random() * X(600)) + X(200), Y(-15), Color.white));
         	lastStar = System.currentTimeMillis();
+        }
+        if (!paused && System.currentTimeMillis() >= lastShield + 1000) {
+        	plr.gainShields(-1);
+        	lastShield = System.currentTimeMillis();
         }
         if (!paused && System.currentTimeMillis() >= lastSpawn + 1700 && spawned < (level <= 24 ? wave * 2 + (level - 1) % 6 + 1 : level == 25 ? 1  : wave + 3)) {
         	entitiesToAdd.add(Entity.createEntity(world, level <= 24 ? (int)(Math.random() * (wave > 0 ? 2 + (level - 1) / 6 : 2)) : level == 25 ? 5 : (int)(Math.random() * (wave > 0 ? 5 : 2)), X(Math.random() * 600 + 200), Y(-15)));
@@ -193,6 +202,7 @@ public class Screen extends JPanel{
         		e.lastTurn = System.currentTimeMillis() - e.diffTurn;
         		e.lastMove = System.currentTimeMillis() - e.diffMove;
         		lastSpawn = System.currentTimeMillis() - diffSpawn;
+        		lastShield = System.currentTimeMillis() - diffShield;
         	}
         	if (e.frame < 1.6) {
         		e.paint(g);

@@ -67,7 +67,7 @@ public class Entity {
     		  if (hp > 0 && e.hp > 0 && e instanceof Ammos && e.team != this.team && e.rect.intersects(this.rect)) {
     			  Screen.score += hp <= thres ? (hp > e.hp ? e.hp * s : hp * s) : 0;
     			  Screen.plr.a.increment(hp > e.hp ? e.hp : hp, 2);
-    			  hp -= e.hp;
+    			  takeDamage(e.hp);
     			  e.hp = 0;
     			  Screen.entitiesToRemove.add(e);
     			  lastDamaged = System.currentTimeMillis() + 50;
@@ -140,6 +140,9 @@ public class Entity {
     	  thres = hp;
     	  hp = hp + amount > maxHp? maxHp : hp + amount;
     	  lastHealed = System.currentTimeMillis() + 80;
+      }
+      public void takeDamage(int amount) {
+    	  hp -= amount;
       }
       public static void drawImage(double x, double y, double width, double height, float direction, BufferedImage image, Graphics g) {
     	  AffineTransform at = new AffineTransform();

@@ -14,6 +14,7 @@ public class Player extends Entity {
 	public int yA = 0;
 	public int lastX = 0;
 	public int lastY = 0;
+	public int shields = 0;
 	public Ability a;
 	public static final Class[] refs = {Basic.class, Speedy.class, Tank.class, Melee.class};
 	public static final String[] descriptions = {"All purpose ship for anything!", 
@@ -37,6 +38,9 @@ public class Player extends Entity {
 	@Override
 	public void paint(Graphics g) {
 		drawImage(x, y, rect.width, rect.height, 0f, img, g);
+		if (shields > 0) {
+			drawImage(x, y, rect.width, rect.height, 0f, Assets.misc[2], g);
+		}
 	}
 	@Override
 	public void move() {
@@ -47,7 +51,7 @@ public class Player extends Entity {
   		  if (hp > 0 && e.hp > 0 && e.team != this.team && e.rect.intersects(this.rect)) {
   			  Screen.score += hp > e.hp ? e.hp * e.s : hp * e.s;
   			  int php = hp;
-  			  hp -= hp > e.hp ? e.hp : hp;
+  			  takeDamage(e.hp);
 			  e.hp = hp > e.hp ? 0 : e.hp - php;
 			  if (e instanceof Ammos && e.hp <= 0) {
   				  Screen.entitiesToRemove.add(e);
@@ -116,6 +120,19 @@ public class Player extends Entity {
   		  lastFire = System.currentTimeMillis();
   	  }
     }
+	@Override 
+	public void takeDamage(int amount) {
+		shields -= amount;
+		hp -= hp > -shields ? -shields : hp;
+		if (shields < 0) {
+			shields = 0;
+		}
+	}
+	public void gainShields(int amount) {
+		shields += amount;
+		shields = shields > 50 ? 50 : shields;
+		shields = shields < 0 ? 0 : shields;
+	}
 	public void reload() {
 		if (!reloading && ammos != maxAmmos) {
 			reloading = true;
