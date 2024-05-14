@@ -5,9 +5,11 @@ public class Ability {
 	private int option;
 	private int value;
 	private int current;
-	public static final Class[] refs = {BlackHole.class, Firework.class, Army.class};
+	public static final Class[] refs = {BlackHole.class, Firework.class, Army.class, ShieldAbility.class};
 	public static final String[] descriptions = {"Instantly move distance in your direction and gain 15 shields. Recharges every 30 seconds. ",
-			"Shoots a circle of bullets around you. Recharges every 15 ships destroyed. ", "Instantly spawns 5 robot ships that fight for you. Recharges every 800 damage dealt. "};
+			"Shoots a circle of bullets around you. Recharges every 15 ships destroyed. ", 
+			"Instantly spawns 5 robot ships that fight for you. Recharges every 800 damage dealt. ",
+			"Instantly gain full 50 shields. Recharges every 500 damage dealt."};
 	public Ability(int option, int value) {
 		this.option = option;
 		this.value = value;

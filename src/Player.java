@@ -39,7 +39,7 @@ public class Player extends Entity {
 	public void paint(Graphics g) {
 		drawImage(x, y, rect.width, rect.height, 0f, img, g);
 		if (shields > 0) {
-			drawImage(x, y, rect.width, rect.height, 0f, Assets.misc[2], g);
+			drawImage(x - Screen.X(5), y - Screen.Y(5), rect.width + Screen.X(10), rect.height + Screen.Y(10), 0f, Assets.misc[2], g);
 		}
 	}
 	@Override
@@ -130,7 +130,7 @@ public class Player extends Entity {
 	}
 	public void gainShields(int amount) {
 		shields += amount;
-		shields = shields > 30 ? 30 : shields;
+		shields = shields > 50 ? 50 : shields;
 		shields = shields < 0 ? 0 : shields;
 	}
 	public void reload() {

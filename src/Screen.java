@@ -150,7 +150,7 @@ public class Screen extends JPanel{
         }
         starsToRemove.clear();
         g.setColor(Color.cyan);
-    	g.fillRect(X(805), Y(762), X(170.0 * (plr.shields/30.0)), Y(33));
+    	g.fillRect(X(805), Y(762), X(170.0 * (plr.shields/50.0)), Y(33));
     	g.setColor(Player.getBarColor(plr.hp, plr.maxHp));
     	g.fillRect(X(805), Y(800), X(170.0 * (plr.hp/(double) plr.maxHp)), Y(33));
     	g.setColor(Player.getBarColor(plr.ammos, plr.maxAmmos));
