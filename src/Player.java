@@ -3,6 +3,8 @@ import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
+import javax.sound.sampled.Clip;
+
 public class Player extends Entity {
 	public int maxAmmos = 5;
 	public int ammos;
@@ -16,6 +18,7 @@ public class Player extends Entity {
 	public int lastY = 0;
 	public int shields = 0;
 	public Ability a;
+	public Clip sound = Assets.newSound("gun.wav");
 	public static final Class[] refs = {Basic.class, Speedy.class, Tank.class, Melee.class};
 	public static final String[] descriptions = {"All purpose ship for anything!", 
 			"Small, fast, and versatile.", "Big and powerful. Slow but has a gun in the back. ", "Has a limited bullet range. Better fight up close!"};
@@ -117,6 +120,7 @@ public class Player extends Entity {
 	public void fire() {
   	  if (System.currentTimeMillis() >= lastFire + fireRate) {
   		  Screen.entitiesToAdd.add(new Ammos((int) rect.getCenterX() + rect.width/3 * (Math.random() > 0.5? 1 : -1), (int) rect.y, 0f, 26f, dmg, team));
+  		  Assets.playSound(sound, dmg * 8);
   		  lastFire = System.currentTimeMillis();
   	  }
     }
