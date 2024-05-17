@@ -108,8 +108,6 @@ public class Assets {
 	}
 	public static void playSound(Clip clip, int volume) {
 		clip.stop();
-		clip.setFramePosition(0);
-		clip.setMicrosecondPosition(0);
 		volume += 2;
 		FloatControl gainControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
 		float range = gainControl.getMaximum() - gainControl.getMinimum();
@@ -120,7 +118,15 @@ public class Assets {
 			gain = gainControl.getMaximum();
 		}
 		gainControl.setValue(gain);
-		clip.start();
+		clip.setFramePosition(0);
+		clip.setMicrosecondPosition(0);
+		for (int i = 0; !clip.isActive(); i ++) {
+			if (i > 380) {
+				System.err.println("Unable to play sound");
+				break;
+			}
+			clip.start();
+		}
 	}
 	public static long[] readLongs(String fileName, int length) {
 		DataInputStream in = null;
