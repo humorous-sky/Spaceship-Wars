@@ -58,6 +58,7 @@ public class Support extends Entity {
 		fireRate = hp * 100 < 1000 ? 1000 : hp * 100;
 		if (System.currentTimeMillis() >= lastFire + fireRate) {
   		  Screen.entitiesToAdd.add(new Ammos((int) rect.getCenterX(), (int) rect.y, 0f, 5f, dmg, team));
+  		  Assets.playSound(Assets.newSound("gun.wav"), dmg * 8);
   		  lastFire = System.currentTimeMillis();
   	  	}
 	}

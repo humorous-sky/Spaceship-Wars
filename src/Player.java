@@ -10,7 +10,7 @@ public class Player extends Entity {
 	public int ammos;
 	public boolean fire = false;
 	public boolean reloading = false;
-	private boolean last = false;
+	private boolean last = Math.random() >= 0.5;
 	public int reloadTime = 3000; 
 	public int xA = 0;
 	public int yA = 0;
@@ -18,7 +18,7 @@ public class Player extends Entity {
 	public int lastY = 0;
 	public int shields = 0;
 	public Ability a;
-	public Clip sound = Assets.newSound("gun.wav");
+	Clip c = Assets.newSound("gun.wav");
 	public static final Class[] refs = {Basic.class, Speedy.class, Tank.class, Melee.class};
 	public static final String[] descriptions = {"All purpose ship for anything!", 
 			"Small, fast, and versatile.", "Big and powerful. Slow but has a gun in the back. ", "Has a limited bullet range. Better fight up close!"};
@@ -120,7 +120,7 @@ public class Player extends Entity {
 	public void fire() {
   	  if (System.currentTimeMillis() >= lastFire + fireRate) {
   		  Screen.entitiesToAdd.add(new Ammos((int) rect.getCenterX() + rect.width/3 * (Math.random() > 0.5? 1 : -1), (int) rect.y, 0f, 26f, dmg, team));
-  		  Assets.playSound(sound, dmg * 8);
+  		  Assets.playSound(Assets.newSound("gun.wav"), dmg * 8);
   		  lastFire = System.currentTimeMillis();
   	  }
     }
@@ -129,6 +129,7 @@ public class Player extends Entity {
 		shields -= amount;
 		if (shields < 0) {
 			hp -= hp > -shields ? -shields : hp;
+			Assets.playSound(Assets.newSound("hit.wav"), -shields * 32);
 			shields = 0;
 		}
 	}
@@ -140,12 +141,17 @@ public class Player extends Entity {
 	public void reload() {
 		if (!reloading && ammos != maxAmmos) {
 			reloading = true;
+			Assets.playSound(Assets.newSound("reload.wav"), 100);
 			lastTurn = System.currentTimeMillis() + reloadTime;
 		}
 	}
 	public static Color getBarColor(float cur, double max) {
 		return cur > max/2 ? new Color((int) ((-255.0/(max/2)) * cur + 510), 255, 0) : cur > 0 ? new Color(255, (int) ((255.0/(max/2)) * cur), 0) : new Color(255, 0, 0);
 	}	
+	public int getBulletDir() {
+		last = !last;
+		return last ? 1 : -1;
+	}
 	/*(max/2, 255)
 	(0, 0)*/
 }

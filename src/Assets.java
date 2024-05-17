@@ -28,7 +28,7 @@ import java.io.BufferedWriter;
 public class Assets {
 	public static BufferedImage[] ships;
 	public static BufferedImage[] misc;
-	public static final int totalImages = Entity.refs.length * Entity.refs[0].length + 3 + Player.refs.length + 3;
+	public static final int totalImages = Entity.refs.length * Entity.refs[0].length + 3 + Player.refs.length + 3 /*miscellaneous*/;
 	public static int loaded = 0;
 	public static int[] prefs;
 	public static int[][] progress;
@@ -46,6 +46,7 @@ public class Assets {
 			System.out.println(url + " successfully loaded.");
 			loaded += loaded < totalImages ? 1 : 0;
 			System.out.println(loaded + " images loaded.");
+			playSound(newSound("gun.wav"), 100);
 			return img;
 		} catch (Exception e) {
 			if (name.equals("MissingTexture.png")) {
@@ -57,15 +58,17 @@ public class Assets {
 	}
 	public static Clip newSound(String name) {
 		try {
-			AudioInputStream in = AudioSystem.getAudioInputStream(new File(SpaceshipWars.class.getResource("sounds/" + name).getPath()).getAbsoluteFile());
+			URL url = SpaceshipWars.class.getResource("sounds/" + name);
+			AudioInputStream in = AudioSystem.getAudioInputStream(url);
 			Clip clip = AudioSystem.getClip(); 
-			clip.open(in); 
+			clip.open(in);
 			return clip;
 		} catch (UnsupportedAudioFileException e) {
 			System.out.println(name + " is unsupported");
 			System.exit(0);
 			return null;
 		} catch (IOException e) {
+			e.printStackTrace();
 			System.out.println("Cannot find " + name);
 			System.exit(0);
 			return null;
@@ -96,9 +99,6 @@ public class Assets {
 	}
 	public static void loadSounds() {
 		System.out.println("Loading Sound FX...");
-		ships = new BufferedImage[]{newImage("Basic.png"), newImage("Speedy.png"), newImage("Tank.png")};
-		System.out.println("Loading Miscellaneous...");
-		misc = new BufferedImage[]{newImage("Support.png"), newImage("Rage.png"), newImage("ShieldOrb.png")};
 	}
 	public static void playSound(Clip clip, int volume) {
 		volume += 2;
@@ -111,7 +111,7 @@ public class Assets {
 			gain = gainControl.getMaximum();
 		}
 		gainControl.setValue(gain);
-		clip.stop();
+		clip.setFramePosition(0);
 		clip.setMicrosecondPosition(0);
 		clip.start();
 	}

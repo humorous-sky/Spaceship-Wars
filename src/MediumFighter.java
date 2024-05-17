@@ -21,6 +21,7 @@ public class MediumFighter extends Entity {
   	  if (System.currentTimeMillis() >= lastFire + fireRate) {
   		  Screen.entitiesToAdd.add(new Ammos((int) rect.getCenterX() - rect.width/10, (int) rect.getMaxY(), 0.15f, 5f, dmg, team));
   		  Screen.entitiesToAdd.add(new Ammos((int) rect.getCenterX() + rect.width/10, (int) rect.getMaxY(), -0.15f, 5f, dmg, team));
+  		Assets.playSound(Assets.newSound("gun.wav"), dmg * 2);
   		  lastFire = System.currentTimeMillis();
   	  }
     }

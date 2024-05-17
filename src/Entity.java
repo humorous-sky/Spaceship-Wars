@@ -6,6 +6,7 @@ import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 import java.lang.reflect.InvocationTargetException;
 import java.awt.geom.AffineTransform;
+import java.util.ArrayList;
 
 public class Entity {
 	  public int hp = 10;
@@ -13,6 +14,7 @@ public class Entity {
 	  public int maxHp = 10;
 	  public final int bullets = 1;
 	  public float speed = 0.8f;
+	  public float currentSpeed = speed;
 	  public int dmg = 1;
 	  public float x;
 	  public float y;
@@ -30,9 +32,12 @@ public class Entity {
       public long diffFire = 0;
       public long diffMove = 0;
       private int thres;
+      public ArrayList<Buff> buffs = new ArrayList<Buff>();
+      public ArrayList<Buff> buffsToRemove = new ArrayList<Buff>();
       public BufferedImage img = null;
       public static BufferedImage[][] imgs;
       public static BufferedImage[] exp;
+      private final long spawnTime = System.currentTimeMillis();
       public static final Class[][] refs = {
     		  							{Fighter.class, Scout.class, MediumFighter.class, Carrier.class, Spawner.class, World1Boss.class},
       									{Sniper.class, Accurate.class, MoreAccurate.class, MultiSniper.class, SnipeLead.class, World2Boss.class},
@@ -58,13 +63,24 @@ public class Entity {
             //drawImage(x, y, rect.width, rect.height, 0f, img, g);
             g.setColor(Color.white);
             g.drawRect((int) x, (int) y, rect.width, rect.height);
+            for (Buff b: buffs) {
+            	b.paint(g, this);
+            }
       }
       public void move() {
+    	  currentSpeed = speed;
+    	  for (Buff b: buffs) {
+    		  b.process(this);
+    	  }
+    	  for (Buff b: buffsToRemove) {
+    		  buffs.remove(b);
+    	  }
+    	  buffsToRemove.clear();
     	  diffFire = System.currentTimeMillis() - lastFire;
     	  diffTurn = System.currentTimeMillis() - lastTurn;
     	  diffMove = System.currentTimeMillis() - lastMove;
     	  for (Entity e: Screen.entities) {
-    		  if (hp > 0 && e.hp > 0 && e instanceof Ammos && e.team != this.team && e.rect.intersects(this.rect)) {
+    		  if (System.currentTimeMillis() > spawnTime + 50 && hp > 0 && e.hp > 0 && e instanceof Ammos && e.team != this.team && e.rect.intersects(this.rect)) {
     			  Screen.score += hp <= thres ? (hp > e.hp ? e.hp * s : hp * s) : 0;
     			  Screen.plr.a.increment(hp > e.hp ? e.hp : hp, 2);
     			  takeDamage(e.hp);
@@ -74,11 +90,11 @@ public class Entity {
     		  }
     	  }
     	  if (System.currentTimeMillis() >= lastTurn + 2600) {
-    		  dir = (float) ((Math.random() * speed * 1.6) - (speed * 0.8));
+    		  dir = (float) ((Math.random() * currentSpeed * 1.6) - (currentSpeed * 0.8));
     		  lastTurn = System.currentTimeMillis();
     	  }
     	  if (System.currentTimeMillis() >= lastMove + 26) {
-    		  y += speed * Screen.aY(1) * (team ? -1 : 1);
+    		  y += currentSpeed * Screen.aY(1) * (team ? -1 : 1);
     		  x += dir * Screen.aX(1);
     		  if (x < Screen.min) {
     			  x  = Screen.min;
@@ -92,9 +108,9 @@ public class Entity {
     		  rect.x = (int) x;
     		  rect.y = (int) y;
     		  lastMove = System.currentTimeMillis();
-    		  if (hp <= 0 && frame < 2.85) {
+    		  if (hp <= 0 && frame < 2.86) {
         		  frame += 0.15;
-        	  } else if (frame >= 2.85) {
+        	  } else if (frame >= 2.86) {
         		  onOof();
         	  }
     	  }
@@ -102,6 +118,7 @@ public class Entity {
       public void fire() {
     	  if (System.currentTimeMillis() >= lastFire + fireRate) {
     		  Screen.entitiesToAdd.add(new Ammos((int) rect.getCenterX(), (int) rect.getMaxY(), 0f, 5f, dmg, team));
+    		  Assets.playSound(Assets.newSound("gun.wav"), dmg);
     		  lastFire = System.currentTimeMillis();
     	  }
       }
@@ -125,6 +142,10 @@ public class Entity {
     	  }
     	  if (hp <= 0) {
     		  drawImage(x, y, rect.width, rect.height, 0f, exp[(int) frame], g);  
+    		  if (frame == 0.6f) {
+    			  frame = 0.61f;
+    			  Assets.playSound(Assets.newSound("explode.wav"), maxHp * 16);
+    		  }
     	  } else {
     		  frame = 0.0f;
     	  }
@@ -143,6 +164,7 @@ public class Entity {
       }
       public void takeDamage(int amount) {
     	  hp -= amount;
+    	  Assets.playSound(Assets.newSound("hit.wav"), amount * 16);
       }
       public static void drawImage(double x, double y, double width, double height, float direction, BufferedImage image, Graphics g) {
     	  AffineTransform at = new AffineTransform();

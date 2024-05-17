@@ -23,6 +23,7 @@ public class HeavySplitShooter extends Entity {
 	  		for (double theta = 0.0; theta < 2 * Math.PI; theta += Math.PI/6) {
 				Screen.entitiesToAdd.add(new Ammos((int) rect.getCenterX(), (int) rect.getMaxY(), 5 * (float) Math.cos(theta), 5 * (float) Math.sin(theta), dmg, team));
 			}
+	  		Assets.playSound(Assets.newSound("gun.wav"), dmg * 12);
   			lastFire = System.currentTimeMillis();
   	  }
     }

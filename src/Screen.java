@@ -41,7 +41,7 @@ public class Screen extends JPanel{
     private long diffShield = 0;
     private long lastStar = System.currentTimeMillis();
     private HashMap<String, Component> binding = new HashMap<String, Component>();
-    private boolean paused = false;
+    public static boolean paused = false;
     public static long score = 0;
     public static Screen current;
     public Screen(int world, int level, Player p) {
@@ -208,7 +208,7 @@ public class Screen extends JPanel{
         	if (e.frame < 1.6) {
         		e.paint(g);
         	}
-        	if (e.hp > 0 && !paused) {
+        	if (e.hp > 0 && e.currentSpeed > 0f && !paused) {
         		e.fire();
         	}
         	e.drawAnim(g);

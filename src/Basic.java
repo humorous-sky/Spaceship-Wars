@@ -14,7 +14,7 @@ public class Basic extends Player {
 	@Override
 	public void fire() {
   	  if (System.currentTimeMillis() >= lastFire + fireRate && fire && ammos > 0 && !reloading) {
-  		  Screen.entitiesToAdd.add(new Ammos((int) rect.getCenterX() + rect.width/3 * (Math.random() > 0.5? 1 : -1), (int) rect.y, 0f, 26f, dmg, team));
+  		  Screen.entitiesToAdd.add(new Ammos((int) rect.getCenterX() + rect.width/3 * getBulletDir(), (int) rect.y, 0f, 26f, dmg, team));
   		  Assets.playSound(Assets.newSound("gun.wav"), dmg * 8);
   		  ammos--;
   		  lastFire = System.currentTimeMillis();
