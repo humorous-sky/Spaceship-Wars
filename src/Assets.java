@@ -85,10 +85,6 @@ public class Assets {
 		}
 	}
 	public static void loadImages() {
-		System.out.println("Loading Players...");
-		ships = new BufferedImage[]{newImage("Basic.png"), newImage("Speedy.png"), newImage("Tank.png"), newImage("Melee.png")};
-		System.out.println("Loading Miscellaneous...");
-		misc = new BufferedImage[]{newImage("Support.png"), newImage("Rage.png"), newImage("ShieldOrb.png")};
 		System.out.println("Loading Data..."); 
 		progress = new int[Entity.refs.length][25];
 		for (int i = 0; i < progress.length; i ++) {
@@ -100,8 +96,15 @@ public class Assets {
 			}
 			System.out.println();
 		}
-		prefs = readInts("prefs", 3);
+		prefs = readInts("prefs", 4);
+		if ((prefs[3] - 60) % 80 != 0) {
+			prefs[3] = 220;
+		}
 		keyBinds = readInts("Key Binds", 7);
+		System.out.println("Loading Players...");
+		ships = new BufferedImage[]{newImage("Basic.png"), newImage("Speedy.png"), newImage("Tank.png"), newImage("Melee.png")};
+		System.out.println("Loading Miscellaneous...");
+		misc = new BufferedImage[]{newImage("Support.png"), newImage("Rage.png"), newImage("ShieldOrb.png")};
 	}
 	public static void loadSounds() {
 		System.out.println("Loading Sound FX...");
@@ -121,7 +124,7 @@ public class Assets {
 		clip.setFramePosition(0);
 		clip.setMicrosecondPosition(0);
 		for (int i = 0; !clip.isActive(); i ++) {
-			if (i > 380) {
+			if (i > Assets.prefs[3]) {
 				System.err.println("Unable to play sound");
 				break;
 			}
