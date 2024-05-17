@@ -16,7 +16,7 @@ public class Melee extends Player {
   	  if (System.currentTimeMillis() >= lastFire + fireRate && fire && ammos > 0 && !reloading) {
   		  Screen.entitiesToAdd.add(new Ammos((int) rect.getCenterX(), (int) rect.y, 0f, 26f, 4, team, 11));
   		  Screen.entitiesToAdd.add(new Ammos((int) rect.getCenterX(), (int) rect.y, 3.8f * getBulletDir(), 23f, 4, team, 11));
-  		  Assets.playSound(Assets.newSound("gun.wav"), dmg * 16);
+  		  Assets.playSound(Assets.gunFire, dmg * 16);
   		  ammos--;
   		  lastFire = System.currentTimeMillis();
   	  }

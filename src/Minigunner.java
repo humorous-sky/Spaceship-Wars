@@ -23,7 +23,7 @@ public class Minigunner extends Entity {
 	public void fire() {
   	  if (System.currentTimeMillis() >= lastFire + fireRate) {
   		  Screen.entitiesToAdd.add(new Ammos((int) rect.getCenterX(), (int) rect.getMaxY(), 0f, 5f, dmg, team));
-  		Assets.playSound(Assets.newSound("gun.wav"), dmg);
+  		Assets.playSound(Assets.gunFire, dmg);
   		  lastFire = System.currentTimeMillis();
   	  }
   	  if (System.currentTimeMillis() >= lastSpeedUp + 3800 && fireRate > 375) {

@@ -16,7 +16,7 @@ public class Speedy extends Player {
   	  if (System.currentTimeMillis() >= lastFire + fireRate && fire && ammos > 0 && !reloading) {
   		  Screen.entitiesToAdd.add(new Ammos((int) rect.getCenterX() + rect.width/10 * getBulletDir(), (int) rect.y, 0f, 26f, dmg, team));
   		  ammos--;
-  		  Assets.playSound(Assets.newSound("gun.wav"), dmg * 8);
+  		  Assets.playSound(Assets.gunFire, dmg * 8);
   		  lastFire = System.currentTimeMillis();
   	  }
   	  if (System.currentTimeMillis() > lastTurn && reloading) {

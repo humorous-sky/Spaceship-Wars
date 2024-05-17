@@ -25,7 +25,7 @@ public class SnipeLead extends Entity {
   	  				e.lastFire = System.currentTimeMillis() - e.fireRate;
   	  			}
   	  		}
-  	  		Assets.playSound(Assets.newSound("gun.wav"), dmg);
+  	  		Assets.playSound(Assets.gunFire, dmg);
   	  		lastFire = System.currentTimeMillis();
   	  	}
     }

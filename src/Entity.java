@@ -118,7 +118,7 @@ public class Entity {
       public void fire() {
     	  if (System.currentTimeMillis() >= lastFire + fireRate) {
     		  Screen.entitiesToAdd.add(new Ammos((int) rect.getCenterX(), (int) rect.getMaxY(), 0f, 5f, dmg, team));
-    		  Assets.playSound(Assets.newSound("gun.wav"), dmg);
+    		  Assets.playSound(Assets.gunFire, dmg);
     		  lastFire = System.currentTimeMillis();
     	  }
       }
@@ -144,7 +144,7 @@ public class Entity {
     		  drawImage(x, y, rect.width, rect.height, 0f, exp[(int) frame], g);  
     		  if (frame == 0.6f) {
     			  frame = 0.61f;
-    			  Assets.playSound(Assets.newSound("explode.wav"), maxHp * 16);
+    			  Assets.playSound(Assets.explode, maxHp * 16);
     		  }
     	  } else {
     		  frame = 0.0f;
@@ -164,7 +164,7 @@ public class Entity {
       }
       public void takeDamage(int amount) {
     	  hp -= amount;
-    	  Assets.playSound(Assets.newSound("hit.wav"), amount * 16);
+    	  Assets.playSound(Assets.bulletHit, amount * 16);
       }
       public static void drawImage(double x, double y, double width, double height, float direction, BufferedImage image, Graphics g) {
     	  AffineTransform at = new AffineTransform();

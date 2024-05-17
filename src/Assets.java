@@ -33,6 +33,10 @@ public class Assets {
 	public static int[] prefs;
 	public static int[][] progress;
 	public static int[] keyBinds;
+	public static final Clip gunFire = newSound("gun.wav");
+	public static final Clip bulletHit = newSound("hit.wav");
+	public static final Clip reload = newSound("reload.wav");
+	public static final Clip explode = newSound("explode.wav");
 	public Assets() {
 		
 	}
@@ -46,7 +50,7 @@ public class Assets {
 			System.out.println(url + " successfully loaded.");
 			loaded += loaded < totalImages ? 1 : 0;
 			System.out.println(loaded + " images loaded.");
-			playSound(newSound("gun.wav"), 100);
+			playSound(gunFire, 100);
 			return img;
 		} catch (Exception e) {
 			if (name.equals("MissingTexture.png")) {
@@ -63,6 +67,8 @@ public class Assets {
 			Clip clip = AudioSystem.getClip(); 
 			clip.open(in);
 			return clip;
+		} catch (NullPointerException e) {
+			return newSound("gun.wav");
 		} catch (UnsupportedAudioFileException e) {
 			System.out.println(name + " is unsupported");
 			System.exit(0);
@@ -101,6 +107,9 @@ public class Assets {
 		System.out.println("Loading Sound FX...");
 	}
 	public static void playSound(Clip clip, int volume) {
+		clip.stop();
+		clip.setFramePosition(0);
+		clip.setMicrosecondPosition(0);
 		volume += 2;
 		FloatControl gainControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
 		float range = gainControl.getMaximum() - gainControl.getMinimum();
@@ -111,8 +120,6 @@ public class Assets {
 			gain = gainControl.getMaximum();
 		}
 		gainControl.setValue(gain);
-		clip.setFramePosition(0);
-		clip.setMicrosecondPosition(0);
 		clip.start();
 	}
 	public static long[] readLongs(String fileName, int length) {

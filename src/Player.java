@@ -120,7 +120,7 @@ public class Player extends Entity {
 	public void fire() {
   	  if (System.currentTimeMillis() >= lastFire + fireRate) {
   		  Screen.entitiesToAdd.add(new Ammos((int) rect.getCenterX() + rect.width/3 * (Math.random() > 0.5? 1 : -1), (int) rect.y, 0f, 26f, dmg, team));
-  		  Assets.playSound(Assets.newSound("gun.wav"), dmg * 8);
+  		  Assets.playSound(Assets.gunFire, dmg * 8);
   		  lastFire = System.currentTimeMillis();
   	  }
     }
@@ -129,7 +129,7 @@ public class Player extends Entity {
 		shields -= amount;
 		if (shields < 0) {
 			hp -= hp > -shields ? -shields : hp;
-			Assets.playSound(Assets.newSound("hit.wav"), -shields * 32);
+			Assets.playSound(Assets.bulletHit, -shields * 32);
 			shields = 0;
 		}
 	}
@@ -141,7 +141,7 @@ public class Player extends Entity {
 	public void reload() {
 		if (!reloading && ammos != maxAmmos) {
 			reloading = true;
-			Assets.playSound(Assets.newSound("reload.wav"), 100);
+			Assets.playSound(Assets.reload, 100);
 			lastTurn = System.currentTimeMillis() + reloadTime;
 		}
 	}

@@ -17,7 +17,7 @@ public class Tank extends Player {
   		  Screen.entitiesToAdd.add(new Ammos((int) rect.getCenterX() + rect.width/3 * getBulletDir(), (int) rect.y, 0f, 26f, dmg, team));
   		  Screen.entitiesToAdd.add(new Ammos((int) rect.getCenterX(), (int) rect.getMaxY(), (float) ((Math.random() >= 0.5 ? 1 : -1) * (Math.random() * 5f)), -23f, dmg, team));
   		  ammos--;
-  		  Assets.playSound(Assets.newSound("gun.wav"), dmg * 12);
+  		  Assets.playSound(Assets.gunFire, dmg * 12);
   		  lastFire = System.currentTimeMillis();
   	  }
   	  if (System.currentTimeMillis() > lastTurn && reloading) {
