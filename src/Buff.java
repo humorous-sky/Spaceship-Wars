@@ -18,7 +18,8 @@ public class Buff {
 	 * @param img
 	 */
 	public Buff(int duration, BufferedImage img) {
-		
+		this.duration  =  duration;
+		this.img = img;
 	}
 	/**
 	 * Paints the image at the location of the entity
@@ -27,6 +28,7 @@ public class Buff {
 	 */
 	public void paint(Graphics g, Entity p) {
 		//use the static drawImage method
+		drawImage(p.x, p.y, p.rect.width, p.rect.height, 0f, img, g);
 	}
 	public void process(Entity p) {;
 		if (!Screen.paused) {
