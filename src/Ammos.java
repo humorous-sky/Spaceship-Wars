@@ -21,11 +21,11 @@ public class Ammos extends Entity {
 		g.setColor(team ? Color.green : Color.red);
 		if (Math.abs(sY) > Math.abs(sX)) {
 			for (int i = 0; i < super.rect.height; i ++) {
-				g.drawRect((int) (super.x + i * (sX/sY)), (int) super.y + i, super.rect.width, 1);
+				g.drawRect((int) (super.x + i * (sX/sY) - 0.5), (int) super.y + i, super.rect.width + 1, 1);
 			}	
 		} else {
 			for (int i = 0; i < super.rect.height; i ++) {
-				g.drawRect((int) super.x + i, (int) (super.y + i * (sY/sX)), 1, super.rect.width);
+				g.drawRect((int) super.x + i, (int) (super.y + i * (sY/sX) - 0.5), 1, super.rect.width + 1);
 			}
 		}
 	}
