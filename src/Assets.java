@@ -28,11 +28,15 @@ import java.io.BufferedWriter;
 public class Assets {
 	public static BufferedImage[] ships;
 	public static BufferedImage[] misc;
-	public static final int totalImages = Entity.refs.length * Entity.refs[0].length + 3 + Player.refs.length + 3;
+	public static final int totalImages = Entity.refs.length * Entity.refs[0].length + 3 + Player.refs.length + 3 /*miscellaneous*/;
 	public static int loaded = 0;
 	public static int[] prefs;
 	public static int[][] progress;
 	public static int[] keyBinds;
+	public static final Clip gunFire = newSound("gun.wav");
+	public static final Clip bulletHit = newSound("hit.wav");
+	public static final Clip reload = newSound("reload.wav");
+	public static final Clip explode = newSound("explode.wav");
 	public Assets() {
 		
 	}
@@ -46,6 +50,7 @@ public class Assets {
 			System.out.println(url + " successfully loaded.");
 			loaded += loaded < totalImages ? 1 : 0;
 			System.out.println(loaded + " images loaded.");
+			playSound(gunFire, 100);
 			return img;
 		} catch (Exception e) {
 			if (name.equals("MissingTexture.png")) {
@@ -57,15 +62,19 @@ public class Assets {
 	}
 	public static Clip newSound(String name) {
 		try {
-			AudioInputStream in = AudioSystem.getAudioInputStream(new File(SpaceshipWars.class.getResource("sounds/" + name).getPath()).getAbsoluteFile());
+			URL url = SpaceshipWars.class.getResource("sounds/" + name);
+			AudioInputStream in = AudioSystem.getAudioInputStream(url);
 			Clip clip = AudioSystem.getClip(); 
-			clip.open(in); 
+			clip.open(in);
 			return clip;
+		} catch (NullPointerException e) {
+			return newSound("gun.wav");
 		} catch (UnsupportedAudioFileException e) {
 			System.out.println(name + " is unsupported");
 			System.exit(0);
 			return null;
 		} catch (IOException e) {
+			e.printStackTrace();
 			System.out.println("Cannot find " + name);
 			System.exit(0);
 			return null;
@@ -76,10 +85,6 @@ public class Assets {
 		}
 	}
 	public static void loadImages() {
-		System.out.println("Loading Players...");
-		ships = new BufferedImage[]{newImage("Basic.png"), newImage("Speedy.png"), newImage("Tank.png"), newImage("Melee.png")};
-		System.out.println("Loading Miscellaneous...");
-		misc = new BufferedImage[]{newImage("Support.png"), newImage("Rage.png"), newImage("ShieldOrb.png")};
 		System.out.println("Loading Data..."); 
 		progress = new int[Entity.refs.length][25];
 		for (int i = 0; i < progress.length; i ++) {
@@ -91,16 +96,21 @@ public class Assets {
 			}
 			System.out.println();
 		}
-		prefs = readInts("prefs", 3);
+		prefs = readInts("prefs", 4);
+		if ((prefs[3] - 60) % 80 != 0) {
+			prefs[3] = 220;
+		}
 		keyBinds = readInts("Key Binds", 7);
-	}
-	public static void loadSounds() {
-		System.out.println("Loading Sound FX...");
-		ships = new BufferedImage[]{newImage("Basic.png"), newImage("Speedy.png"), newImage("Tank.png")};
+		System.out.println("Loading Players...");
+		ships = new BufferedImage[]{newImage("Basic.png"), newImage("Speedy.png"), newImage("Tank.png"), newImage("Melee.png")};
 		System.out.println("Loading Miscellaneous...");
 		misc = new BufferedImage[]{newImage("Support.png"), newImage("Rage.png"), newImage("ShieldOrb.png")};
 	}
+	public static void loadSounds() {
+		System.out.println("Loading Sound FX...");
+	}
 	public static void playSound(Clip clip, int volume) {
+		clip.stop();
 		volume += 2;
 		FloatControl gainControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
 		float range = gainControl.getMaximum() - gainControl.getMinimum();
@@ -111,9 +121,15 @@ public class Assets {
 			gain = gainControl.getMaximum();
 		}
 		gainControl.setValue(gain);
-		clip.stop();
+		clip.setFramePosition(0);
 		clip.setMicrosecondPosition(0);
-		clip.start();
+		for (int i = 0; !clip.isActive(); i ++) {
+			if (i > Assets.prefs[3]) {
+				System.err.println("Unable to play sound");
+				break;
+			}
+			clip.start();
+		}
 	}
 	public static long[] readLongs(String fileName, int length) {
 		DataInputStream in = null;

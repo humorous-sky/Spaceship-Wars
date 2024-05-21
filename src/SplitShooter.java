@@ -23,7 +23,8 @@ public class SplitShooter extends Entity {
 	  		for (double theta = 0.0; theta < 2 * Math.PI; theta += Math.PI/4) {
 				Screen.entitiesToAdd.add(new Ammos((int) rect.getCenterX(), (int) rect.getMaxY(), 5 * (float) Math.cos(theta), 5 * (float) Math.sin(theta), dmg, team));
 			}
-  			lastFire = System.currentTimeMillis();
+	  		Assets.playSound(Assets.gunFire, dmg * 8);
+	  		lastFire = System.currentTimeMillis();
   	  }
     }
 }

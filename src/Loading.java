@@ -24,6 +24,7 @@ public class Loading extends JPanel{
 			public void run() {
 				Assets.loadImages();
 				Entity.loadImages();
+				//Assets.loadSounds();
 				try {
 					Thread.sleep(500);
 				} catch (InterruptedException e) {}

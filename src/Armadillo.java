@@ -23,6 +23,7 @@ public class Armadillo extends Entity {
   		  Screen.entitiesToAdd.add(new Ammos((int) rect.getCenterX(), (int) rect.getMaxY(), 0f, 5f, dmg, team));
   		  Screen.entitiesToAdd.add(new Ammos((int) rect.getCenterX() - rect.width/6, (int) rect.getMaxY(), 0f, 5f, dmg, team));
   		  Screen.entitiesToAdd.add(new Ammos((int) rect.getCenterX() + rect.width/6, (int) rect.getMaxY(), 0f, 5f, dmg, team));
+  		Assets.playSound(Assets.gunFire, dmg * 3);
   		  lastFire = System.currentTimeMillis();
   	  }
   	  if (hp <= 15 && maxHp != 15) {

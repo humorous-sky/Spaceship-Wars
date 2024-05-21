@@ -23,6 +23,7 @@ public class MiniSplitShooter extends Entity {
 	  		for (double theta = 0.0; theta < 2 * Math.PI; theta += Math.PI/2) {
 				Screen.entitiesToAdd.add(new Ammos((int) rect.getCenterX(), (int) rect.getCenterY(), 5 * (float) Math.cos(theta), 5 * (float) Math.sin(theta), dmg, team));
 			}
+	  		Assets.playSound(Assets.gunFire, dmg * 4);
   			lastFire = System.currentTimeMillis();
   	  }
     }

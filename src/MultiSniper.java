@@ -21,6 +21,7 @@ public class MultiSniper extends Entity {
 		if (System.currentTimeMillis() >= lastFire + fireRate) {
   		  	Screen.entitiesToAdd.add(new Ammos((int) (rect.getCenterX() + rect.getWidth()/3), (int) rect.getMaxY(), 0f, 5f, dmg, team));
   		  	Screen.entitiesToAdd.add(new Ammos((int) (rect.getCenterX() - rect.getWidth()/3), (int) rect.getMaxY(), 0f, 5f, dmg, team));
+  		  	Assets.playSound(Assets.gunFire, dmg * 2);
   		  	lastFire = System.currentTimeMillis();
   	  	}
     }

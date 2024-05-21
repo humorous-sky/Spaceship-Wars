@@ -18,6 +18,7 @@ public class World2Boss extends Entity {
   			  Screen.score += hp > e.hp ? e.hp * s : hp * s;
   			  Screen.plr.a.increment(hp > e.hp ? e.hp : hp, 2);
   			  hp -= e.hp;
+  			  Assets.playSound(Assets.bulletHit, e.hp * 16);
   			  e.hp = 0;
   			  Screen.entitiesToRemove.add(e);
   			  lastDamaged = System.currentTimeMillis() + 50;
@@ -58,6 +59,7 @@ public class World2Boss extends Entity {
 		  Screen.entitiesToAdd.add(e);
 		  Screen.entitiesToAdd.add(new Ammos((int) rect.getCenterX() - rect.width/5, (int) rect.getMaxY(), 0f, 5f, dmg, team));
 		  Screen.entitiesToAdd.add(new Ammos((int) rect.getCenterX() + rect.width/5, (int) rect.getMaxY(), 0f, 5f, dmg, team));
+		  Assets.playSound(Assets.gunFire, dmg * 2);
 		  lastFire = System.currentTimeMillis();
   	  }
     }
