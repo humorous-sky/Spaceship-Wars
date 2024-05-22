@@ -24,6 +24,7 @@ public class Credits extends JPanel{
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				//navigate to a new Start() using the SpaceshipWars.navigate method
+				SpaceshipWars.navigate(currentScreen, new Start());
 			}
 
 			@Override
@@ -62,6 +63,12 @@ public class Credits extends JPanel{
         g.setFont(new Font("", Font.ROMAN_BASELINE, 10));
         g.drawString("fps: " + Math.round(SpaceshipWars.fps * 10) / 10.0,  X(5), Y(15));
         //set the font to a larger size
+        g.setFont(new Font("", Font.ROMAN_BASELINE, 100));
+        g.drawString("CREDITS",  X(400), Y(150));
+        g.setFont(new Font("", Font.ROMAN_BASELINE, 40));
+        g.drawString("Jonathan Zhong: Senior Game Dev, Presentation, Educated Us All",  X(75), Y(400));
+        g.drawString("Zirui Jia: Junior Game Dev, Presentation",  X(75), Y(500));
+        g.drawString("Wesley Lu: Junior Game Dev, Made this credits page, Presentation",  X(75), Y(600));
         //draw the title and all credits
         for (int i = 0; i < this.getComponentCount(); i ++) {
         	if (this.getComponent(i) instanceof CustomButton) {
