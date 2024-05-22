@@ -60,9 +60,9 @@ public class Entity {
       }
    
       public void paint (Graphics g) {
-            //drawImage(x, y, rect.width, rect.height, 0f, img, g);
-            g.setColor(Color.white);
-            g.drawRect((int) x, (int) y, rect.width, rect.height);
+            drawImage(x, y, rect.width, rect.height, 0f, img, g);
+            //g.setColor(Color.white);
+            //g.drawRect((int) x, (int) y, rect.width, rect.height);
             for (Buff b: buffs) {
             	b.paint(g, this);
             }
