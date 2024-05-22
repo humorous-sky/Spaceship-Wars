@@ -44,7 +44,7 @@ public class Buff {
 	}
 	public static void loadImages() {
    	  	System.out.println("Loading Effects...");
-   	  	imgs = new BufferedImage[]{Assets.newImage("Snowflake.png")};
+   	  	imgs = new BufferedImage[]{Assets.newImage("Snowflakes.png")};
     }
 	public static void drawImage(double x, double y, double width, double height, float direction, BufferedImage image, Graphics g) {
    	  	AffineTransform at = new AffineTransform();

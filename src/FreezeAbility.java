@@ -11,7 +11,7 @@ public class FreezeAbility extends Ability {
 		//random of 5000-10000 milliseconds to each non-player entity 
 		for(Entity a: Screen.entities) {
 			if(! (a instanceof Player)) {
-				a.buffs.add(new Freeze((int)(Math.random()*5001 + 5000)));
+				a.buffs.add(new Freeze((int)(Math.random()*5001 + 10000)));
 			}
 		}
 	}
