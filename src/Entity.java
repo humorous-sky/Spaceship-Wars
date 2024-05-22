@@ -76,9 +76,15 @@ public class Entity {
     		  buffs.remove(b);
     	  }
     	  buffsToRemove.clear();
-    	  diffFire = System.currentTimeMillis() - lastFire;
-    	  diffTurn = System.currentTimeMillis() - lastTurn;
-    	  diffMove = System.currentTimeMillis() - lastMove;
+    	  if (currentSpeed > 0f) {
+    		  diffFire = System.currentTimeMillis() - lastFire;
+    		  diffTurn = System.currentTimeMillis() - lastTurn;
+    		  diffMove = System.currentTimeMillis() - lastMove;
+    	  } else {
+    		  lastFire = System.currentTimeMillis() - diffFire;
+      		  lastTurn = System.currentTimeMillis() - diffTurn;
+      		  lastMove = System.currentTimeMillis() - diffMove;
+    	  }  
     	  for (Entity e: Screen.entities) {
     		  if (System.currentTimeMillis() > spawnTime + 50 && hp > 0 && e.hp > 0 && e instanceof Ammos && e.team != this.team && e.rect.intersects(this.rect)) {
     			  Screen.score += hp <= thres ? (hp > e.hp ? e.hp * s : hp * s) : 0;
