@@ -15,7 +15,7 @@ public class ShieldShip extends Entity {
 	}
 	@Override
 	public void paint(Graphics g) {
-		drawImage(x, y, rect.width, rect.height, 0f, img, g);
+		super.paint(g);
 		if (shield != null) {
 			shield.paint(g);
 		}

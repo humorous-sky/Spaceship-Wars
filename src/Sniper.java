@@ -12,9 +12,5 @@ public class Sniper extends Entity {
 	public Sniper(int x, int y) {
 		super(x, y, WIDTH, HEIGHT, HP, DMG, SPEED, FIRERATE, false, imgs[1][0], 3);
 	}
-	@Override
-	public void paint(Graphics g) {
-		drawImage(x, y, rect.width, rect.height, 0f, img, g);
-	}
 	
 }

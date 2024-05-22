@@ -13,11 +13,6 @@ public class MiniSplitShooter extends Entity {
 		super(x, y, WIDTH, HEIGHT, HP, DMG, SPEED, FIRERATE, false, imgs[3][0], 4);
 	}
 	@Override
-	public void paint(Graphics g) {
-		drawImage(x, y, rect.width, rect.height, 0f, img, g);
-		
-	}
-	@Override
 	public void fire() {
   	  if (System.currentTimeMillis() >= lastFire + fireRate) {
 	  		for (double theta = 0.0; theta < 2 * Math.PI; theta += Math.PI/2) {

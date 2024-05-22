@@ -12,10 +12,7 @@ public class Spawner extends Entity {
 	public Spawner(int x, int y) {
 		super(x, y, WIDTH, HEIGHT, HP, DMG, SPEED, FIRERATE, false, imgs[0][4], 8);
 	}
-	@Override
-	public void paint(Graphics g) {
-		drawImage(x, y, rect.width, rect.height, 0f, img, g);
-	}
+
 	
 	@Override
 	public void fire() {

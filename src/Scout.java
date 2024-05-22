@@ -12,8 +12,4 @@ public class Scout extends Entity {
 	public Scout(int x, int y) {
 		super(x, y, WIDTH, HEIGHT, HP, DMG, SPEED, FIRERATE, false, imgs[0][1], 6);
 	}
-	@Override
-	public void paint(Graphics g) {
-		drawImage(x, y, rect.width, rect.height, 0f, img, g);
-	}
 }

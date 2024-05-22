@@ -15,7 +15,7 @@ public class Recycler extends Entity {
 	}
 	@Override
 	public void paint(Graphics g) {
-		drawImage(x, y, rect.width, rect.height, 0f, img, g);
+		super.paint(g);
 		if (Screen.plr.hp < php) {
 			heal(HP);
 		}

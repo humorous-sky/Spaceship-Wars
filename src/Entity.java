@@ -83,7 +83,6 @@ public class Entity {
     	  } else {
     		  lastFire = System.currentTimeMillis() - diffFire;
       		  lastTurn = System.currentTimeMillis() - diffTurn;
-      		  lastMove = System.currentTimeMillis() - diffMove;
     	  }  
     	  for (Entity e: Screen.entities) {
     		  if (System.currentTimeMillis() > spawnTime + 50 && hp > 0 && e.hp > 0 && e instanceof Ammos && e.team != this.team && e.rect.intersects(this.rect)) {
@@ -101,7 +100,9 @@ public class Entity {
     	  }
     	  if (System.currentTimeMillis() >= lastMove + 26) {
     		  y += currentSpeed * Screen.aY(1) * (team ? -1 : 1);
-    		  x += dir * Screen.aX(1);
+    		  if (currentSpeed > 0f) {
+    			  x += dir * Screen.aX(1);
+    		  }
     		  if (x < Screen.min) {
     			  x  = Screen.min;
     		  }

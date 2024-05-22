@@ -14,10 +14,6 @@ public class Shield extends Entity {
 		super(x, y, WIDTH, HEIGHT, HP, DMG, SPEED, FIRERATE, false, Assets.misc[2], 0);
 	}
 	@Override
-	public void paint(Graphics g) {
-		drawImage(x, y, rect.width, rect.height, 0f, img, g);
-	}
-	@Override
 	public void fire() {}
 	@Override
 	public void drawAnim(Graphics g) {
