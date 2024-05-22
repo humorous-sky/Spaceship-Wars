@@ -10,7 +10,7 @@ public class Freeze extends Buff{
 	 * @param duration
 	 */
 	public Freeze(int duration) {
-		super(duration, imgs[0]);
+		super(duration, imgs[0]); 
 	}
 	/**
 	 * Sets the entity's currentSpeed variable to 0f

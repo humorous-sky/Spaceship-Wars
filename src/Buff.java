@@ -17,7 +17,7 @@ public class Buff {
 	 * @param duration
 	 * @param img
 	 */
-	public Buff(int duration, BufferedImage img) { 
+	public Buff(int duration, BufferedImage img) {  
 		this.duration  =  duration;
 		this.img = img;
 	}
