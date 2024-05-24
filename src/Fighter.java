@@ -12,9 +12,4 @@ public class Fighter extends Entity {
 	public Fighter(int x, int y) {
 		super(x, y, WIDTH, HEIGHT, HP, DMG, SPEED, FIRERATE, false, imgs[0][0], 3);
 	}
-	@Override
-	public void paint(Graphics g) {
-		drawImage(x, y, rect.width, rect.height, 0f, img, g);
-	}
-	
 }

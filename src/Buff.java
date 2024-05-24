@@ -17,8 +17,9 @@ public class Buff {
 	 * @param duration
 	 * @param img
 	 */
-	public Buff(int duration, BufferedImage img) {
-		
+	public Buff(int duration, BufferedImage img) {  
+		this.duration  =  duration;
+		this.img = img;
 	}
 	/**
 	 * Paints the image at the location of the entity
@@ -27,6 +28,7 @@ public class Buff {
 	 */
 	public void paint(Graphics g, Entity p) {
 		//use the static drawImage method
+		drawImage(p.x, p.y, p.rect.width, p.rect.height, 0f, img, g);
 	}
 	public void process(Entity p) {;
 		if (!Screen.paused) {
@@ -42,7 +44,7 @@ public class Buff {
 	}
 	public static void loadImages() {
    	  	System.out.println("Loading Effects...");
-   	  	imgs = new BufferedImage[]{Assets.newImage("Snowflake.png")};
+   	  	imgs = new BufferedImage[]{Assets.newImage("Snowflakes.png")};
     }
 	public static void drawImage(double x, double y, double width, double height, float direction, BufferedImage image, Graphics g) {
    	  	AffineTransform at = new AffineTransform();

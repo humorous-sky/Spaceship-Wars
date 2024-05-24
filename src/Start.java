@@ -154,6 +154,40 @@ public class Start extends JPanel{
 	
 		});
 		binding.get("Settings").setFont(new Font(Font.SANS_SERIF, Font.ROMAN_BASELINE, 38));
+		addButton("Credits", "Credits", X(880), Y(860), X(100), Y(50));
+		binding.get("Credits").addMouseListener(new MouseListener() {
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				SpaceshipWars.navigate(currentScreen, new Credits());
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				
+				
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				
+				
+			}
+	
+		});
+		binding.get("Credits").setFont(new Font(Font.SANS_SERIF, Font.ROMAN_BASELINE, 38));
 	}
 	@Override
 	public void paint(Graphics g) {

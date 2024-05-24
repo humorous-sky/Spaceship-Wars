@@ -13,11 +13,6 @@ public class Rage extends Entity {
 		super(x, y, WIDTH, HEIGHT, HP, DMG, SPEED, FIRERATE, false, imgs[3][1], 5);
 	}
 	@Override
-	public void paint(Graphics g) {
-		drawImage(x, y, rect.width, rect.height, 0f, img, g);
-		
-	}
-	@Override
 	public void fire() {
   	  if (System.currentTimeMillis() >= lastFire + fireRate) {
   		  Screen.entitiesToAdd.add(new Ammos((int) rect.getCenterX(), (int) rect.getMaxY(), 0f, 5f, dmg, team));
