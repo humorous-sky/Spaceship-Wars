@@ -5,7 +5,7 @@ public class Rage extends Entity {
 	public static final int DMG = 6;
 	public static final int HP = 20;
 	public static final int AMMOS = 3;
-	public static final int FIRERATE = 1150;
+	public static final int FIRERATE = 1350;
 	public static final String DESC = "This looks familier..."; 
 	public static final int WIDTH = 60;
 	public static final int HEIGHT = 50;

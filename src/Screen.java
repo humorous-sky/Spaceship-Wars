@@ -204,6 +204,9 @@ public class Screen extends JPanel{
         		e.lastMove = System.currentTimeMillis() - e.diffMove;
         		lastSpawn = System.currentTimeMillis() - diffSpawn;
         		lastShield = System.currentTimeMillis() - diffShield;
+        		for (Buff b: e.buffs) {
+        			b.setDiffs();
+        		}
         	}
         	if (e.frame < 1.6) {
         		e.paint(g);

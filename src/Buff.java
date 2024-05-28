@@ -34,13 +34,14 @@ public class Buff {
 		if (!Screen.paused) {
 			diffSpawn = System.currentTimeMillis() - spawnTime;
 			diffProcess = System.currentTimeMillis() - lastProcess;
-		} else {
-			spawnTime = System.currentTimeMillis() - diffSpawn;
-			lastProcess = System.currentTimeMillis() - diffProcess;
-		}
+		} 
 		if (System.currentTimeMillis() > spawnTime + duration) {
 			p.buffsToRemove.add(this);
 		}
+	}
+	public void setDiffs() {
+		spawnTime = System.currentTimeMillis() - diffSpawn;
+		lastProcess = System.currentTimeMillis() - diffProcess;
 	}
 	public static void loadImages() {
    	  	System.out.println("Loading Effects...");
