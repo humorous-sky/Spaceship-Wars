@@ -96,8 +96,8 @@ public class Assets {
 			}
 			System.out.println();
 		}
-		prefs = readInts("prefs", 4);
-		if ((prefs[3] - 60) % 80 != 0) {
+		prefs = readInts("prefs", 5);
+		if ((prefs[3] - 60) % 80 != 0 && (prefs[3] < 60 || prefs[3] > 380)) {
 			prefs[3] = 220;
 		}
 		keyBinds = readInts("Key Binds", 7);

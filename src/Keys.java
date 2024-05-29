@@ -26,7 +26,11 @@ public class Keys implements KeyListener{
   	  			right = true;
 			} else if (e.getKeyCode() == Assets.keyBinds[4]) {
   	  			if (SpaceshipWars.s instanceof Screen) {
-  	  				Screen.plr.fire = !Screen.plr.fire;
+  	  				if (Assets.prefs[4] != 0) {
+  	  					Screen.plr.fire = !Screen.plr.fire;
+  	  				} else {
+  	  					Screen.plr.fire = true; 
+  	  				}
   	  			}
 			} else if (e.getKeyCode() == Assets.keyBinds[5]) {
   	  			if (SpaceshipWars.s instanceof Screen) {
@@ -52,7 +56,13 @@ public class Keys implements KeyListener{
 	  			down = false;
 			} else if (e.getKeyCode() == Assets.keyBinds[3]) {
 	  			right = false;
-			} else if (e.getKeyCode() == Assets.keyBinds[6]) {
+			} else if (e.getKeyCode() == Assets.keyBinds[4]) {
+  	  			if (SpaceshipWars.s instanceof Screen) {
+  	  				if (Assets.prefs[4] == 0) {
+  	  					Screen.plr.fire = false;
+  	  				} 
+  	  			}
+			}else if (e.getKeyCode() == Assets.keyBinds[6]) {
 				aim = false;
 				activate = true;
 			} 

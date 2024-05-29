@@ -66,9 +66,12 @@ public class Credits extends JPanel{
         g.setFont(new Font("", Font.ROMAN_BASELINE, 100));
         g.drawString("CREDITS",  X(400), Y(150));
         g.setFont(new Font("", Font.ROMAN_BASELINE, 40));
-        g.drawString("Jonathan Zhong: Senior Game Dev, Presentation, Educated Us All",  X(75), Y(400));
-        g.drawString("Zirui Jia: Junior Game Dev, Presentation",  X(75), Y(500));
-        g.drawString("Wesley Lu: Junior Game Dev, Made this credits page, Presentation",  X(75), Y(600));
+        g.drawString("Jonathan Zhong: Senior Game Dev, Presentation, Educated Us All,",  X(75), Y(250));
+        g.drawString("World 4 Aliens, Melee Ship, and Sound Effects.",  X(75), Y(300));
+        g.drawString("Zirui Jia: Junior Game Dev, Presentation,",  X(75), Y(400));
+        g.drawString("Freeze Ability, Buffs Superclass, Freeze Buff, and Hold Fire Option. ",  X(75), Y(450));
+        g.drawString("Wesley Lu: Junior Game Dev, Made this credits page, Presentation,",  X(75), Y(550));
+        g.drawString("and Hold Fire Option. ",  X(75), Y(600));
         //draw the title and all credits
         for (int i = 0; i < this.getComponentCount(); i ++) {
         	if (this.getComponent(i) instanceof CustomButton) {

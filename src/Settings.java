@@ -161,56 +161,75 @@ public class Settings extends JPanel{
 			binding.get("Key" + i).setFont(new Font(Font.SANS_SERIF, Font.ROMAN_BASELINE, 26));
 		}
 		String[] list = {"Potato", "Fine", "Decent", "Better", "Best"};
-		for (int i = 1; i <= list.length; i ++) {
-			String cur = list[i - 1];
-			int j = (i - 1) * 80 + 60;
-			addButton(cur, cur, X(330 + i * 100), Y(515), X(80), Y(50));
-			binding.get(cur).addMouseListener(new MouseListener() {
-				@Override
-				public void mouseClicked(MouseEvent e) {
-					Assets.prefs[3] = j; 
-					for (String s : list) {
-						if (s.equals(cur)) {
-							((CustomButton) binding.get(s)).setColor(Color.red);
-						} else {
-							((CustomButton) binding.get(s)).setColor(Color.green);
-						}
-					}
-				}
-	
-				@Override
-				public void mousePressed(MouseEvent e) {
-					// TODO Auto-generated method stub
-					
-				}
-	
-				@Override
-				public void mouseReleased(MouseEvent e) {
-					// TODO Auto-generated method stub
-					
-				}
-	
-				@Override
-				public void mouseEntered(MouseEvent e) {
-					
-					
-				}
-	
-				@Override
-				public void mouseExited(MouseEvent e) {
-					
-					
-				}
-		
-				});
-			binding.get(cur).setFont(new Font(Font.SANS_SERIF, Font.ROMAN_BASELINE, 38));
-			((CustomButton) binding.get(cur)).setTextColor(Color.white);
-			if (Assets.prefs[3] == j) {
-				((CustomButton) binding.get(cur)).setColor(Color.red);
-			} else {
-				((CustomButton) binding.get(cur)).setColor(Color.green);
+		addButton("SoundQuality", list[(Assets.prefs[3] - 60)/80], X(460), Y(515), X(80), Y(50));
+		binding.get("SoundQuality").addMouseListener(new MouseListener() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				Assets.prefs[3] += 80;
+				Assets.prefs[3] = ((Assets.prefs[3] - 60) % 400) + 60;
+				((CustomButton) binding.get("SoundQuality")).setText(list[(Assets.prefs[3] - 60)/80]);
 			}
-		}
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				
+				
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				
+				
+			}
+	
+		});
+		binding.get("SoundQuality").setFont(new Font(Font.SANS_SERIF, Font.ROMAN_BASELINE, 30));
+		addButton("FireOption", Assets.prefs[4] == 0 ? "Hold Fire" : "Toggle Fire", X(800), Y(515), X(100), Y(50));
+		binding.get("FireOption").addMouseListener(new MouseListener() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				Assets.prefs[4] = Assets.prefs[4] == 0 ? 1 : 0;
+				((CustomButton) binding.get("FireOption")).setText(Assets.prefs[4] == 0 ? "Hold Fire" : "Toggle Fire");
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				
+				
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				
+				
+			}
+	
+		});
+		binding.get("FireOption").setFont(new Font(Font.SANS_SERIF, Font.ROMAN_BASELINE, 30));
 	}
 	@Override
 	public void paint(Graphics g) {
@@ -231,6 +250,7 @@ public class Settings extends JPanel{
         g.drawString(KeyEvent.getKeyText(Assets.keyBinds[5]) + " - Reload Bullets ", X(260), Y(430));
         g.drawString(KeyEvent.getKeyText(Assets.keyBinds[6]) + " - Activate Ability ", X(260), Y(480));
         g.drawString("Sound Quality:", X(260), Y(550));
+        g.drawString("Fire Option:", X(600), Y(550));
         g.drawString("Fps Limit: " + (Assets.prefs[2] != -6 ? Math.round(10000.0/(Assets.prefs[2] + 6))/10.0 : "No Limit"), (X(1000) - g.getFontMetrics().stringWidth("Fps Limit: " + (Assets.prefs[2] != -6 ? Math.round(10000.0/(Assets.prefs[2] + 6))/10.0 : "No Limit")))/2, Y(695));
         for (int i = 0; i < this.getComponentCount(); i ++) {
         	if (this.getComponent(i) instanceof CustomButton) {
