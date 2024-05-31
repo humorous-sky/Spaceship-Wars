@@ -72,6 +72,7 @@ public class Credits extends JPanel{
         g.drawString("Freeze Ability, Buffs Superclass, Freeze Buff, and Hold Fire Option. ",  X(75), Y(450));
         g.drawString("Wesley Lu: Junior Game Dev, Made this credits page, Presentation,",  X(75), Y(550));
         g.drawString("and Hold Fire Option. ",  X(75), Y(600));
+        g.drawString("Sounds are sourced from copyright-free online sounds.",  X(75), Y(700));
         //draw the title and all credits
         for (int i = 0; i < this.getComponentCount(); i ++) {
         	if (this.getComponent(i) instanceof CustomButton) {
