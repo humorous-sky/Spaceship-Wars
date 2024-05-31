@@ -19,9 +19,10 @@ public class Player extends Entity {
 	public int shields = 0;
 	public Ability a;
 	Clip c = Assets.newSound("gun.wav");
-	public static final Class[] refs = {Basic.class, Speedy.class, Tank.class, Melee.class};
+	public static final Class[] refs = {Basic.class, Speedy.class, Tank.class, Melee.class, MultiDirection.class};
 	public static final String[] descriptions = {"All purpose ship for anything!", 
-			"Small, fast, and versatile.", "Big and powerful. Slow but has a gun in the back. ", "Has a limited bullet range. Better fight up close!"};
+			"Small, fast, and versatile.", "Big and powerful. Slow but has a gun in the back. ", "Has a limited bullet range. Better fight up close!",
+			"Shoots in 3 directions."};
 	public Player(int x, int y, int width, int height, int hp, int dmg, float speed, int fireRate, int ammos, int reloadTime, Ability a, BufferedImage img) {
 		super(x, y, width, height, hp, dmg, speed, fireRate, true, img, 1);
 		this.ammos = ammos;

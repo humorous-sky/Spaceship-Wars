@@ -102,7 +102,7 @@ public class Assets {
 		}
 		keyBinds = readInts("Key Binds", 7);
 		System.out.println("Loading Players...");
-		ships = new BufferedImage[]{newImage("Basic.png"), newImage("Speedy.png"), newImage("Tank.png"), newImage("Melee.png")};
+		ships = new BufferedImage[]{newImage("Basic.png"), newImage("Speedy.png"), newImage("Tank.png"), newImage("Melee.png"), newImage("MultiDirection.png")};
 		System.out.println("Loading Miscellaneous...");
 		misc = new BufferedImage[]{newImage("Support.png"), newImage("Rage.png"), newImage("ShieldOrb.png")};
 	}
