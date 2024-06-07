@@ -87,7 +87,7 @@ public class Entity {
     	  for (Entity e: Screen.entities) {
     		  if (System.currentTimeMillis() > spawnTime + 50 && hp > 0 && e.hp > 0 && e instanceof Ammos && e.team != this.team && e.rect.intersects(this.rect)) {
     			  Screen.score += hp <= thres ? (hp > e.hp ? e.hp * s : hp * s) : 0;
-    			  Screen.plr.a.increment(hp > e.hp ? e.hp : hp, 2);
+    			  Screen.plr.a.increment(this instanceof BossEntity ? 0 : (hp > e.hp ? e.hp : hp), 2);
     			  takeDamage(e.hp);
     			  e.hp = 0;
     			  Screen.entitiesToRemove.add(e);
@@ -165,7 +165,7 @@ public class Entity {
     	  if (amount <= 0 || hp <= 0) {
     		  return;
     	  }
-    	  thres = hp;
+    	  thres = hp > thres ? thres : hp;
     	  hp = hp + amount > maxHp? maxHp : hp + amount;
     	  lastHealed = System.currentTimeMillis() + 80;
       }

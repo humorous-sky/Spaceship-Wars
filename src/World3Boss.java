@@ -2,9 +2,9 @@ import java.awt.Graphics;
 
 public class World3Boss extends BossEntity {
 
-
+	private Shield shield;
 	public World3Boss(int x, int y) {
-		super(x, y, 260, 210, 4600, 25, 0.6f, 8800, false, imgs[2][5], 5);
+		super(x, y, 260, 210, 4600, 25, 0.6f, 8500, false, imgs[2][5], 5);
 	}
 	@Override
 	public void fire() {
@@ -15,14 +15,54 @@ public class World3Boss extends BossEntity {
 		  Screen.entitiesToAdd.add(new Ammos((int) rect.getCenterX() - rect.width/5, (int) rect.getMaxY(), 0f, 5f, dmg, team));
 		  Screen.entitiesToAdd.add(new Ammos((int) rect.getCenterX() + rect.width/5, (int) rect.getMaxY(), 0f, 5f, dmg, team));
 		  for (Entity E: Screen.entities) {
-	  			if (E.team == team && E != this) {
-	  				E.heal(E.maxHp);
-	  			} else if (E == this) {
-	  				E.heal(50);
+	  			if (E.team == team && !(E instanceof BossEntity)) {
+	  				E.heal(15);
+	  			} else if (E instanceof BossEntity) {
+	  				E.heal(5);
 	  			}
 	  		}
 		  Assets.playSound(Assets.gunFire, dmg * 2);
+		  if (shield == null) {
+  			  shield = new Shield(rect.x - Screen.X(60), rect.y - Screen.Y(85), 380, 380);
+  		  } else if (shield.hp > 0) {
+  			  shield.heal(100);
+  		  }
 		  lastFire = System.currentTimeMillis();
   	  }
     }
+	@Override
+	public void paint(Graphics g) {
+		super.paint(g);
+		if (shield != null) {
+			shield.paint(g);
+		}
+	}
+	@Override
+	public void move() {
+		super.move();
+		if (shield != null) {
+			shield.move();
+			shield.rect.x = rect.x - Screen.X(60);
+			shield.rect.y = rect.y - Screen.Y(85);
+			shield.x = x - Screen.X(60);
+			shield.y = y - Screen.Y(85);
+			if (shield.frame >= 2.85) {
+				shield = null;
+			}
+		}
+	}
+	@Override
+	public void drawAnim(Graphics g) {
+		super.drawAnim(g);
+		if (shield != null) {
+			shield.drawAnim(g);
+		}
+	}
+	@Override
+	public void heal(int amount) {
+		super.heal(amount);
+		if (shield != null) {
+			shield.heal(amount);
+		}	
+	}
 }

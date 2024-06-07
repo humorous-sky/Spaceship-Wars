@@ -1,3 +1,4 @@
+import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 
 public class BossEntity extends Entity {
@@ -13,5 +14,11 @@ public class BossEntity extends Entity {
 		rect.y = Y;
 		y = Y;
 		super.move();	
+	}
+	@Override
+	public void paint(Graphics g) {
+		super.paint(g);
+		g.setColor(Player.getBarColor(hp, maxHp));
+		g.fillRect(rect.x, (int) rect.getMaxY() + 10,(int) (rect.width * ((double) hp/maxHp)), 5);
 	}
 }

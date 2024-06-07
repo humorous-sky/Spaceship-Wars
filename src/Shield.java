@@ -13,6 +13,9 @@ public class Shield extends Entity {
 	public Shield(int x, int y) {
 		super(x, y, WIDTH, HEIGHT, HP, DMG, SPEED, FIRERATE, false, Assets.misc[2], 0);
 	}
+	public Shield(int x, int y, int width, int height) {
+		super(x, y, width, height, HP, DMG, SPEED, FIRERATE, false, Assets.misc[2], 0);
+	}
 	@Override
 	public void fire() {}
 	@Override
