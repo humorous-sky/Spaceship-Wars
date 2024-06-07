@@ -10,7 +10,7 @@ public class Ability {
 			"Shoots a circle of bullets around you. Recharges every 15 ships destroyed. ", 
 			"Instantly spawns 5 robot ships that fight for you. Recharges every 800 damage dealt. ",
 			"Instantly gain full 50 shields. Recharges every 500 damage dealt.",
-			"Freezes all enemies for a random of 8-13 seconds. Recharges every 15 ships destroyed."};
+			"Freezes all enemies and slows bosses for a random of 8-13 seconds. Recharges every 15 ships destroyed."};
 	public Ability(int option, int value) {
 		this.option = option;
 		this.value = value;

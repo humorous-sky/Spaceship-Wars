@@ -124,7 +124,7 @@ public class Assets {
 			if (!played.contains(soundList.get(0))) {
 				play(soundList.get(0), volumeList.get(0));
 				played.add(soundList.get(0));
-			}
+			} 
 			soundList.remove(0);
 			volumeList.remove(0);
 		}

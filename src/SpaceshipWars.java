@@ -17,6 +17,7 @@ public class SpaceshipWars {
     //sets up fps calculation 
     static int frames = 0;
     static long lastUpdate = System.currentTimeMillis();
+    static long lastSound = System.currentTimeMillis();
     static long startTime = System.currentTimeMillis();
     private static long lastNavigate = System.currentTimeMillis() - 1000;
     static double fps = 15.0;
@@ -76,6 +77,11 @@ public class SpaceshipWars {
                       fps = frames/((System.currentTimeMillis() - lastUpdate)/1000.0);
                       lastUpdate = System.currentTimeMillis(); 
                       frames = 0;
+              }
+              if (System.currentTimeMillis() >= lastSound + 100) {
+                  //calculates fps
+                  Assets.playAll();
+                  lastSound = System.currentTimeMillis(); 
               }
               //paints the screen
               s.repaint();

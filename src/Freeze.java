@@ -19,6 +19,10 @@ public class Freeze extends Buff{
 	@Override
 	public void process(Entity p) {;
 		super.process(p); //leave this line as is
-		p.currentSpeed = 0f; 
+		if (p instanceof BossEntity) {
+			p.currentSpeed = p.speed/2;
+		} else {
+			p.currentSpeed = 0f;
+		}
 	}
 }

@@ -16,7 +16,7 @@ public class Healer extends Entity {
 	public void fire() {
   	  	if (System.currentTimeMillis() >= lastFire + fireRate) {
   	  		for (Entity e: Screen.entities) {
-  	  			if (!e.team) {
+  	  			if (e.team == team) {
   	  				e.heal(15);
   	  			}
   	  		}
