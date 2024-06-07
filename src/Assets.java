@@ -13,6 +13,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.URL;
+import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
 import javax.sound.sampled.AudioInputStream;
@@ -37,6 +38,8 @@ public class Assets {
 	public static final Clip bulletHit = newSound("hit.wav");
 	public static final Clip reload = newSound("reload.wav");
 	public static final Clip explode = newSound("explode.wav");
+	private static ArrayList<Clip> soundList= new ArrayList<Clip>();
+	private static ArrayList<Integer> volumeList= new ArrayList<Integer>();
 	public Assets() {
 		
 	}
@@ -109,7 +112,26 @@ public class Assets {
 	public static void loadSounds() {
 		System.out.println("Loading Sound FX...");
 	}
+	
 	public static void playSound(Clip clip, int volume) {
+		soundList.add(clip);
+		volumeList.add(volume);
+	}
+	
+	public static void playAll() {
+		ArrayList<Clip> played = new ArrayList<Clip>();
+		while (soundList.size() > 0) {
+			if (!played.contains(soundList.get(0))) {
+				play(soundList.get(0), volumeList.get(0));
+				played.add(soundList.get(0));
+			}
+			soundList.remove(0);
+			volumeList.remove(0);
+		}
+		played.clear();
+	}
+	
+	public static void play(Clip clip, int volume) {
 		clip.stop();
 		volume += 2;
 		FloatControl gainControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
