@@ -66,6 +66,7 @@ public class End extends JPanel{
 	
 		});
 		binding.get("ReturnButton").setFont(new Font(Font.SANS_SERIF, Font.ROMAN_BASELINE, 38));
+		SpaceshipWars.saveData();
 	}
 	@Override
 	public void paint(Graphics g) {
