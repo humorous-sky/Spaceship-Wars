@@ -41,7 +41,7 @@ public class Shield extends Entity {
    	  diffMove = System.currentTimeMillis() - lastMove;
    	  for (Entity e: Screen.entities) {
    		  if (hp > 0 && e.hp > 0 && e instanceof Ammos && e.team != this.team && e.rect.intersects(this.rect)) {
-   			  Screen.plr.a.increment(hp > e.hp ? e.hp : hp, 2);
+   			  //Screen.plr.a.increment(hp > e.hp ? e.hp : hp, 2);
    			  hp -= e.hp;
    			  e.hp = 0;
    			  Screen.entitiesToRemove.add(e);

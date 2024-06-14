@@ -23,7 +23,7 @@ public class World3Boss extends BossEntity {
 	  		}
 		  Assets.playSound(Assets.gunFire, dmg * 2);
 		  if (shield == null) {
-  			  shield = new Shield(rect.x - Screen.X(60), rect.y - Screen.Y(85), 380, 380);
+  			  shield = new Shield(rect.x - Screen.X(25), rect.y - Screen.Y(25), 310, 260);
   		  } else if (shield.hp > 0) {
   			  shield.heal(100);
   		  }
@@ -42,10 +42,10 @@ public class World3Boss extends BossEntity {
 		super.move();
 		if (shield != null) {
 			shield.move();
-			shield.rect.x = rect.x - Screen.X(60);
-			shield.rect.y = rect.y - Screen.Y(85);
-			shield.x = x - Screen.X(60);
-			shield.y = y - Screen.Y(85);
+			shield.rect.x = rect.x - Screen.X(25);
+			shield.rect.y = rect.y - Screen.Y(25);
+			shield.x = x - Screen.X(25);
+			shield.y = y - Screen.Y(25);
 			if (shield.frame >= 2.85) {
 				shield = null;
 			}

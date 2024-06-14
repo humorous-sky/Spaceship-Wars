@@ -1,3 +1,4 @@
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 
@@ -20,5 +21,9 @@ public class BossEntity extends Entity {
 		super.paint(g);
 		g.setColor(Player.getBarColor(hp, maxHp));
 		g.fillRect(rect.x, (int) rect.getMaxY() + 10,(int) (rect.width * ((double) hp/maxHp)), 5);
+		g.setColor(Color.black);
+		for (int cur = 460; cur < maxHp; cur += 460) {
+			g.fillRect(rect.x + (int) (rect.width * ((double) cur/maxHp)), (int) rect.getMaxY() + 10, 2, 5);
+		}
 	}
 }
