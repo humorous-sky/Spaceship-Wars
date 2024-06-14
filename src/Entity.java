@@ -42,7 +42,7 @@ public class Entity {
     		  							{Fighter.class, Scout.class, MediumFighter.class, Carrier.class, Spawner.class, World1Boss.class},
       									{Sniper.class, Accurate.class, MoreAccurate.class, MultiSniper.class, SnipeLead.class, World2Boss.class},
     		  							{Recycler.class, Armadillo.class, SelfRepair.class, ShieldShip.class, Healer.class, World3Boss.class},
-    		  							{MiniSplitShooter.class, Rage.class, Minigunner.class, SplitShooter.class, HeavySplitShooter.class, null}};
+    		  							{MiniSplitShooter.class, Rage.class, Minigunner.class, SplitShooter.class, HeavySplitShooter.class, World4Boss.class}};
       public Entity(int x, int y, int width, int height, int hp, int dmg, float speed, int fireRate, boolean team, BufferedImage img, int s) {
           this.x = x;
           this.y = y;
@@ -195,7 +195,7 @@ public class Entity {
 				Assets.newImage("Healer.png"), Assets.newImage("World3Boss.png")}, 
 				{Assets.newImage("MiniSplit.png"), Assets.newImage("Rage.png"),
 				Assets.newImage("Minigun.png"), Assets.newImage("Split.png"),
-				Assets.newImage("HeavySplit.png"), null}};
+				Assets.newImage("HeavySplit.png"), Assets.newImage("World4Boss.png")}};
     	  exp = new BufferedImage[]{Assets.newImage("exp1.png"), Assets.newImage("exp2.png"), Assets.newImage("exp3.png")};
       }
 }
