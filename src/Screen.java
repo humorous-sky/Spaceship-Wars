@@ -172,7 +172,7 @@ public class Screen extends JPanel{
         g.drawString("Score: " + score, X(5), Y(88));
         g.drawString("Level " + world + "-" + level, X(5), Y(121));
         if (System.currentTimeMillis() >= lastStar + 150) {
-        	stars.add(new Stars((int) (Math.random() * X(600)) + X(200), Y(-15), Color.white));
+        	stars.add(new Stars((int) (Math.random() * X(600)) + X(200), Y(-15), Color.gray));
         	lastStar = System.currentTimeMillis();
         }
         if (!paused && System.currentTimeMillis() >= lastShield + 1000) {

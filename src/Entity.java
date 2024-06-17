@@ -31,13 +31,13 @@ public class Entity {
       public long diffTurn = 0;
       public long diffFire = 0;
       public long diffMove = 0;
-      private int thres;
+      protected int thres;
       public ArrayList<Buff> buffs = new ArrayList<Buff>();
       public ArrayList<Buff> buffsToRemove = new ArrayList<Buff>();
       public BufferedImage img = null;
       public static BufferedImage[][] imgs;
       public static BufferedImage[] exp;
-      private final long spawnTime = System.currentTimeMillis();
+      protected final long spawnTime = System.currentTimeMillis();
       public static final Class[][] refs = {
     		  							{Fighter.class, Scout.class, MediumFighter.class, Carrier.class, Spawner.class, World1Boss.class},
       									{Sniper.class, Accurate.class, MoreAccurate.class, MultiSniper.class, SnipeLead.class, World2Boss.class},

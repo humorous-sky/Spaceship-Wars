@@ -78,6 +78,9 @@ public class Player extends Entity {
   		  if (Keys.right) {
 			 xA ++;
 		  }
+  		  if (ammos == 0) {
+  			  reload();
+  		  }
   		  if (Keys.activate) {
   			  a.activateIfCharged(this);
   			  Keys.activate = false;

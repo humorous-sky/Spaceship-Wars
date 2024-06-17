@@ -2,7 +2,7 @@
 public class Melee extends Player {
 	public static final float SPEED = 8f;
 	public static final int DMG = 4;
-	public static final int HP = 80;
+	public static final int HP = 100;
 	public static final int AMMOS = 48;
 	public static final int FIRERATE = 80;
 	public static final int RELOAD = 3650;
