@@ -52,7 +52,7 @@ public class StealthShip extends Entity {
   	  }
   	  if (System.currentTimeMillis() >= lastTurn + 2600) {
   		  invisible ++;
-  		  invisible %= 4;
+  		  invisible %= 4; 
   		  dir = (float) ((Math.random() * currentSpeed * 1.6) - (currentSpeed * 0.8));
   		  lastTurn = System.currentTimeMillis();
   	  }
