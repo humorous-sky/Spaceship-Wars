@@ -9,9 +9,14 @@ public class Recycler extends Entity {
 	public static final String DESC = "Regains full Hp every time you take damage."; 
 	public static final int WIDTH = 60;
 	public static final int HEIGHT = 50;
-	private int php = Screen.plr.hp;
+	private int php;
 	public Recycler(int x, int y) {
 		super(x, y, WIDTH, HEIGHT, HP, DMG, SPEED, FIRERATE, false, null, 2);
+		try {
+			php = Screen.plr.hp;
+		} catch (Exception e) {
+			
+		}
 	}
 	@Override
 	public void paint(Graphics g) {

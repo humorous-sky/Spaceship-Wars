@@ -2,8 +2,8 @@ import java.awt.Graphics;
 
 public class StealthShip extends Entity {
 	public static final float SPEED = 1f;
-	public static final int DMG = 25;
-	public static final int HP = 25;
+	public static final int DMG = 35;
+	public static final int HP = 35;
 	public static final int AMMOS = 1;
 	public static final int FIRERATE = 1500;
 	public static final String DESC = "Occasionally turns invisible. "; 
@@ -11,7 +11,7 @@ public class StealthShip extends Entity {
 	public static final int HEIGHT = 80;
 	private int invisible = 0;
 	public StealthShip(int x, int y) {
-		super(x, y, WIDTH, HEIGHT, HP, DMG, SPEED, FIRERATE, false, null, 6);
+		super(x, y, WIDTH, HEIGHT, HP, DMG, SPEED, FIRERATE, false, null, 9);
 	}
 	@Override
 	public void paint (Graphics g) {

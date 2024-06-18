@@ -43,7 +43,7 @@ public class Entity {
       									{Sniper.class, Accurate.class, MoreAccurate.class, MultiSniper.class, SnipeLead.class, World2Boss.class},
     		  							{Recycler.class, Armadillo.class, SelfRepair.class, ShieldShip.class, Healer.class, World3Boss.class},
     		  							{MiniSplitShooter.class, Rage.class, Minigunner.class, SplitShooter.class, HeavySplitShooter.class, World4Boss.class},
-    		  							{Deflector.class, Fighter.class, null, null, null, null}};
+    		  							{Deflector.class, Teleporter.class, StealthShip.class, null, null, null}};
       
       public Entity(int x, int y, int width, int height, int hp, int dmg, float speed, int fireRate, boolean team, BufferedImage img, int s) {
           this.x = x;
@@ -194,7 +194,7 @@ public class Entity {
     			  try {
     				  imgs[world][ship] = ((Entity) refs[world][ship].getDeclaredConstructor(int.class, int.class).newInstance(0, 0)).loadImage();
     			  } catch (Exception e) {
-    				  
+    				  e.printStackTrace();
     			  }
     		  }
     	  }
@@ -202,6 +202,7 @@ public class Entity {
       }
       public BufferedImage loadImage() {
     	  String[] name = (getClass() + "").split(" ");
+    	  System.out.println("Loading " + name[1] + ".png");
     	  return Assets.newImage(name[1] + ".png");
       }
 }

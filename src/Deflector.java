@@ -1,14 +1,16 @@
+import java.awt.Color;
 import java.awt.Graphics;
 
 public class Deflector extends Entity {
 	public static final float SPEED = 0.8f;
-	public static final int DMG = 0;
+	public static final int DMG = 32;
 	public static final int HP = 15;
 	public static final int AMMOS = 1;
 	public static final int FIRERATE = 334;
-	public static final String DESC = "Deflects the player's bullets with 6x damage: the faster and lighter the bullets, the faster the deflection!"; 
+	public static final String DESC = "Deflects the player's bullets: the lighter the bullets, the faster the deflection!"; 
 	public static final int WIDTH = 60;
 	public static final int HEIGHT = 50;
+	private double theta = 0.0;
 	public Deflector(int x, int y) {
 		super(x, y, WIDTH, HEIGHT, HP, DMG, SPEED, FIRERATE, false, null, 6);
 	}
@@ -34,8 +36,8 @@ public class Deflector extends Entity {
   			  Screen.score += hp <= thres ? (hp > e.hp ? e.hp * s : hp * s) : 0;
   			  Screen.plr.a.increment(hp > e.hp ? e.hp : hp, 2);
   			  takeDamage(e.hp);
-  			  if (currentSpeed >  0f ) {
-  				  Screen.entitiesToAdd.add(new Ammos((int) rect.getCenterX(), (int) rect.getMaxY(), -3 * ((Ammos) e).sX/e.hp, -3 * ((Ammos) e).sY/e.hp, 6 * e.hp, team));
+  			  if (currentSpeed >  0f) {
+  				  Screen.entitiesToAdd.add(new Ammos((int) rect.getCenterX(), (int) rect.getMaxY(), -1 * ((Ammos) e).sX/(e.hp - 2.5f), -1 * ((Ammos) e).sY/(e.hp - 2.5f), dmg, team));
   			  }
   			  e.hp = 0;
   			  Screen.entitiesToRemove.add(e);
@@ -68,9 +70,19 @@ public class Deflector extends Entity {
       	  } else if (frame >= 2.86) {
       		  onOof();
       	  }
+  		  theta += Math.PI/30;
+		  theta %= 2 * Math.PI;
   	  }
     }
     public void fire() {
   	 
+    }
+    public void paint(Graphics g) {
+    	super.paint(g);
+    	if (currentSpeed <= 0) {return;}
+    	g.setColor(Color.cyan);
+    	g.fillOval((int) (Screen.X(40) * Math.cos(theta) - Screen.X(5) + rect.getCenterX()), (int) (Screen.Y(35) * Math.sin(theta) - Screen.Y(4) + rect.getCenterY()), Screen.X(10), Screen.Y(10));
+    	g.fillOval((int) (Screen.X(40) * Math.cos(theta + 2 * Math.PI/3) - Screen.X(5) + rect.getCenterX()), (int) (Screen.Y(35) * Math.sin(theta + 2 * Math.PI/3) - Screen.Y(4) + rect.getCenterY()), Screen.X(10), Screen.Y(10));
+    	g.fillOval((int) (Screen.X(40) * Math.cos(theta + 4 * Math.PI/3) - Screen.X(5) + rect.getCenterX()), (int) (Screen.Y(35) * Math.sin(theta + 4 * Math.PI/3) - Screen.Y(4) + rect.getCenterY()), Screen.X(10), Screen.Y(10));
     }
 }
