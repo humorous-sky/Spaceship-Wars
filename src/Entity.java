@@ -134,7 +134,7 @@ public class Entity {
       public static Entity createEntity(int world, int type, int x, int y) {
 			try {
 				Entity e = (Entity) refs[world - 1][type].getDeclaredConstructor(int.class, int.class).newInstance(x, y);
-				e.img = imgs[world][type];
+				e.img = imgs[world - 1][type];
 				return e;
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
