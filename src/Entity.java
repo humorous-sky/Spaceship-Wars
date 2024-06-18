@@ -31,18 +31,19 @@ public class Entity {
       public long diffTurn = 0;
       public long diffFire = 0;
       public long diffMove = 0;
-      private int thres;
+      protected int thres;
       public ArrayList<Buff> buffs = new ArrayList<Buff>();
       public ArrayList<Buff> buffsToRemove = new ArrayList<Buff>();
       public BufferedImage img = null;
       public static BufferedImage[][] imgs;
       public static BufferedImage[] exp;
-      private final long spawnTime = System.currentTimeMillis();
+      protected final long spawnTime = System.currentTimeMillis();
       public static final Class[][] refs = {
     		  							{Fighter.class, Scout.class, MediumFighter.class, Carrier.class, Spawner.class, World1Boss.class},
       									{Sniper.class, Accurate.class, MoreAccurate.class, MultiSniper.class, SnipeLead.class, World2Boss.class},
     		  							{Recycler.class, Armadillo.class, SelfRepair.class, ShieldShip.class, Healer.class, World3Boss.class},
-    		  							{MiniSplitShooter.class, Rage.class, Minigunner.class, SplitShooter.class, HeavySplitShooter.class, World4Boss.class}};
+    		  							{MiniSplitShooter.class, Rage.class, Minigunner.class, SplitShooter.class, HeavySplitShooter.class, World4Boss.class},
+    		  							{Deflector.class, Fighter.class, null, null, null, null}};
       public Entity(int x, int y, int width, int height, int hp, int dmg, float speed, int fireRate, boolean team, BufferedImage img, int s) {
           this.x = x;
           this.y = y;
@@ -195,7 +196,8 @@ public class Entity {
 				Assets.newImage("Healer.png"), Assets.newImage("World3Boss.png")}, 
 				{Assets.newImage("MiniSplit.png"), Assets.newImage("Rage.png"),
 				Assets.newImage("Minigun.png"), Assets.newImage("Split.png"),
-				Assets.newImage("HeavySplit.png"), Assets.newImage("World4Boss.png")}};
+				Assets.newImage("HeavySplit.png"), Assets.newImage("World4Boss.png")},
+				{Assets.newImage("Deflector.png")}};
     	  exp = new BufferedImage[]{Assets.newImage("exp1.png"), Assets.newImage("exp2.png"), Assets.newImage("exp3.png")};
       }
 }
