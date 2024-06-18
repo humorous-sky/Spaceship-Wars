@@ -10,7 +10,7 @@ public class Deflector extends Entity {
 	public static final int WIDTH = 60;
 	public static final int HEIGHT = 50;
 	public Deflector(int x, int y) {
-		super(x, y, WIDTH, HEIGHT, HP, DMG, SPEED, FIRERATE, false, imgs[4][0], 6);
+		super(x, y, WIDTH, HEIGHT, HP, DMG, SPEED, FIRERATE, false, null, 6);
 	}
 	public void move() {
   	  currentSpeed = speed;

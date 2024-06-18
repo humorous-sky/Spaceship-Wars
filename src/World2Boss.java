@@ -4,7 +4,7 @@ public class World2Boss extends BossEntity {
 
 
 	public World2Boss(int x, int y) {
-		super(x, y, 230, 180, 1800, 128, 0.8f, 3800, false, imgs[1][5], 15);
+		super(x, y, 230, 180, 1800, 128, 0.8f, 3800, false, null, 15);
 	}
 	@Override
 	public void fire() {

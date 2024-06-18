@@ -10,7 +10,7 @@ public class MoreAccurate extends Entity {
 	public static final int WIDTH = 110;
 	public static final int HEIGHT = 80;
 	public MoreAccurate(int x, int y) {
-		super(x, y, WIDTH, HEIGHT, HP, DMG, SPEED, FIRERATE, false, imgs[1][2], 10);
+		super(x, y, WIDTH, HEIGHT, HP, DMG, SPEED, FIRERATE, false, null, 10);
 	}
 	@Override
 	public void fire() {

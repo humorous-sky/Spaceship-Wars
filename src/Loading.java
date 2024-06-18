@@ -23,7 +23,7 @@ public class Loading extends JPanel{
 			@Override
 			public void run() {
 				Assets.loadImages();
-				Entity.loadImages();
+				new Entity(0, 0, 0, 0, 0, 0, 0, 0, false, null, 0).loadImages();
 				Buff.loadImages();
 				//Assets.loadSounds();
 				try {

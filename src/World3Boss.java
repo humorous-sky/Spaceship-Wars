@@ -4,7 +4,7 @@ public class World3Boss extends BossEntity {
 
 	private Shield shield;
 	public World3Boss(int x, int y) {
-		super(x, y, 260, 210, 4600, 25, 0.6f, 8500, false, imgs[2][5], 5);
+		super(x, y, 260, 210, 4600, 25, 0.6f, 8500, false, null, 5);
 	}
 	@Override
 	public void fire() {

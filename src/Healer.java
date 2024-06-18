@@ -10,7 +10,7 @@ public class Healer extends Entity {
 	public static final int WIDTH = 170;
 	public static final int HEIGHT = 105;
 	public Healer(int x, int y) {
-		super(x, y, WIDTH, HEIGHT, HP, DMG, SPEED, FIRERATE, false, imgs[2][4], 8);
+		super(x, y, WIDTH, HEIGHT, HP, DMG, SPEED, FIRERATE, false, null, 8);
 	}
 	@Override
 	public void fire() {

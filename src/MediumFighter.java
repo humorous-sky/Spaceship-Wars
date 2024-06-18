@@ -10,7 +10,7 @@ public class MediumFighter extends Entity {
 	public static final int WIDTH = 110;
 	public static final int HEIGHT = 80;
 	public MediumFighter(int x, int y) {
-		super(x, y, WIDTH, HEIGHT, HP, DMG, SPEED, FIRERATE, false, imgs[0][2], 6);
+		super(x, y, WIDTH, HEIGHT, HP, DMG, SPEED, FIRERATE, false, null, 6);
 	}
 	@Override
 	public void fire() {

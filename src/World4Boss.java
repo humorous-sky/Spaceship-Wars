@@ -4,7 +4,7 @@ public class World4Boss extends BossEntity {
 	private double theta = -Math.PI/4;
 	private int multi = 1;
 	public World4Boss(int x, int y) {
-		super(x, y, 230, 180, 1380, 15, 0.8f, 116, false, imgs[3][5], 17);
+		super(x, y, 230, 180, 1380, 15, 0.8f, 116, false, null, 17);
 	}
 	@Override
 	public void fire() {

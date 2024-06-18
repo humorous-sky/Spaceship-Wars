@@ -10,7 +10,7 @@ public class MiniSplitShooter extends Entity {
 	public static final int WIDTH = 60;
 	public static final int HEIGHT = 50;
 	public MiniSplitShooter(int x, int y) {
-		super(x, y, WIDTH, HEIGHT, HP, DMG, SPEED, FIRERATE, false, imgs[3][0], 4);
+		super(x, y, WIDTH, HEIGHT, HP, DMG, SPEED, FIRERATE, false, null, 4);
 	}
 	@Override
 	public void fire() {

@@ -11,7 +11,7 @@ public class StealthShip extends Entity {
 	public static final int HEIGHT = 80;
 	private int invisible = 0;
 	public StealthShip(int x, int y) {
-		super(x, y, WIDTH, HEIGHT, HP, DMG, SPEED, FIRERATE, false, imgs[0][2], 6);
+		super(x, y, WIDTH, HEIGHT, HP, DMG, SPEED, FIRERATE, false, null, 6);
 	}
 	@Override
 	public void paint (Graphics g) {

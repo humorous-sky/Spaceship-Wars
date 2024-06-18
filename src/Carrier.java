@@ -10,7 +10,7 @@ public class Carrier extends Entity {
 	public static final int WIDTH = 110;
 	public static final int HEIGHT = 80;
 	public Carrier(int x, int y) {
-		super(x, y, WIDTH, HEIGHT, HP, DMG, SPEED, FIRERATE, false, imgs[0][3], 4);
+		super(x, y, WIDTH, HEIGHT, HP, DMG, SPEED, FIRERATE, false, null, 4);
 	}
 	@Override
 	public void fire() {

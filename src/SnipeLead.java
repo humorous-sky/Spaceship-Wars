@@ -10,7 +10,7 @@ public class SnipeLead extends Entity {
 	public static final int WIDTH = 150;
 	public static final int HEIGHT = 100;
 	public SnipeLead(int x, int y) {
-		super(x, y, WIDTH, HEIGHT, HP, DMG, SPEED, FIRERATE, false, imgs[1][4], 8);
+		super(x, y, WIDTH, HEIGHT, HP, DMG, SPEED, FIRERATE, false, null, 8);
 	}
 	@Override
 	public void fire() {

@@ -10,7 +10,7 @@ public class Rage extends Entity {
 	public static final int WIDTH = 60;
 	public static final int HEIGHT = 50;
 	public Rage(int x, int y) {
-		super(x, y, WIDTH, HEIGHT, HP, DMG, SPEED, FIRERATE, false, imgs[3][1], 5);
+		super(x, y, WIDTH, HEIGHT, HP, DMG, SPEED, FIRERATE, false, null, 5);
 	}
 	@Override
 	public void fire() {

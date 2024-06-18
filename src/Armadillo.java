@@ -10,7 +10,7 @@ public class Armadillo extends Entity {
 	public static final int WIDTH = 60;
 	public static final int HEIGHT = 50;
 	public Armadillo(int x, int y) {
-		super(x, y, WIDTH, HEIGHT, HP, DMG, SPEED, FIRERATE, false, imgs[2][1], 2);
+		super(x, y, WIDTH, HEIGHT, HP, DMG, SPEED, FIRERATE, false, null, 2);
 	}
 	@Override
 	public void fire() {

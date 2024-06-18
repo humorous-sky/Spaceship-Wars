@@ -10,7 +10,7 @@ public class SelfRepair extends Entity {
 	public static final int WIDTH = 118;
 	public static final int HEIGHT = 68;
 	public SelfRepair(int x, int y) {
-		super(x, y, WIDTH, HEIGHT, HP, DMG, SPEED, FIRERATE, false, imgs[2][2], 4);
+		super(x, y, WIDTH, HEIGHT, HP, DMG, SPEED, FIRERATE, false, null, 4);
 	}
 	@Override
 	public void fire() {

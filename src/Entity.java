@@ -35,7 +35,7 @@ public class Entity {
       public ArrayList<Buff> buffs = new ArrayList<Buff>();
       public ArrayList<Buff> buffsToRemove = new ArrayList<Buff>();
       public BufferedImage img = null;
-      public static BufferedImage[][] imgs;
+      public static BufferedImage[][] imgs = new BufferedImage[5][6];
       public static BufferedImage[] exp;
       protected final long spawnTime = System.currentTimeMillis();
       public static final Class[][] refs = {
@@ -44,6 +44,7 @@ public class Entity {
     		  							{Recycler.class, Armadillo.class, SelfRepair.class, ShieldShip.class, Healer.class, World3Boss.class},
     		  							{MiniSplitShooter.class, Rage.class, Minigunner.class, SplitShooter.class, HeavySplitShooter.class, World4Boss.class},
     		  							{Deflector.class, Fighter.class, null, null, null, null}};
+      
       public Entity(int x, int y, int width, int height, int hp, int dmg, float speed, int fireRate, boolean team, BufferedImage img, int s) {
           this.x = x;
           this.y = y;
@@ -132,7 +133,9 @@ public class Entity {
       }
       public static Entity createEntity(int world, int type, int x, int y) {
 			try {
-				return (Entity) refs[world - 1][type].getDeclaredConstructor(int.class, int.class).newInstance(x, y);
+				Entity e = (Entity) refs[world - 1][type].getDeclaredConstructor(int.class, int.class).newInstance(x, y);
+				e.img = imgs[world][type];
+				return e;
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -183,22 +186,23 @@ public class Entity {
     	  Graphics2D g2d = (Graphics2D) g;
     	  g2d.drawImage(image, at, null);
   	}
-      public static void loadImages() {
+      public void loadImages() {
     	  System.out.println("Loading Entities...");
-    	  imgs = new BufferedImage[][]{{Assets.newImage("Fighter.png"), Assets.newImage("Scout.png"),
-				Assets.newImage("MediumFighter.png"), Assets.newImage("Carrier.png"),
-				Assets.newImage("Spawn.png"), Assets.newImage("World1Boss.png")},
-				{Assets.newImage("Sniper.png"), Assets.newImage("Accurate.png"),
-				Assets.newImage("MoreAccurate.png"), Assets.newImage("MultiSniper.png"),
-				Assets.newImage("SnipeLead.png"), Assets.newImage("World2Boss.png")},
-				{Assets.newImage("Recycler.png"), Assets.newImage("Armadillo.png"),
-				Assets.newImage("SelfRepair.png"), Assets.newImage("ShieldShip.png"),
-				Assets.newImage("Healer.png"), Assets.newImage("World3Boss.png")}, 
-				{Assets.newImage("MiniSplit.png"), Assets.newImage("Rage.png"),
-				Assets.newImage("Minigun.png"), Assets.newImage("Split.png"),
-				Assets.newImage("HeavySplit.png"), Assets.newImage("World4Boss.png")},
-				{Assets.newImage("Deflector.png")}};
+    	 loadImage();
+    	  for (int world = 0; world < refs.length; world ++) {
+    		  for (int ship = 0; ship < refs[world].length; ship ++) {
+    			  try {
+    				  imgs[world][ship] = ((Entity) refs[world][ship].getDeclaredConstructor(int.class, int.class).newInstance(0, 0)).loadImage();
+    			  } catch (Exception e) {
+    				  
+    			  }
+    		  }
+    	  }
     	  exp = new BufferedImage[]{Assets.newImage("exp1.png"), Assets.newImage("exp2.png"), Assets.newImage("exp3.png")};
+      }
+      public BufferedImage loadImage() {
+    	  String[] name = (getClass() + "").split(" ");
+    	  return Assets.newImage(name[1] + ".png");
       }
 }
 

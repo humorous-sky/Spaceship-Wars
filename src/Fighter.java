@@ -10,6 +10,6 @@ public class Fighter extends Entity {
 	public static final int WIDTH = 60;
 	public static final int HEIGHT = 50;
 	public Fighter(int x, int y) {
-		super(x, y, WIDTH, HEIGHT, HP, DMG, SPEED, FIRERATE, false, imgs[0][0], 3);
+		super(x, y, WIDTH, HEIGHT, HP, DMG, SPEED, FIRERATE, false, null, 3);
 	}
 }

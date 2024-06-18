@@ -10,7 +10,7 @@ public class SplitShooter extends Entity {
 	public static final int WIDTH = 110;
 	public static final int HEIGHT = 66;
 	public SplitShooter(int x, int y) {
-		super(x, y, WIDTH, HEIGHT, HP, DMG, SPEED, FIRERATE, false, imgs[3][3], 4);
+		super(x, y, WIDTH, HEIGHT, HP, DMG, SPEED, FIRERATE, false, null, 4);
 	}
 	@Override
 	public void fire() {

@@ -3,7 +3,7 @@ import java.awt.Graphics;
 public class World1Boss extends BossEntity {
 
 	public World1Boss(int x, int y) {
-		super(x, y, 230, 180, 2300, 30, 0.8f, 8500, false, imgs[0][5], 10);
+		super(x, y, 230, 180, 2300, 30, 0.8f, 8500, false, null, 10);
 	}
 	@Override
 	public void fire() {

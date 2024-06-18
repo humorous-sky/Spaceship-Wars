@@ -12,7 +12,7 @@ public class Minigunner extends Entity {
 	private long lastSpeedUp = System.currentTimeMillis();
 	//1500, 750, 375
 	public Minigunner(int x, int y) {
-		super(x, y, WIDTH, HEIGHT, HP, DMG, SPEED, 3000, false, imgs[3][2], 8);
+		super(x, y, WIDTH, HEIGHT, HP, DMG, SPEED, 3000, false, null, 8);
 	}
 	@Override
 	public void fire() {

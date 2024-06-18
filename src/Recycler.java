@@ -11,7 +11,7 @@ public class Recycler extends Entity {
 	public static final int HEIGHT = 50;
 	private int php = Screen.plr.hp;
 	public Recycler(int x, int y) {
-		super(x, y, WIDTH, HEIGHT, HP, DMG, SPEED, FIRERATE, false, imgs[2][0], 2);
+		super(x, y, WIDTH, HEIGHT, HP, DMG, SPEED, FIRERATE, false, null, 2);
 	}
 	@Override
 	public void paint(Graphics g) {

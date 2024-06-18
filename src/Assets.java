@@ -57,9 +57,9 @@ public class Assets {
 			return img;
 		} catch (Exception e) {
 			if (name.equals("MissingTexture.png")) {
-				System.out.println("Cannot find " + name);
 				System.exit(0);
 			}
+			System.out.println("Cannot find " + name);
 			return newImage("MissingTexture.png");
 		}
 	}
