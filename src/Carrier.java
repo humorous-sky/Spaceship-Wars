@@ -18,13 +18,13 @@ public class Carrier extends Entity {
     }
 	@Override
 	public void onOof() {
-		Entity e = new Fighter((int) rect.getCenterX() - rect.width/6, (int) rect.getCenterY() - rect.height/6);
+		Entity e = Entity.createEntity(1, (int) (Math.random() * 2), (int) rect.getCenterX() - rect.width/6, (int) rect.getCenterY() - rect.height/6);
 		e.s = 0;
 		Screen.entitiesToAdd.add(e);
-		e = new Fighter((int) rect.getCenterX() + rect.width/6, (int) rect.getCenterY() - rect.height/6);
+		e = Entity.createEntity(1, (int) (Math.random() * 2), (int) rect.getCenterX() + rect.width/6, (int) rect.getCenterY() - rect.height/6);
 		e.s = 0;
 		Screen.entitiesToAdd.add(e);
-		e = new Scout((int) rect.getCenterX(), (int) rect.getCenterY() + rect.height/6);
+		e = Entity.createEntity(1, (int) (Math.random() * 2), (int) rect.getCenterX(), (int) rect.getCenterY() + rect.height/6);
 		e.s = 0;
 		Screen.entitiesToAdd.add(e);
 		super.onOof();

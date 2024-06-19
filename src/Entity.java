@@ -43,7 +43,7 @@ public class Entity {
       									{Sniper.class, Accurate.class, MoreAccurate.class, MultiSniper.class, SnipeLead.class, World2Boss.class},
     		  							{Recycler.class, Armadillo.class, SelfRepair.class, ShieldShip.class, Healer.class, World3Boss.class},
     		  							{MiniSplitShooter.class, Rage.class, Minigunner.class, SplitShooter.class, HeavySplitShooter.class, World4Boss.class},
-    		  							{Deflector.class, Teleporter.class, StealthShip.class, null, null, null}};
+    		  							{Deflector.class, Teleporter.class, StealthShip.class, Splitter.class, null, null}};
       
       public Entity(int x, int y, int width, int height, int hp, int dmg, float speed, int fireRate, boolean team, BufferedImage img, int s) {
           this.x = x;

@@ -1,12 +1,12 @@
 import java.awt.Graphics;
 
 public class StealthShip extends Entity {
-	public static final float SPEED = 1f;
+	public static final float SPEED = 0.5f;
 	public static final int DMG = 35;
 	public static final int HP = 35;
 	public static final int AMMOS = 1;
 	public static final int FIRERATE = 1500;
-	public static final String DESC = "Occasionally turns invisible. "; 
+	public static final String DESC = "Occasionally turns invisible when not being attacked."; 
 	public static final int WIDTH = 110;
 	public static final int HEIGHT = 80;
 	private int invisible = 0;
@@ -38,7 +38,7 @@ public class StealthShip extends Entity {
   		  diffMove = System.currentTimeMillis() - lastMove;
   	  } else {
   		  lastFire = System.currentTimeMillis() - diffFire;
-    		  lastTurn = System.currentTimeMillis() - diffTurn;
+  		  lastTurn = System.currentTimeMillis() - diffTurn;
   	  }  
   	  for (Entity e: Screen.entities) {
   		  if (System.currentTimeMillis() > spawnTime + 50 && hp > 0 && e.hp > 0 && e instanceof Ammos && e.team != this.team && e.rect.intersects(this.rect)) {
@@ -53,6 +53,7 @@ public class StealthShip extends Entity {
   	  if (System.currentTimeMillis() >= lastTurn + 2600) {
   		  invisible ++;
   		  invisible %= 4; 
+  		  speed = invisible > 0 ? 1f: 0.5f;
   		  dir = (float) ((Math.random() * currentSpeed * 1.6) - (currentSpeed * 0.8));
   		  lastTurn = System.currentTimeMillis();
   	  }
@@ -80,4 +81,9 @@ public class StealthShip extends Entity {
       	  }
   	  }
     }
+	@Override
+	public void takeDamage(int amount) {
+		super.takeDamage(amount);
+		invisible = 0;
+	}
 }

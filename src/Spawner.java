@@ -17,7 +17,7 @@ public class Spawner extends Entity {
 	@Override
 	public void fire() {
   	  if (System.currentTimeMillis() >= lastFire + fireRate) {
-  		  Entity e = new Fighter((int) rect.getCenterX() - Screen.X(30), (int) rect.getCenterY());
+  		  Entity e = Entity.createEntity(1, 0, (int) rect.getCenterX() - Screen.X(30), (int) rect.getCenterY());
   		  e.s = 0;
   		  Screen.entitiesToAdd.add(e);
   		  lastFire = System.currentTimeMillis();
