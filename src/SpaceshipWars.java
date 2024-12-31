@@ -16,7 +16,7 @@ public class SpaceshipWars {
     static double height = screenSize.getHeight();
     //sets up fps calculation 
     static int frames = 0;
-    static long lastUpdate = System.currentTimeMillis();
+    static long lastUpdate = System.nanoTime();
     static long lastSound = System.currentTimeMillis();
     static long startTime = System.currentTimeMillis();
     private static long lastNavigate = System.currentTimeMillis() - 1000;
@@ -61,10 +61,11 @@ public class SpaceshipWars {
         	//width = frame.getWidth();
         	//height = frame.getHeight();
               //updates fps every 166 milliseconds
-              if (System.currentTimeMillis() >= lastUpdate + 166) {
+              if (System.nanoTime() >= lastUpdate + 166000000L) {
                       //calculates fps
-                      fps = frames/((System.currentTimeMillis() - lastUpdate)/1000.0);
-                      lastUpdate = System.currentTimeMillis(); 
+                      fps = frames/((System.nanoTime() - lastUpdate)/1000000000.0);
+                      System.out.println(fps);
+                      lastUpdate = System.nanoTime(); 
                       frames = 0;
               }
               if (System.currentTimeMillis() >= lastSound + 100) {
