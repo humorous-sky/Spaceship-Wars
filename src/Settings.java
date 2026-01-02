@@ -246,7 +246,7 @@ public class Settings extends JPanel{
         g.drawString(KeyEvent.getKeyText(Assets.keyBinds[1]) + " - Left ", X(260), Y(230));
         g.drawString(KeyEvent.getKeyText(Assets.keyBinds[2]) + " - Down ", X(260), Y(280));
         g.drawString(KeyEvent.getKeyText(Assets.keyBinds[3]) + " - Right ", X(260), Y(330));
-        g.drawString(KeyEvent.getKeyText(Assets.keyBinds[4]) + " - Toggle Fire ", X(260), Y(380));
+        g.drawString(KeyEvent.getKeyText(Assets.keyBinds[4]) + " - Fire ", X(260), Y(380));
         g.drawString(KeyEvent.getKeyText(Assets.keyBinds[5]) + " - Reload Bullets ", X(260), Y(430));
         g.drawString(KeyEvent.getKeyText(Assets.keyBinds[6]) + " - Activate Ability ", X(260), Y(480));
         g.drawString("Sound Quality:", X(260), Y(550));

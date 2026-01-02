@@ -175,7 +175,7 @@ public class WorldSelect extends JPanel{
         g.setFont(new Font("", Font.ROMAN_BASELINE, 10));
         g.drawString("fps: " + Math.round(SpaceshipWars.fps * 10) / 10.0,  X(5), Y(15));
         g.setFont(new Font("", Font.ROMAN_BASELINE, 66));
-        g.drawString("Select a Planet to Conquer", X(230), Y(110));
+        g.drawString("Select a World", X(360), Y(110));
         g.setFont(new Font("", Font.ROMAN_BASELINE, 38));
         g.drawString(names[world], (X(1000) - g.getFontMetrics().stringWidth(names[world]))/2, Y(330));
         g.setFont(new Font("", Font.ROMAN_BASELINE, 15));

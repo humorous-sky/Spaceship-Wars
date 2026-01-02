@@ -53,7 +53,7 @@ public class Assets {
 			System.out.println(url + " successfully loaded.");
 			loaded += loaded < totalImages ? 1 : 0;
 			System.out.println(loaded + " images loaded.");
-			playSound(gunFire, 100);
+			playSound(gunFire, 0);
 			return img;
 		} catch (Exception e) {
 			if (name.equals("MissingTexture.png")) {
@@ -104,8 +104,15 @@ public class Assets {
 			prefs[3] = 220;
 		}
 		keyBinds = readInts("Key Binds", 7);
+		int[] def = {87, 65, 83, 68, 32, 82, 10};
+		for (int i = 0; i < keyBinds.length; i ++) {
+			if (keyBinds[i] == 0) {
+				keyBinds[i] = def[i];
+			}
+		}
 		System.out.println("Loading Players...");
-		ships = new BufferedImage[]{newImage("Basic.png"), newImage("Speedy.png"), newImage("Tank.png"), newImage("Melee.png"), newImage("MultiDirection.png")};
+		ships = new BufferedImage[]{newImage("Basic.png"), newImage("Speedy.png"), newImage("Tank.png"), 
+		newImage("Melee.png"), newImage("SelfReinforce.png")};
 		System.out.println("Loading Miscellaneous...");
 		misc = new BufferedImage[]{newImage("Support.png"), newImage("Rage.png"), newImage("ShieldOrb.png")};
 	}

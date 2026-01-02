@@ -24,7 +24,7 @@ public class SpaceshipWars {
     static BufferedImage img;
     static JPanel s;// = new Screen(1, 26, new Basic(Screen.X(500), Screen.Y(880)));
     static JPanel queue;
-    static boolean devMode = false;
+    static boolean devMode = true;
     //initalizes the frame
     static JFrame frame = new JFrame();
     public static void main(String[] args) {
@@ -34,7 +34,6 @@ public class SpaceshipWars {
         frame.setLocation(0, 0);
         frame.setName("Spaceship Wars");
         frame.setTitle("Spaceship Wars");
-        System.out.println(System.getProperty("user.name"));
         URL resourceURL = SpaceshipWars.class.getResource("images/Fighter.png"); 
         System.out.println(resourceURL);
         try {
@@ -64,7 +63,7 @@ public class SpaceshipWars {
               if (System.nanoTime() >= lastUpdate + 166000000L) {
                       //calculates fps
                       fps = frames/((System.nanoTime() - lastUpdate)/1000000000.0);
-                      System.out.println(fps);
+                      //System.out.println(fps);
                       lastUpdate = System.nanoTime(); 
                       frames = 0;
               }
