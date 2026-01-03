@@ -1,0 +1,1 @@
+All code within the game is documented in this repo. A video that demonstrates all completed systems is provided to ensure accessibility without logging in. This project is also available on the Microsoft Store: https://apps.microsoft.com/detail/9pnw3ksjq225?hl=en-US&gl=US
